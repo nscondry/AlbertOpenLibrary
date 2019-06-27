@@ -19,7 +19,7 @@ class WishlistViewController: UIViewController {
         self.view = wishlistView
         
         // navBar setup
-        self.navigationController?.navigationItem.title = "wishlist"
+        self.navigationItem.title = "wishlist"
         
         print("wishVC setup")
     }

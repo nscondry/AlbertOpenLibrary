@@ -21,6 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // initialize window & router
         window = UIWindow(frame: UIScreen.main.bounds)
         router = Router(window!)
+        
+        // set navBar attributes
+        UINavigationBar.appearance().backgroundColor = .white
+        
+        // set tabBar attributes
+        UITabBar.appearance().tintColor = UIColor.black.withAlphaComponent(0.8)
+        UITabBar.appearance().backgroundColor = .white
 
         return true
     }

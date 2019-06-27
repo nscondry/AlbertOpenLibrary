@@ -31,32 +31,33 @@ class Router: NSObject {
     
     private var window: UIWindow?
     private var tabBarController: UITabBarController!
-    private var navController: UINavigationController!
+    private var searchNav: UINavigationController!
+    private var wishNav: UINavigationController!
     
     required init(_ window: UIWindow) {
         super.init()
         
         self.window = window
         
-        // set up: tabBarController
+        // set up: navControllers
         let searchVC = loadViewController(.search) as! SearchViewController
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "searchIcon"), selectedImage: UIImage(named: "searchIcon_selected"))
         searchVC.tabBarItem.tag = 0
+        searchNav = UINavigationController(rootViewController: searchVC)
         
         let wishVC = loadViewController(.wishlist) as! WishlistViewController
         wishVC.tabBarItem = UITabBarItem(title: "Wishlist", image: UIImage(named: "wishlistIcon"), selectedImage: UIImage(named: "wishlistIcon_selected"))
         wishVC.tabBarItem.tag = 1
+        wishNav = UINavigationController(rootViewController: wishVC)
         
+        // set up: tabController
         tabBarController = UITabBarController()
         tabBarController.delegate = self
-        tabBarController.viewControllers = [searchVC, wishVC]
+        tabBarController.viewControllers = [searchNav, wishNav]
         tabBarController.selectedIndex = 0
         
-        // set up: navigationController
-        navController = UINavigationController(rootViewController: tabBarController)
-        
         // set rootVC
-        self.window?.rootViewController = navController
+        self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
     }
     
@@ -68,12 +69,20 @@ class Router: NSObject {
         // handle data when necessary
         let vc = loadViewController(toVC)
         
-        navController.pushViewController(vc, animated: true)
+        if let nav = sender.navigationController {
+            nav.pushViewController(vc, animated: true)
+        } else {
+            NSLog("[Router] Error: failed to push view controller")
+        }
     }
     
     private func popViewController(_ sender: UIViewController,_ data: Any?) {
         // handle data passback when necessary
-        navController.popViewController(animated: true)
+        if let nav = sender.navigationController {
+            nav.popViewController(animated: true)
+        } else {
+            NSLog("[Router] Error: failed to pop view controller")
+        }
     }
     
     private func loadViewController(_ viewController: LibraryViewControllers) -> UIViewController {
