@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01382CB222C56F260091B51B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CB122C56F260091B51B /* AppDelegate.swift */; };
+		01382CB422C56F260091B51B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CB322C56F260091B51B /* ViewController.swift */; };
+		01382CB722C56F260091B51B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01382CB522C56F260091B51B /* Main.storyboard */; };
+		01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01382CB822C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld */; };
+		01382CBC22C56F270091B51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01382CBB22C56F270091B51B /* Assets.xcassets */; };
+		01382CBF22C56F270091B51B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01382CBD22C56F270091B51B /* LaunchScreen.storyboard */; };
+		01382CCA22C56F270091B51B /* AlbertOpenLibraryAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CC922C56F270091B51B /* AlbertOpenLibraryAssignmentTests.swift */; };
+		01382CD522C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CD422C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		01382CC622C56F270091B51B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01382CA622C56F250091B51B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01382CAD22C56F250091B51B;
+			remoteInfo = AlbertOpenLibraryAssignment;
+		};
+		01382CD122C56F270091B51B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 01382CA622C56F250091B51B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 01382CAD22C56F250091B51B;
+			remoteInfo = AlbertOpenLibraryAssignment;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01382CAE22C56F250091B51B /* AlbertOpenLibraryAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbertOpenLibraryAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		01382CB122C56F260091B51B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		01382CB322C56F260091B51B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01382CB622C56F260091B51B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		01382CB922C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlbertOpenLibraryAssignment.xcdatamodel; sourceTree = "<group>"; };
+		01382CBB22C56F270091B51B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		01382CBE22C56F270091B51B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		01382CC022C56F270091B51B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01382CC522C56F270091B51B /* AlbertOpenLibraryAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertOpenLibraryAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01382CC922C56F270091B51B /* AlbertOpenLibraryAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbertOpenLibraryAssignmentTests.swift; sourceTree = "<group>"; };
+		01382CCB22C56F270091B51B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01382CD022C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertOpenLibraryAssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		01382CD422C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbertOpenLibraryAssignmentUITests.swift; sourceTree = "<group>"; };
+		01382CD622C56F270091B51B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		01382CAB22C56F250091B51B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01382CC222C56F270091B51B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01382CCD22C56F270091B51B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01382CA522C56F250091B51B = {
+			isa = PBXGroup;
+			children = (
+				01382CB022C56F250091B51B /* AlbertOpenLibraryAssignment */,
+				01382CC822C56F270091B51B /* AlbertOpenLibraryAssignmentTests */,
+				01382CD322C56F270091B51B /* AlbertOpenLibraryAssignmentUITests */,
+				01382CAF22C56F250091B51B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		01382CAF22C56F250091B51B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				01382CAE22C56F250091B51B /* AlbertOpenLibraryAssignment.app */,
+				01382CC522C56F270091B51B /* AlbertOpenLibraryAssignmentTests.xctest */,
+				01382CD022C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		01382CB022C56F250091B51B /* AlbertOpenLibraryAssignment */ = {
+			isa = PBXGroup;
+			children = (
+				01382CB122C56F260091B51B /* AppDelegate.swift */,
+				01382CB322C56F260091B51B /* ViewController.swift */,
+				01382CB522C56F260091B51B /* Main.storyboard */,
+				01382CBB22C56F270091B51B /* Assets.xcassets */,
+				01382CBD22C56F270091B51B /* LaunchScreen.storyboard */,
+				01382CC022C56F270091B51B /* Info.plist */,
+				01382CB822C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld */,
+			);
+			path = AlbertOpenLibraryAssignment;
+			sourceTree = "<group>";
+		};
+		01382CC822C56F270091B51B /* AlbertOpenLibraryAssignmentTests */ = {
+			isa = PBXGroup;
+			children = (
+				01382CC922C56F270091B51B /* AlbertOpenLibraryAssignmentTests.swift */,
+				01382CCB22C56F270091B51B /* Info.plist */,
+			);
+			path = AlbertOpenLibraryAssignmentTests;
+			sourceTree = "<group>";
+		};
+		01382CD322C56F270091B51B /* AlbertOpenLibraryAssignmentUITests */ = {
+			isa = PBXGroup;
+			children = (
+				01382CD422C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.swift */,
+				01382CD622C56F270091B51B /* Info.plist */,
+			);
+			path = AlbertOpenLibraryAssignmentUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		01382CAD22C56F250091B51B /* AlbertOpenLibraryAssignment */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01382CD922C56F270091B51B /* Build configuration list for PBXNativeTarget "AlbertOpenLibraryAssignment" */;
+			buildPhases = (
+				01382CAA22C56F250091B51B /* Sources */,
+				01382CAB22C56F250091B51B /* Frameworks */,
+				01382CAC22C56F250091B51B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AlbertOpenLibraryAssignment;
+			productName = AlbertOpenLibraryAssignment;
+			productReference = 01382CAE22C56F250091B51B /* AlbertOpenLibraryAssignment.app */;
+			productType = "com.apple.product-type.application";
+		};
+		01382CC422C56F270091B51B /* AlbertOpenLibraryAssignmentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01382CDC22C56F270091B51B /* Build configuration list for PBXNativeTarget "AlbertOpenLibraryAssignmentTests" */;
+			buildPhases = (
+				01382CC122C56F270091B51B /* Sources */,
+				01382CC222C56F270091B51B /* Frameworks */,
+				01382CC322C56F270091B51B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01382CC722C56F270091B51B /* PBXTargetDependency */,
+			);
+			name = AlbertOpenLibraryAssignmentTests;
+			productName = AlbertOpenLibraryAssignmentTests;
+			productReference = 01382CC522C56F270091B51B /* AlbertOpenLibraryAssignmentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		01382CCF22C56F270091B51B /* AlbertOpenLibraryAssignmentUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 01382CDF22C56F270091B51B /* Build configuration list for PBXNativeTarget "AlbertOpenLibraryAssignmentUITests" */;
+			buildPhases = (
+				01382CCC22C56F270091B51B /* Sources */,
+				01382CCD22C56F270091B51B /* Frameworks */,
+				01382CCE22C56F270091B51B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				01382CD222C56F270091B51B /* PBXTargetDependency */,
+			);
+			name = AlbertOpenLibraryAssignmentUITests;
+			productName = AlbertOpenLibraryAssignmentUITests;
+			productReference = 01382CD022C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		01382CA622C56F250091B51B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Nick;
+				TargetAttributes = {
+					01382CAD22C56F250091B51B = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					01382CC422C56F270091B51B = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 01382CAD22C56F250091B51B;
+					};
+					01382CCF22C56F270091B51B = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 01382CAD22C56F250091B51B;
+					};
+				};
+			};
+			buildConfigurationList = 01382CA922C56F250091B51B /* Build configuration list for PBXProject "AlbertOpenLibraryAssignment" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 01382CA522C56F250091B51B;
+			productRefGroup = 01382CAF22C56F250091B51B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				01382CAD22C56F250091B51B /* AlbertOpenLibraryAssignment */,
+				01382CC422C56F270091B51B /* AlbertOpenLibraryAssignmentTests */,
+				01382CCF22C56F270091B51B /* AlbertOpenLibraryAssignmentUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		01382CAC22C56F250091B51B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01382CBF22C56F270091B51B /* LaunchScreen.storyboard in Resources */,
+				01382CBC22C56F270091B51B /* Assets.xcassets in Resources */,
+				01382CB722C56F260091B51B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01382CC322C56F270091B51B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01382CCE22C56F270091B51B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		01382CAA22C56F250091B51B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01382CB422C56F260091B51B /* ViewController.swift in Sources */,
+				01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */,
+				01382CB222C56F260091B51B /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01382CC122C56F270091B51B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01382CCA22C56F270091B51B /* AlbertOpenLibraryAssignmentTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		01382CCC22C56F270091B51B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01382CD522C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		01382CC722C56F270091B51B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01382CAD22C56F250091B51B /* AlbertOpenLibraryAssignment */;
+			targetProxy = 01382CC622C56F270091B51B /* PBXContainerItemProxy */;
+		};
+		01382CD222C56F270091B51B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 01382CAD22C56F250091B51B /* AlbertOpenLibraryAssignment */;
+			targetProxy = 01382CD122C56F270091B51B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		01382CB522C56F260091B51B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01382CB622C56F260091B51B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		01382CBD22C56F270091B51B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01382CBE22C56F270091B51B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		01382CD722C56F270091B51B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		01382CD822C56F270091B51B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		01382CDA22C56F270091B51B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4KG9668N4Y;
+				INFOPLIST_FILE = AlbertOpenLibraryAssignment/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = condry.AlbertOpenLibraryAssignment;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		01382CDB22C56F270091B51B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4KG9668N4Y;
+				INFOPLIST_FILE = AlbertOpenLibraryAssignment/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = condry.AlbertOpenLibraryAssignment;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		01382CDD22C56F270091B51B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4KG9668N4Y;
+				INFOPLIST_FILE = AlbertOpenLibraryAssignmentTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = condry.AlbertOpenLibraryAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlbertOpenLibraryAssignment.app/AlbertOpenLibraryAssignment";
+			};
+			name = Debug;
+		};
+		01382CDE22C56F270091B51B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4KG9668N4Y;
+				INFOPLIST_FILE = AlbertOpenLibraryAssignmentTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = condry.AlbertOpenLibraryAssignmentTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlbertOpenLibraryAssignment.app/AlbertOpenLibraryAssignment";
+			};
+			name = Release;
+		};
+		01382CE022C56F270091B51B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4KG9668N4Y;
+				INFOPLIST_FILE = AlbertOpenLibraryAssignmentUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = condry.AlbertOpenLibraryAssignmentUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AlbertOpenLibraryAssignment;
+			};
+			name = Debug;
+		};
+		01382CE122C56F270091B51B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4KG9668N4Y;
+				INFOPLIST_FILE = AlbertOpenLibraryAssignmentUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = condry.AlbertOpenLibraryAssignmentUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AlbertOpenLibraryAssignment;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		01382CA922C56F250091B51B /* Build configuration list for PBXProject "AlbertOpenLibraryAssignment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01382CD722C56F270091B51B /* Debug */,
+				01382CD822C56F270091B51B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01382CD922C56F270091B51B /* Build configuration list for PBXNativeTarget "AlbertOpenLibraryAssignment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01382CDA22C56F270091B51B /* Debug */,
+				01382CDB22C56F270091B51B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01382CDC22C56F270091B51B /* Build configuration list for PBXNativeTarget "AlbertOpenLibraryAssignmentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01382CDD22C56F270091B51B /* Debug */,
+				01382CDE22C56F270091B51B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		01382CDF22C56F270091B51B /* Build configuration list for PBXNativeTarget "AlbertOpenLibraryAssignmentUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				01382CE022C56F270091B51B /* Debug */,
+				01382CE122C56F270091B51B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		01382CB822C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				01382CB922C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodel */,
+			);
+			currentVersion = 01382CB922C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodel */;
+			path = AlbertOpenLibraryAssignment.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 01382CA622C56F250091B51B /* Project object */;
+}
