@@ -10,7 +10,9 @@ import UIKit
 
 class SearchView: UIView {
     
-    var results: [BookDisplay]! {
+    var getCellImage: ((Int)->(UIImage?))?
+    
+    var results: [BookData]! {
         didSet {
             resultsTV.results = results
         }
@@ -27,6 +29,10 @@ class SearchView: UIView {
         super.init(frame: frame)
         
         self.backgroundColor = .white
+        
+        resultsTV.getCellImage = { coverID in
+            self.getCellImage?(coverID)
+        }
         
         addSubview(resultsTV)
         addSubviewConstraints()

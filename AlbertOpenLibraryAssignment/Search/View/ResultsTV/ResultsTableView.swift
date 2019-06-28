@@ -10,10 +10,11 @@ import UIKit
 
 class ResultsTableView: UITableView {
     
-    var results: [BookDisplay]! = [] {
+    var getCellImage: ((Int)->(UIImage?))?
+    
+    var results: [BookData]! = [] {
         didSet {
             reloadData()
-//            print(results!)
         }
     }
     
@@ -47,9 +48,9 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") as! ResultsTableViewCell
         
-//        cell.cover = results[indexPath.row].coverImage
-        cell.title = results[indexPath.row].data.title!
-        cell.authors = results[indexPath.row].data.authorName ?? ["Unknown Author"]
+//        cell.cover = self.getCellImage?(results[indexPath.row].coverI!) ?? cell.defaultImage
+        cell.title = results[indexPath.row].title!
+        cell.authors = results[indexPath.row].authorName ?? ["Unknown Author"]
         cell.isFavorite = selectedIndices[indexPath.row] ?? false
         
         cell.toggleFavorite = { isFavorite in

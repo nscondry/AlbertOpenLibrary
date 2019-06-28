@@ -56,20 +56,14 @@ struct BookData: Codable, CustomStringConvertible {
     }
 }
 
-struct BookDisplay {
-    var data: BookData!
-    var coverImage: UIImage?
-    
-    init(data: BookData, image: UIImage?) {
-        self.data = data
-        self.coverImage = image
-    }
-}
-
 class SearchModel {
     
     private var searchResults: [BookData]?
-    private var coverImages: [Int: UIImage]! = [:]
+    private var imageCache = NSCache<AnyObject, AnyObject>() {
+        didSet {
+            print("image cached...")
+        }
+    }
     
     func setSearchResultData(_ results: [BookData]) {
         searchResults = results
@@ -79,26 +73,11 @@ class SearchModel {
         return searchResults ?? nil
     }
     
-    func setCoverImage(_ coverID: Int, image: UIImage) {
-        coverImages[coverID] = image
+    func cacheImage(_ image: UIImage, _ url: URL) {
+        imageCache.setObject(image, forKey: url as AnyObject)
     }
     
-    func getCoverImages() -> [Int: UIImage]? {
-        return coverImages ?? nil
+    func getImage(_ url: URL) -> UIImage? {
+        return imageCache.object(forKey: url as AnyObject) as? UIImage
     }
-    
-    func getBookDisplays(count: Int = 10) -> [BookDisplay]? {
-        guard let results = Array((searchResults?.prefix(count))!) as? [BookData] else { return nil }
-        var displays: [BookDisplay] = []
-        results.forEach { data in
-            let image: UIImage? = (data.coverI == nil ? nil : coverImages![data.coverI!])
-            print(image)
-            print()
-            let display = BookDisplay(data: data, image: image)
-            displays.append(display)
-        }
-        print(displays.count)
-        return displays
-    }
-    
 }

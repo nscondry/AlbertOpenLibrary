@@ -36,6 +36,8 @@ class ResultsTableViewCell: UITableViewCell {
         }
     }
     
+    var defaultImage: UIImage = UIImage(named: "defaultCoverImage")!
+    
     private var coverImage: UIImageView!
     private var titleLabel: UILabel!
     private var authorLabel: UILabel!
@@ -61,6 +63,11 @@ class ResultsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        coverImage.image = defaultImage
+    }
+    
     private func addSubviews() {
         addSubview(coverImage)
         addSubview(labelStack)
@@ -69,7 +76,7 @@ class ResultsTableViewCell: UITableViewCell {
     
     private func formatSubviews() {
         // coverImage
-        coverImage.image = UIImage(named: "defaultCoverImage")
+        coverImage.image = defaultImage
         coverImage.contentMode = .scaleAspectFit
         coverImage.layer.cornerRadius = 5
         coverImage.layer.masksToBounds = true

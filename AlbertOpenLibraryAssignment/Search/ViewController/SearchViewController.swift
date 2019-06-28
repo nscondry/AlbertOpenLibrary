@@ -18,12 +18,15 @@ class SearchViewController: UIViewController {
         
         viewModel = SearchViewModel()
         viewModel.searchBooks("The Lord of the Rings")
-        viewModel.searchComplete = { displays in
-            guard displays != nil else { return }
-            self.searchView.results = displays
+        viewModel.searchComplete = { results in
+            guard results != nil else { return }
+            self.searchView.results = results
         }
 
         searchView = SearchView(frame: UIScreen.main.bounds)
+        searchView.getCellImage = { coverID in
+            return self.viewModel.getCoverImage(coverID, size: .M)
+        }
         self.view = searchView
         
         // navBar setup

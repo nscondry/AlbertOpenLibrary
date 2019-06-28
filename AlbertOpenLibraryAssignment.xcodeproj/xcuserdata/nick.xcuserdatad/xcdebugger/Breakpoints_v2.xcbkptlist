@@ -6,32 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AlbertOpenLibraryAssignment/Search/ViewModel/SearchViewModel.swift"
-            timestampString = "583451000.8960299"
+            timestampString = "583453464.785872"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "retrieveCoverImage(forID:size:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AlbertOpenLibraryAssignment/Search/Model/SearchModel.swift"
-            timestampString = "583388906.394872"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "getBookDisplays(count:)"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "retrieveCoverImage(fromURL:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
