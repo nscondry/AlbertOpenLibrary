@@ -33,12 +33,12 @@ class SearchViewController: UIViewController {
         guard let url = URL(string: "https://openlibrary.org/search.json?q=the+lord+of+the+rings") else { return }
         
         rest.makeRequest(toURL: url, withHttpMethod: .get) { results in
+            print(results)
             if let data = results.data {
-                print(data)
-//                let decoder = JSONDecoder()
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                guard let userData = try? decoder.decode(UserData.self, from: data) else { return }
-//                print(userData.description)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                guard let results = try? decoder.decode(SearchResults.self, from: data) else { print("didnt work..."); return }
+                    print(results.description)
             }
         }
     }

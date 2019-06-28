@@ -21,6 +21,7 @@
 		01382CF622C57CDC0091B51B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CF522C57CDC0091B51B /* SearchView.swift */; };
 		01382CF922C58DD80091B51B /* LibraryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CF822C58DD80091B51B /* LibraryRouter.swift */; };
 		01382CFB22C58EAA0091B51B /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CFA22C58EAA0091B51B /* RestManager.swift */; };
+		01382CFD22C59AD80091B51B /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CFC22C59AD80091B51B /* SearchModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		01382CF522C57CDC0091B51B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		01382CF822C58DD80091B51B /* LibraryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRouter.swift; sourceTree = "<group>"; };
 		01382CFA22C58EAA0091B51B /* RestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
+		01382CFC22C59AD80091B51B /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 		01382CEA22C574BD0091B51B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				01382CFC22C59AD80091B51B /* SearchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				01382CF422C57C840091B51B /* WishlistView.swift in Sources */,
 				01382CF222C574F00091B51B /* WishlistViewController.swift in Sources */,
 				01382CE422C5738F0091B51B /* Router.swift in Sources */,
+				01382CFD22C59AD80091B51B /* SearchModel.swift in Sources */,
 				01382CF622C57CDC0091B51B /* SearchView.swift in Sources */,
 				01382CB422C56F260091B51B /* ViewController.swift in Sources */,
 				01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */,
