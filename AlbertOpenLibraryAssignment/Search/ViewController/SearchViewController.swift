@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
         
         // navBar setup
         self.navigationItem.title = "Search"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
         getBooks()
     }
@@ -30,7 +31,7 @@ class SearchViewController: UIViewController {
     // testing REST calls
     func getBooks() {
         print("requesting...")
-        guard let url = URL(string: "https://openlibrary.org/search.json?q=the+lord+of+the+rings") else { return }
+        guard let url = URL(string: "https://openlibrary.org/search.json?subject=science") else { return }
         
         rest.makeRequest(toURL: url, withHttpMethod: .get) { results in
             print(results)

@@ -9,17 +9,39 @@
 import UIKit
 
 class SearchView: UIView {
+    
+    var results: [BookData]! {
+        didSet {
+            resultsTV.results = results
+        }
+    }
+    
+    lazy var resultsTV: ResultsTableView = {
+        let resultsTV = ResultsTableView(frame: self.bounds, style: .plain)
+        resultsTV.backgroundColor = .clear
+        resultsTV.translatesAutoresizingMaskIntoConstraints = false
+        return resultsTV
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .blue
+        self.backgroundColor = .white
         
-        print("searchView was initialized")
+        addSubview(resultsTV)
+        addSubviewConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func addSubviewConstraints() {
+        // resultsTV
+        resultsTV.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        resultsTV.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        resultsTV.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        resultsTV.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 
 }

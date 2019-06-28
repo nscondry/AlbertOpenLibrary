@@ -54,6 +54,18 @@ struct BookData: Codable, CustomStringConvertible {
         """
         return desc
     }
+}
 
-
+class SearchModel {
+    
+    private var searchResults: [BookData]?
+    
+    func setSearchResultData(_ results: [BookData]) {
+        searchResults = results
+    }
+    
+    func getSearchResultData() -> [BookData]? {
+        return searchResults ?? nil
+    }
+    
 }
