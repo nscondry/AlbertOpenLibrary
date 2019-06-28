@@ -19,6 +19,8 @@
 		01382CF222C574F00091B51B /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CF122C574F00091B51B /* WishlistViewController.swift */; };
 		01382CF422C57C840091B51B /* WishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CF322C57C840091B51B /* WishlistView.swift */; };
 		01382CF622C57CDC0091B51B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CF522C57CDC0091B51B /* SearchView.swift */; };
+		01382CF922C58DD80091B51B /* LibraryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CF822C58DD80091B51B /* LibraryRouter.swift */; };
+		01382CFB22C58EAA0091B51B /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CFA22C58EAA0091B51B /* RestManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 		01382CF122C574F00091B51B /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
 		01382CF322C57C840091B51B /* WishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistView.swift; sourceTree = "<group>"; };
 		01382CF522C57CDC0091B51B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		01382CF822C58DD80091B51B /* LibraryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryRouter.swift; sourceTree = "<group>"; };
+		01382CFA22C58EAA0091B51B /* RestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,11 +111,11 @@
 		01382CB022C56F250091B51B /* AlbertOpenLibraryAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				01382CF722C58D9F0091B51B /* New Group */,
 				01382CB122C56F260091B51B /* AppDelegate.swift */,
 				01382CE622C574920091B51B /* Wishlist */,
 				01382CE522C574870091B51B /* Search */,
 				01382CE222C573810091B51B /* Router */,
+				01382CF722C58D9F0091B51B /* Network */,
 				01382CB322C56F260091B51B /* ViewController.swift */,
 				01382CBB22C56F270091B51B /* Assets.xcassets */,
 				01382CBD22C56F270091B51B /* LaunchScreen.storyboard */,
@@ -229,11 +233,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		01382CF722C58D9F0091B51B /* New Group */ = {
+		01382CF722C58D9F0091B51B /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				01382CF822C58DD80091B51B /* LibraryRouter.swift */,
+				01382CFA22C58EAA0091B51B /* RestManager.swift */,
 			);
-			path = "New Group";
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +373,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				01382CF022C574E30091B51B /* SearchViewController.swift in Sources */,
+				01382CFB22C58EAA0091B51B /* RestManager.swift in Sources */,
+				01382CF922C58DD80091B51B /* LibraryRouter.swift in Sources */,
 				01382CF422C57C840091B51B /* WishlistView.swift in Sources */,
 				01382CF222C574F00091B51B /* WishlistViewController.swift in Sources */,
 				01382CE422C5738F0091B51B /* Router.swift in Sources */,
