@@ -18,11 +18,13 @@ class ResultsTableView: UITableView {
     }
     
     private var selectedIndices: [Int: Bool] = [:]
+    private var cellCount: Int = 10
 
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
         self.separatorColor = .clear
+        self.showsVerticalScrollIndicator = false
         
         delegate = self
         dataSource = self
@@ -39,7 +41,7 @@ class ResultsTableView: UITableView {
 extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return min(10, results.count)
+        return min(cellCount, results.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,6 +51,10 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
         cell.title = results[indexPath.row].data.title!
         cell.authors = results[indexPath.row].data.authorName ?? ["Unknown Author"]
         cell.isFavorite = selectedIndices[indexPath.row] ?? false
+        
+        cell.toggleFavorite = { isFavorite in
+            self.selectedIndices[indexPath.row] = isFavorite
+        }
         
         cell.selectionStyle = .none
         

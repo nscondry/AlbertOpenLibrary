@@ -10,7 +10,7 @@ import UIKit
 
 class ResultsTableViewCell: UITableViewCell {
     
-    var toggleFavorite: (()->())?
+    var toggleFavorite: ((Bool)->())?
     
     var cover: UIImage? {
         didSet {
@@ -127,5 +127,7 @@ class ResultsTableViewCell: UITableViewCell {
     
     @objc private func favoriteTapped() {
         heartIcon.bounce()
+        self.isFavorite.toggle()
+        self.toggleFavorite?(self.isFavorite)
     }
 }
