@@ -23,7 +23,7 @@ enum CoverImageSizes: String {
 
 class SearchViewModel {
     
-    var searchResultsUpdated: (([BookData])->())?
+    var searchComplete: (([BookDisplay]?)->())?
     
     private var model: SearchModel!
     private var rest: RestManager!
@@ -48,36 +48,43 @@ class SearchViewModel {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 guard let results = try? decoder.decode(SearchResults.self, from: data) else { NSLog("[SearchViewModel] Error: couldn't decode JSON"); return }
                 self.model.setSearchResultData(results.docs!)
-                self.getCoverImages(forBookdata: Array(results.docs!.prefix(10)), size: .M)
+                self.setCoverImages(forBookdata: Array(results.docs!.prefix(10)), size: .M)
             }
         }
     }
     
-    func getCoverImages(forBookdata data: [BookData], size: CoverImageSizes) -> [Int: UIImage] {
-        var coverImages: [Int: UIImage]! = [:]
+    func setCoverImages(forBookdata data: [BookData], size: CoverImageSizes) {
         for i in 0..<data.count {
-            guard data[i].coverI != nil else { continue }
-            if let coverImage = getCoverImage(forCover: data[i].coverI!, size: size) {
-                coverImages[data[i].coverI!] = coverImage
+            guard let id = data[i].coverI else {
+                if i == (data.count-1) { self.searchCompleted() }
+                continue
+            }
+            if let coverImage = retrieveCoverImage(forID: id, size: size) {
+                model.setCoverImage(id, image: coverImage)
+                print("set cover image")
+                if i == (data.count-1) { self.searchCompleted() }
             }
         }
-        return coverImages
     }
     
-    func getCoverImage(forCover cover: Int, size: CoverImageSizes) -> UIImage? {
-        guard let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(cover) + "-" + size.rawValue + ".jpg") else { return nil }
-        print(url)
+    func retrieveCoverImage(forID id: Int, size: CoverImageSizes) -> UIImage? {
+        guard let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(id) + "-" + size.rawValue + ".jpg") else { return nil }
         
         var coverImage: UIImage?
         rest.makeRequest(toURL: url, withHttpMethod: .get) { response in
             if let data = response.data, response.error == nil {
-                print("downloading image...")
                 guard let image = UIImage(data: data) else { return }
-                print("success!")
                 coverImage = image
+                print("got image!")
             }
         }
         return coverImage
+    }
+    
+    private func searchCompleted() {
+        DispatchQueue.main.async {
+            self.searchComplete?(self.model.getBookDisplays())
+        }
     }
 
 }

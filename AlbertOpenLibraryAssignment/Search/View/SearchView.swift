@@ -10,7 +10,7 @@ import UIKit
 
 class SearchView: UIView {
     
-    var results: [BookData]! {
+    var results: [BookDisplay]! {
         didSet {
             resultsTV.results = results
         }

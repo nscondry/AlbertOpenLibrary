@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 var defString = String(stringLiteral: "")
 var defInt = -1
@@ -20,7 +21,7 @@ struct SearchResults: Codable, CustomStringConvertible {
         var desc = """
         start = \(start ?? defInt)
         number of results = \(numFound ?? defInt)
-        docsCount: \(docs)
+        docs: \(docs)
         
         """
         if let bookData = docs {
@@ -55,9 +56,20 @@ struct BookData: Codable, CustomStringConvertible {
     }
 }
 
+struct BookDisplay {
+    var data: BookData!
+    var coverImage: UIImage?
+    
+    init(data: BookData, image: UIImage?) {
+        self.data = data
+        self.coverImage = image
+    }
+}
+
 class SearchModel {
     
     private var searchResults: [BookData]?
+    private var coverImages: [Int: UIImage]! = [:]
     
     func setSearchResultData(_ results: [BookData]) {
         searchResults = results
@@ -65,6 +77,28 @@ class SearchModel {
     
     func getSearchResultData() -> [BookData]? {
         return searchResults ?? nil
+    }
+    
+    func setCoverImage(_ coverID: Int, image: UIImage) {
+        coverImages[coverID] = image
+    }
+    
+    func getCoverImages() -> [Int: UIImage]? {
+        return coverImages ?? nil
+    }
+    
+    func getBookDisplays(count: Int = 10) -> [BookDisplay]? {
+        guard let results = Array((searchResults?.prefix(count))!) as? [BookData] else { return nil }
+        var displays: [BookDisplay] = []
+        results.forEach { data in
+            let image: UIImage? = (data.coverI == nil ? nil : coverImages![data.coverI!])
+            print(image)
+            print()
+            let display = BookDisplay(data: data, image: image)
+            displays.append(display)
+        }
+        print(displays.count)
+        return displays
     }
     
 }

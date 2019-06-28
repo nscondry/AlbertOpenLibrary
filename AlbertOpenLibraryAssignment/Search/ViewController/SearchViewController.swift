@@ -18,6 +18,10 @@ class SearchViewController: UIViewController {
         
         viewModel = SearchViewModel()
         viewModel.searchBooks("The Lord of the Rings")
+        viewModel.searchComplete = { displays in
+            guard displays != nil else { return }
+            self.searchView.results = displays
+        }
 
         searchView = SearchView(frame: UIScreen.main.bounds)
         self.view = searchView
@@ -25,24 +29,7 @@ class SearchViewController: UIViewController {
         // navBar setup
         self.navigationItem.title = "Search"
         self.navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    // testing REST calls
-//    func getBooks() {
-//        print("requesting...")
-//        guard let url = URL(string: "https://openlibrary.org/search.json?subject=science") else { return }
-//
-//        rest.makeRequest(toURL: url, withHttpMethod: .get) { results in
-//            print(results)
-//            if let data = results.data {
-//                let decoder = JSONDecoder()
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                guard let results = try? decoder.decode(SearchResults.self, from: data) else { print("didnt work..."); return }
-//                    print(results.description)
-//            }
-//        }
-//    }
-    
+    }    
 
     /*
     // MARK: - Navigation
