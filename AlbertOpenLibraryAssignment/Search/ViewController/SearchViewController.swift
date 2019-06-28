@@ -25,7 +25,11 @@ class SearchViewController: UIViewController {
 
         searchView = SearchView(frame: UIScreen.main.bounds)
         searchView.getCellImage = { coverID in
-            return self.viewModel.getCoverImage(coverID, size: .M)
+            self.viewModel.getCoverImage(coverID, .M) { coverImage in
+                DispatchQueue.main.async {
+                    self.searchView.resultsTV.setCellImage(coverID, coverImage!)
+                }
+            }
         }
         self.view = searchView
         

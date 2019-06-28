@@ -50,7 +50,10 @@ class SearchViewModel {
                 self.model.setSearchResultData(results.docs!)
                 
                 // begin caching images for initial results
-                self.cacheCoverImages(forBookdata: Array(results.docs!.prefix(10)), size: .M)
+                Array(results.docs!.prefix(10)).forEach { book in
+                    guard let id = book.coverI else { return }
+                    self.getCoverImage(id, .M) {_ in }
+                }
                 
                 // update cells
                 DispatchQueue.main.async {
@@ -60,11 +63,15 @@ class SearchViewModel {
         }
     }
     
-    func cacheCoverImages(forBookdata data: [BookData], size: CoverImageSizes) {
-        data.forEach { book in
-            guard let id = book.coverI, let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(id) + "-" + size.rawValue + ".jpg") else { return }
+    func getCoverImage(_ id: Int, _ size: CoverImageSizes, completion: @escaping(_ coverImage: UIImage?)->()) {
+        guard let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(id) + "-" + size.rawValue + ".jpg") else { return }
+        
+        if let coverImage = model.getImage(url) {
+            completion(coverImage)
+        } else {
             retrieveCoverImage(fromURL: url) { coverImage in
                 self.model.cacheImage(coverImage, url)
+                completion(coverImage)
             }
         }
     }
@@ -77,10 +84,4 @@ class SearchViewModel {
             }
         }
     }
-    
-    func getCoverImage(_ id: Int, size: CoverImageSizes) -> UIImage? {
-        guard let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(id) + "-" + size.rawValue + ".jpg") else { return nil }
-        return model.getImage(url)
-    }
-
 }

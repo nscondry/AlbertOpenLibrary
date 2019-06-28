@@ -36,6 +36,8 @@ class ResultsTableViewCell: UITableViewCell {
         }
     }
     
+    var id: Int!
+    
     var defaultImage: UIImage = UIImage(named: "defaultCoverImage")!
     
     private var coverImage: UIImageView!
@@ -77,7 +79,7 @@ class ResultsTableViewCell: UITableViewCell {
     private func formatSubviews() {
         // coverImage
         coverImage.image = defaultImage
-        coverImage.contentMode = .scaleAspectFit
+        coverImage.contentMode = .scaleAspectFill
         coverImage.layer.cornerRadius = 5
         coverImage.layer.masksToBounds = true
         

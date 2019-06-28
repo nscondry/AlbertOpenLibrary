@@ -10,7 +10,7 @@ import UIKit
 
 class SearchView: UIView {
     
-    var getCellImage: ((Int)->(UIImage?))?
+    var getCellImage: ((Int)->())?
     
     var results: [BookData]! {
         didSet {
