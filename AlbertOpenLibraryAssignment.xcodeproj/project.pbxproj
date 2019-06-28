@@ -24,23 +24,6 @@
 		01382D0422C5AEBF0091B51B /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382D0322C5AEBF0091B51B /* ResultsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		01382CC622C56F270091B51B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 01382CA622C56F250091B51B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 01382CAD22C56F250091B51B;
-			remoteInfo = AlbertOpenLibraryAssignment;
-		};
-		01382CD122C56F270091B51B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 01382CA622C56F250091B51B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 01382CAD22C56F250091B51B;
-			remoteInfo = AlbertOpenLibraryAssignment;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0100B14722C5B5C3003BB001 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0100B14A22C5BA3A003BB001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AlbertOpenLibraryAssignment/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
@@ -49,8 +32,6 @@
 		01382CB922C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlbertOpenLibraryAssignment.xcdatamodel; sourceTree = "<group>"; };
 		01382CBB22C56F270091B51B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		01382CC022C56F270091B51B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		01382CC522C56F270091B51B /* AlbertOpenLibraryAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertOpenLibraryAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		01382CD022C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertOpenLibraryAssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01382CE322C5738F0091B51B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		01382CEF22C574E30091B51B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		01382CF122C574F00091B51B /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
@@ -65,20 +46,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		01382CAB22C56F250091B51B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		01382CC222C56F270091B51B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		01382CCD22C56F270091B51B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -108,8 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				01382CAE22C56F250091B51B /* AlbertOpenLibraryAssignment.app */,
-				01382CC522C56F270091B51B /* AlbertOpenLibraryAssignmentTests.xctest */,
-				01382CD022C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -269,42 +234,6 @@
 			productReference = 01382CAE22C56F250091B51B /* AlbertOpenLibraryAssignment.app */;
 			productType = "com.apple.product-type.application";
 		};
-		01382CC422C56F270091B51B /* AlbertOpenLibraryAssignmentTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 01382CDC22C56F270091B51B /* Build configuration list for PBXNativeTarget "AlbertOpenLibraryAssignmentTests" */;
-			buildPhases = (
-				01382CC122C56F270091B51B /* Sources */,
-				01382CC222C56F270091B51B /* Frameworks */,
-				01382CC322C56F270091B51B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				01382CC722C56F270091B51B /* PBXTargetDependency */,
-			);
-			name = AlbertOpenLibraryAssignmentTests;
-			productName = AlbertOpenLibraryAssignmentTests;
-			productReference = 01382CC522C56F270091B51B /* AlbertOpenLibraryAssignmentTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		01382CCF22C56F270091B51B /* AlbertOpenLibraryAssignmentUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 01382CDF22C56F270091B51B /* Build configuration list for PBXNativeTarget "AlbertOpenLibraryAssignmentUITests" */;
-			buildPhases = (
-				01382CCC22C56F270091B51B /* Sources */,
-				01382CCD22C56F270091B51B /* Frameworks */,
-				01382CCE22C56F270091B51B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				01382CD222C56F270091B51B /* PBXTargetDependency */,
-			);
-			name = AlbertOpenLibraryAssignmentUITests;
-			productName = AlbertOpenLibraryAssignmentUITests;
-			productReference = 01382CD022C56F270091B51B /* AlbertOpenLibraryAssignmentUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -317,14 +246,6 @@
 				TargetAttributes = {
 					01382CAD22C56F250091B51B = {
 						CreatedOnToolsVersion = 10.2.1;
-					};
-					01382CC422C56F270091B51B = {
-						CreatedOnToolsVersion = 10.2.1;
-						TestTargetID = 01382CAD22C56F250091B51B;
-					};
-					01382CCF22C56F270091B51B = {
-						CreatedOnToolsVersion = 10.2.1;
-						TestTargetID = 01382CAD22C56F250091B51B;
 					};
 				};
 			};
@@ -342,8 +263,6 @@
 			projectRoot = "";
 			targets = (
 				01382CAD22C56F250091B51B /* AlbertOpenLibraryAssignment */,
-				01382CC422C56F270091B51B /* AlbertOpenLibraryAssignmentTests */,
-				01382CCF22C56F270091B51B /* AlbertOpenLibraryAssignmentUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -355,20 +274,6 @@
 			files = (
 				01382CBC22C56F270091B51B /* Assets.xcassets in Resources */,
 				0100B14B22C5BA3A003BB001 /* LaunchScreen.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		01382CC322C56F270091B51B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		01382CCE22C56F270091B51B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,34 +300,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		01382CC122C56F270091B51B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		01382CCC22C56F270091B51B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		01382CC722C56F270091B51B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 01382CAD22C56F250091B51B /* AlbertOpenLibraryAssignment */;
-			targetProxy = 01382CC622C56F270091B51B /* PBXContainerItemProxy */;
-		};
-		01382CD222C56F270091B51B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 01382CAD22C56F250091B51B /* AlbertOpenLibraryAssignment */;
-			targetProxy = 01382CD122C56F270091B51B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0100B14922C5BA3A003BB001 /* LaunchScreen.storyboard */ = {
@@ -590,88 +468,6 @@
 			};
 			name = Release;
 		};
-		01382CDD22C56F270091B51B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KG9668N4Y;
-				INFOPLIST_FILE = AlbertOpenLibraryAssignmentTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = condry.AlbertOpenLibraryAssignmentTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlbertOpenLibraryAssignment.app/AlbertOpenLibraryAssignment";
-			};
-			name = Debug;
-		};
-		01382CDE22C56F270091B51B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KG9668N4Y;
-				INFOPLIST_FILE = AlbertOpenLibraryAssignmentTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = condry.AlbertOpenLibraryAssignmentTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AlbertOpenLibraryAssignment.app/AlbertOpenLibraryAssignment";
-			};
-			name = Release;
-		};
-		01382CE022C56F270091B51B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KG9668N4Y;
-				INFOPLIST_FILE = AlbertOpenLibraryAssignmentUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = condry.AlbertOpenLibraryAssignmentUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AlbertOpenLibraryAssignment;
-			};
-			name = Debug;
-		};
-		01382CE122C56F270091B51B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4KG9668N4Y;
-				INFOPLIST_FILE = AlbertOpenLibraryAssignmentUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = condry.AlbertOpenLibraryAssignmentUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = AlbertOpenLibraryAssignment;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -689,24 +485,6 @@
 			buildConfigurations = (
 				01382CDA22C56F270091B51B /* Debug */,
 				01382CDB22C56F270091B51B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		01382CDC22C56F270091B51B /* Build configuration list for PBXNativeTarget "AlbertOpenLibraryAssignmentTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				01382CDD22C56F270091B51B /* Debug */,
-				01382CDE22C56F270091B51B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		01382CDF22C56F270091B51B /* Build configuration list for PBXNativeTarget "AlbertOpenLibraryAssignmentUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				01382CE022C56F270091B51B /* Debug */,
-				01382CE122C56F270091B51B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

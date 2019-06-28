@@ -43,7 +43,6 @@ struct BookData: Codable, CustomStringConvertible {
     var key: String?
     var ia: [String]?
     var authorKey: [String]?
-    var publicScanB: Bool?
     
     var description: String {
         let desc = """
