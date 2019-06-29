@@ -39,10 +39,21 @@ class ResultsTableView: UITableView {
     }
     
     func setCellImage(_ id: Int, _ coverImage: UIImage) {
+        print("called")
+        print("searching for: \(id)")
+        print("amongst \(visibleCells.count) visibleCells")
+        print("---")
+        
         visibleCells.forEach { cell in
+            
+            let test = cell as! ResultsTableViewCell
+            print("\(test.title!): \(test.id!)")
+            
             guard let cell = cell as? ResultsTableViewCell, cell.id == id else { return }
+            print("set image...")
             cell.cover = coverImage
         }
+        print("---")
     }
 }
 
@@ -83,6 +94,4 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("cell selected...")
     }
-    
-    
 }

@@ -23,6 +23,13 @@ class WishlistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        resultsTV.getCellImage = { id in
+            print("attempting to get image...")
+            if let coverImage = self.viewModel.getImage(forID: id) {
+                self.resultsTV.setCellImage(id, coverImage)
+            }
+        }
+        
         self.view = resultsTV
 
         viewModel = WishlistViewModel()

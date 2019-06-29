@@ -109,8 +109,6 @@ class SearchViewModel {
         
         guard let managedContext = managedContext else { return }
         
-        print("found managedContext")
-        
         if let favoriteBook = NSEntityDescription.entity(forEntityName: "FavoriteBook", in: managedContext) {
             
             let book = NSManagedObject(entity: favoriteBook, insertInto: managedContext)
@@ -119,7 +117,7 @@ class SearchViewModel {
                 book.setValue(Int64(coverID), forKeyPath: "coverID")
                 
                 // store image data if available
-                if let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(coverID) + "-S.jpg"),
+                if let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(coverID) + "-M.jpg"),
                     let coverImage = model.getImage(url),
                     let data = coverImage.pngData() {
                     book.setValue(data, forKeyPath: "coverImage")

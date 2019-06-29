@@ -43,4 +43,29 @@ class WishlistViewModel {
             print("failed...")
         }
     }
+    
+    func getImage(forID id: Int) -> UIImage? {
+        
+        guard let managedContext = managedContext else { return nil }
+        
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "FavoriteBook")
+        fetchRequest.predicate = NSPredicate(format: "coverID == \(id)")
+        
+        do {
+            let books = try managedContext.fetch(fetchRequest)
+            let book = books[0] as! NSManagedObject
+            print(book)
+            if let imageData = book.value(forKey: "coverImage") as? NSData {
+                print("returned image")
+                return UIImage(data: imageData as Data, scale: 1.0)
+            } else {
+                print("returned nil...")
+                return nil
+            }
+        }
+        catch {
+            print(error)
+            return nil
+        }
+    }
 }
