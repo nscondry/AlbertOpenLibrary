@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 var defString = String(stringLiteral: "")
 var defInt = -1
@@ -21,7 +22,7 @@ struct SearchResults: Codable, CustomStringConvertible {
         var desc = """
         start = \(start ?? defInt)
         number of results = \(numFound ?? defInt)
-        docs: \(docs)
+        docs: \(docs!)
         
         """
         if let bookData = docs {
@@ -41,9 +42,6 @@ struct BookData: Codable, CustomStringConvertible {
     var title: String?
     var authorName: [String]?
     var firstPublishYear: Int?
-    var key: String?
-    var ia: [String]?
-    var authorKey: [String]?
     
     var description: String {
         let desc = """

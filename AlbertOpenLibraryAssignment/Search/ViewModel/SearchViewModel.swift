@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum SearchTypes: String {
     case all
@@ -29,10 +30,23 @@ class SearchViewModel {
     private var rest: RestManager!
     private var searchType: SearchTypes! = .all
     
+    private var managedContext: NSManagedObjectContext? {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            return appDelegate.persistentContainer.viewContext
+        } else {
+            NSLog("[SearchViewModel] Error retrieving managedContext")
+            return nil
+        }
+    }
+    
     init() {
         self.model = SearchModel()
         self.rest = RestManager()
     }
+    
+    //
+    // MARK: - REST functions
+    //
     
     func setSearchType(_ type: SearchTypes) {
         self.searchType = type
@@ -82,6 +96,49 @@ class SearchViewModel {
                 guard let coverImage = UIImage(data: data) else { return }
                 completion(coverImage)
             }
+        }
+    }
+    
+    //
+    // MARK: - CoreData functions
+    //
+    
+    func setFavoriteBook(_ data: BookData) {
+        
+        guard let managedContext = managedContext else { return }
+        
+        if let favoriteBook = NSEntityDescription.entity(forEntityName: "FavoriteBook", in: managedContext) {
+            
+            let book = NSManagedObject(entity: favoriteBook, insertInto: managedContext)
+            
+            if let coverID = data.coverI {
+                book.setValue(Int64(coverID), forKeyPath: "coverID")
+            }
+            if let editionCount = data.editionCount {
+                book.setValue(Int64(editionCount), forKeyPath: "editionCount")
+            }
+            if let firstPublishYear = data.firstPublishYear {
+                book.setValue(Int64(firstPublishYear), forKeyPath: "firstPublishYear")
+            }
+            if let title = data.title {
+                book.setValue(title, forKeyPath: "title")
+            }
+            if let hasFullText = data.hasFulltext {
+                book.setValue(hasFullText, forKeyPath: "hasFullText")
+            }
+            if let authorNames = data.authorName {
+                book.setValue(authorNames, forKeyPath: "authorNames")
+            }
+            
+            do {
+                try managedContext.save()
+            }
+            catch let error as NSError {
+                print("Could not save. \(error), \(error.userInfo)")
+            }
+            
+        } else {
+            NSLog("Failed to instantiate userEntity")
         }
     }
 }
