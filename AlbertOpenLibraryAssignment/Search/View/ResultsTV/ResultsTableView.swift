@@ -58,11 +58,15 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
         
         cell.title = results[indexPath.row].title!
         cell.authors = results[indexPath.row].authorName ?? ["Unknown Author"]
-        cell.isFavorite = selectedIndices[indexPath.row] ?? false
         cell.id = results[indexPath.row].coverI ?? nil
+        cell.isFavorite = favoriteIDs.contains(cell.id ?? -1)
         
         cell.toggleFavorite = { isFavorite in
-            self.selectedIndices[indexPath.row] = isFavorite
+            if isFavorite {
+                self.favoriteIDs.append(cell.id!)
+            } else {
+                self.favoriteIDs = self.favoriteIDs.filter { $0 != cell.id! }
+            }
             self.toggleFavorite?(self.results[indexPath.row], cell.isFavorite)
         }
         

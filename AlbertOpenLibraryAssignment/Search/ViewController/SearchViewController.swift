@@ -41,6 +41,9 @@ class SearchViewController: UIViewController {
         }
         self.view = searchView
         
+        // set saved favorites
+        searchView.resultsTV.favoriteIDs = self.viewModel.getFavoriteIDs() ?? []
+        
         // navBar setup
         self.navigationItem.title = "Search"
         self.navigationController?.navigationBar.prefersLargeTitles = true

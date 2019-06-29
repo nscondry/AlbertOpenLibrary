@@ -160,7 +160,7 @@ class SearchViewModel {
         guard let managedContext = managedContext, let coverID = data.coverI else { return }
         
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "FavoriteBook")
-        fetchRequest.predicate = NSPredicate(format: "coverID = %@", coverID)
+        fetchRequest.predicate = NSPredicate(format: "coverID == \(coverID)")
         
         do {
             let books = try managedContext.fetch(fetchRequest)
