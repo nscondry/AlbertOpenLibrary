@@ -105,7 +105,11 @@ class SearchViewModel {
     
     func setFavoriteBook(_ data: BookData) {
         
+        print("attempting to set favorite...")
+        
         guard let managedContext = managedContext else { return }
+        
+        print("found managedContext")
         
         if let favoriteBook = NSEntityDescription.entity(forEntityName: "FavoriteBook", in: managedContext) {
             
@@ -113,6 +117,13 @@ class SearchViewModel {
             
             if let coverID = data.coverI {
                 book.setValue(Int64(coverID), forKeyPath: "coverID")
+                
+                // store image data if available
+                if let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(coverID) + "-S.jpg"),
+                    let coverImage = model.getImage(url),
+                    let data = coverImage.pngData() {
+                    book.setValue(data, forKeyPath: "coverImage")
+                    }
             }
             if let editionCount = data.editionCount {
                 book.setValue(Int64(editionCount), forKeyPath: "editionCount")
@@ -132,6 +143,8 @@ class SearchViewModel {
             
             do {
                 try managedContext.save()
+                print("added favorite book...")
+                retrieveData()
             }
             catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
@@ -139,6 +152,75 @@ class SearchViewModel {
             
         } else {
             NSLog("Failed to instantiate userEntity")
+        }
+    }
+    
+    func deleteFavoriteBook(_ data: BookData) {
+        
+        guard let managedContext = managedContext, let coverID = data.coverI else { return }
+        
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "FavoriteBook")
+        fetchRequest.predicate = NSPredicate(format: "coverID = %@", coverID)
+        
+        do {
+            let books = try managedContext.fetch(fetchRequest)
+            let objectToDelete = books[0] as! NSManagedObject
+            managedContext.delete(objectToDelete)
+            
+            do {
+                try managedContext.save()
+                print("deleted favorite book...")
+                retrieveData()
+            }
+            catch {
+                print(error)
+            }
+        }
+        catch {
+            print(error)
+        }
+        
+    }
+    
+    func getFavoriteIDs() -> [Int]? {
+        
+        guard let managedContext = managedContext else { return nil }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteBook")
+        
+        var favoriteIDs: [Int]?
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                if (favoriteIDs?.append(data.value(forKey: "coverID") as! Int)) == nil {
+                    favoriteIDs = [(data.value(forKey: "coverID") as! Int)]
+                }
+            }
+            print()
+        } catch {
+            print("failed...")
+        }
+        
+        print(favoriteIDs?.count)
+        return favoriteIDs
+    }
+    
+    // for testing
+    func retrieveData() {
+        
+        guard let managedContext = managedContext else { return }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteBook")
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "title") as! String)
+            }
+            print()
+        } catch {
+            print("failed...")
         }
     }
 }

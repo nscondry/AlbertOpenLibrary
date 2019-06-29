@@ -11,6 +11,7 @@ import UIKit
 class ResultsTableView: UITableView {
     
     var getCellImage: ((Int)->())?
+    var toggleFavorite: ((BookData, Bool)->())?
     
     var results: [BookData]! = [] {
         didSet {
@@ -18,7 +19,8 @@ class ResultsTableView: UITableView {
         }
     }
     
-    private var selectedIndices: [Int: Bool] = [:]
+    private var selectedIndices: [Int: Bool] = [:] // tracks cell selection
+    var favoriteIDs: [Int] = [] // tracks selection status
     private var cellCount: Int = 10
 
     override init(frame: CGRect, style: UITableView.Style) {
@@ -61,9 +63,10 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
         
         cell.toggleFavorite = { isFavorite in
             self.selectedIndices[indexPath.row] = isFavorite
+            self.toggleFavorite?(self.results[indexPath.row], cell.isFavorite)
         }
         
-        if cell.id != nil { self.getCellImage?(cell.id) }
+        if cell.id != nil { self.getCellImage?(cell.id!) }
         
         cell.selectionStyle = .none
         
@@ -75,14 +78,7 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? ResultsTableViewCell {
-            print("""
-            ----------------
-            \(cell.title!)
-            \(cell.authors!)
-            ----------------
-            """)
-        }
+        print("cell selected...")
     }
     
     

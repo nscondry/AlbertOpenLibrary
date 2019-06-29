@@ -11,6 +11,7 @@ import UIKit
 class SearchView: UIView {
     
     var getCellImage: ((Int)->())?
+    var toggleFavorite: ((BookData, Bool)->())?
     
     var results: [BookData]! {
         didSet {
@@ -32,6 +33,9 @@ class SearchView: UIView {
         
         resultsTV.getCellImage = { coverID in
             self.getCellImage?(coverID)
+        }
+        resultsTV.toggleFavorite = { data, isFavorite in
+            self.toggleFavorite?(data, isFavorite)
         }
         
         addSubview(resultsTV)

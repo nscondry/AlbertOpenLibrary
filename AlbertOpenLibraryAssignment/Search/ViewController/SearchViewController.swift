@@ -31,6 +31,14 @@ class SearchViewController: UIViewController {
                 }
             }
         }
+        searchView.toggleFavorite = { data, isFavorite in
+            print("called")
+            if isFavorite {
+                self.viewModel.setFavoriteBook(data)
+            } else {
+                self.viewModel.deleteFavoriteBook(data)
+            }
+        }
         self.view = searchView
         
         // navBar setup

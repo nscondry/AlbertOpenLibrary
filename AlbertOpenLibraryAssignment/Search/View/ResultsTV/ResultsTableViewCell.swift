@@ -36,7 +36,7 @@ class ResultsTableViewCell: UITableViewCell {
         }
     }
     
-    var id: Int!
+    var id: Int?
     
     var defaultImage: UIImage = UIImage(named: "defaultCoverImage")!
     
@@ -68,6 +68,7 @@ class ResultsTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         coverImage.image = defaultImage
+        self.id = nil
     }
     
     private func addSubviews() {
@@ -86,6 +87,8 @@ class ResultsTableViewCell: UITableViewCell {
         // titleLabel
         titleLabel.font = UIFont.systemFont(ofSize: 16)
         titleLabel.textColor = .black
+        titleLabel.numberOfLines = 2
+        titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.5
         
@@ -98,7 +101,7 @@ class ResultsTableViewCell: UITableViewCell {
         // labelStack
         labelStack.axis = .vertical
         labelStack.alignment = .leading
-        labelStack.distribution = .fillProportionally
+        labelStack.distribution = .fillEqually
         
         // heartIcon
         heartIcon.isUserInteractionEnabled = true
