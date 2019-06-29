@@ -10,17 +10,33 @@ import UIKit
 
 class WishlistViewController: UIViewController {
 
-    private var wishlistView: WishlistView!
+    
+    private var viewModel: WishlistViewModel!
+    
+    lazy var resultsTV: ResultsTableView = {
+        let resultsTV = ResultsTableView(frame: self.view.bounds, style: .plain)
+        resultsTV.backgroundColor = .white
+        resultsTV.translatesAutoresizingMaskIntoConstraints = false
+        return resultsTV
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view = resultsTV
 
-        wishlistView = WishlistView()
-        self.view = wishlistView
+        viewModel = WishlistViewModel()
+        viewModel.retrieveFavoriteBooks() { favoriteBooks in
+            guard favoriteBooks != nil else { return }
+            favoriteBooks!.forEach { book in
+                self.resultsTV.favoriteIDs.append(book.coverI!)
+            }
+            self.resultsTV.results = favoriteBooks
+        }
         
         // navBar setup
-        self.navigationItem.title = "wishlist"
-        
+        self.navigationItem.title = "Wishlist"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
 

@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		0100B14822C5B5C3003BB001 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B14722C5B5C3003BB001 /* Extensions.swift */; };
 		0100B14B22C5BA3A003BB001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0100B14922C5BA3A003BB001 /* LaunchScreen.storyboard */; };
+		0100B16E22C6F710003BB001 /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B16D22C6F710003BB001 /* WishlistViewModel.swift */; };
+		0100B17022C6F7FD003BB001 /* WishlistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B16F22C6F7FD003BB001 /* WishlistModel.swift */; };
 		01382CB222C56F260091B51B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CB122C56F260091B51B /* AppDelegate.swift */; };
 		01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01382CB822C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld */; };
 		01382CBC22C56F270091B51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01382CBB22C56F270091B51B /* Assets.xcassets */; };
 		01382CE422C5738F0091B51B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CE322C5738F0091B51B /* Router.swift */; };
 		01382CF022C574E30091B51B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CEF22C574E30091B51B /* SearchViewController.swift */; };
 		01382CF222C574F00091B51B /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CF122C574F00091B51B /* WishlistViewController.swift */; };
-		01382CF422C57C840091B51B /* WishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CF322C57C840091B51B /* WishlistView.swift */; };
 		01382CF622C57CDC0091B51B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CF522C57CDC0091B51B /* SearchView.swift */; };
 		01382CFB22C58EAA0091B51B /* RestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CFA22C58EAA0091B51B /* RestManager.swift */; };
 		01382CFD22C59AD80091B51B /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CFC22C59AD80091B51B /* SearchModel.swift */; };
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		0100B14722C5B5C3003BB001 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0100B14A22C5BA3A003BB001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AlbertOpenLibraryAssignment/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		0100B16D22C6F710003BB001 /* WishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
+		0100B16F22C6F7FD003BB001 /* WishlistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistModel.swift; sourceTree = "<group>"; };
 		01382CAE22C56F250091B51B /* AlbertOpenLibraryAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbertOpenLibraryAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01382CB122C56F260091B51B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01382CB922C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlbertOpenLibraryAssignment.xcdatamodel; sourceTree = "<group>"; };
@@ -35,7 +38,6 @@
 		01382CE322C5738F0091B51B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		01382CEF22C574E30091B51B /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		01382CF122C574F00091B51B /* WishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewController.swift; sourceTree = "<group>"; };
-		01382CF322C57C840091B51B /* WishlistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistView.swift; sourceTree = "<group>"; };
 		01382CF522C57CDC0091B51B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		01382CFA22C58EAA0091B51B /* RestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestManager.swift; sourceTree = "<group>"; };
 		01382CFC22C59AD80091B51B /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
@@ -167,7 +169,6 @@
 		01382CEC22C574CE0091B51B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				01382CF322C57C840091B51B /* WishlistView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -175,6 +176,7 @@
 		01382CED22C574D20091B51B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0100B16D22C6F710003BB001 /* WishlistViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -182,6 +184,7 @@
 		01382CEE22C574D60091B51B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0100B16F22C6F7FD003BB001 /* WishlistModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,15 +290,16 @@
 				01382CF022C574E30091B51B /* SearchViewController.swift in Sources */,
 				01382CFB22C58EAA0091B51B /* RestManager.swift in Sources */,
 				01382D0422C5AEBF0091B51B /* ResultsTableViewCell.swift in Sources */,
-				01382CF422C57C840091B51B /* WishlistView.swift in Sources */,
 				01382CF222C574F00091B51B /* WishlistViewController.swift in Sources */,
 				01382CE422C5738F0091B51B /* Router.swift in Sources */,
 				01382CFF22C5A8FE0091B51B /* SearchViewModel.swift in Sources */,
 				01382CFD22C59AD80091B51B /* SearchModel.swift in Sources */,
 				0100B14822C5B5C3003BB001 /* Extensions.swift in Sources */,
+				0100B16E22C6F710003BB001 /* WishlistViewModel.swift in Sources */,
 				01382CF622C57CDC0091B51B /* SearchView.swift in Sources */,
 				01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */,
 				01382D0122C5AEA50091B51B /* ResultsTableView.swift in Sources */,
+				0100B17022C6F7FD003BB001 /* WishlistModel.swift in Sources */,
 				01382CB222C56F260091B51B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

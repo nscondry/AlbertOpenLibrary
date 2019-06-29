@@ -143,8 +143,6 @@ class SearchViewModel {
             
             do {
                 try managedContext.save()
-                print("added favorite book...")
-                retrieveData()
             }
             catch let error as NSError {
                 print("Could not save. \(error), \(error.userInfo)")
@@ -169,8 +167,6 @@ class SearchViewModel {
             
             do {
                 try managedContext.save()
-                print("deleted favorite book...")
-                retrieveData()
             }
             catch {
                 print(error)
@@ -197,30 +193,13 @@ class SearchViewModel {
                     favoriteIDs = [(data.value(forKey: "coverID") as! Int)]
                 }
             }
-            print()
         } catch {
             print("failed...")
         }
         
-        print(favoriteIDs?.count)
         return favoriteIDs
     }
     
     // for testing
-    func retrieveData() {
-        
-        guard let managedContext = managedContext else { return }
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteBook")
-        
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "title") as! String)
-            }
-            print()
-        } catch {
-            print("failed...")
-        }
-    }
+    
 }

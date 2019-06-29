@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-var defString = String(stringLiteral: "")
+var defString = String(stringLiteral: "ERROR")
 var defInt = -1
 
 struct SearchResults: Codable, CustomStringConvertible {
@@ -52,16 +52,39 @@ struct BookData: Codable, CustomStringConvertible {
         """
         return desc
     }
+    
+    init(fromManagedObject object: NSManagedObject) {
+        
+        if let coverID = object.value(forKey: "coverID") as? Int {
+            self.coverI = coverID
+        }
+        
+        if let hasFullText = object.value(forKey: "hasFullText") as? Bool {
+            self.hasFulltext = hasFullText
+        }
+        
+        if let editionCount = object.value(forKey: "editionCount") as? Int {
+            self.editionCount = editionCount
+        }
+        
+        if let firstPublishYear = object.value(forKey: "firstPublishYear") as? Int {
+            self.firstPublishYear = firstPublishYear
+        }
+        
+        if let title = object.value(forKey: "title") as? String {
+            self.title = title
+        }
+        
+        if let authorNames = object.value(forKey: "authorNames") as? [String] {
+            self.authorName = authorNames
+        }
+    }
 }
 
 class SearchModel {
     
     private var searchResults: [BookData]?
-    private var imageCache = NSCache<AnyObject, AnyObject>() {
-        didSet {
-            print("image cached...")
-        }
-    }
+    private var imageCache = NSCache<AnyObject, AnyObject>()
     
     func setSearchResultData(_ results: [BookData]) {
         searchResults = results

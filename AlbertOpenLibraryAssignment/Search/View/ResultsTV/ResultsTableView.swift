@@ -19,7 +19,6 @@ class ResultsTableView: UITableView {
         }
     }
     
-    private var selectedIndices: [Int: Bool] = [:] // tracks cell selection
     var favoriteIDs: [Int] = [] // tracks selection status
     private var cellCount: Int = 10
 

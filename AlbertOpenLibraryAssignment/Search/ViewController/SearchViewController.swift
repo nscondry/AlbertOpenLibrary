@@ -32,7 +32,6 @@ class SearchViewController: UIViewController {
             }
         }
         searchView.toggleFavorite = { data, isFavorite in
-            print("called")
             if isFavorite {
                 self.viewModel.setFavoriteBook(data)
             } else {
@@ -55,6 +54,12 @@ class SearchViewController: UIViewController {
         search.searchBar.delegate = self
         search.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = search
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // reset saved favorites in case they changed
+        searchView.resultsTV.favoriteIDs = self.viewModel.getFavoriteIDs() ?? []
     }
 
     /*
