@@ -40,7 +40,7 @@ class WishlistViewModel {
             self.model.setFavoriteBooks(bookData)
             completion(self.model.getFavoriteBooks())
         } catch {
-            print("failed...")
+            print(error)
         }
     }
     
@@ -56,10 +56,8 @@ class WishlistViewModel {
             let book = books[0] as! NSManagedObject
             print(book)
             if let imageData = book.value(forKey: "coverImage") as? NSData {
-                print("returned image")
                 return UIImage(data: imageData as Data, scale: 1.0)
             } else {
-                print("returned nil...")
                 return nil
             }
         }

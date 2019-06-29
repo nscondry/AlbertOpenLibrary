@@ -10,7 +10,7 @@ import UIKit
 
 class SearchView: UIView {
     
-    var getCellImage: ((Int)->())?
+    var getCellImage: ((Int)->(UIImage?))?
     var toggleFavorite: ((BookData, Bool)->())?
     
     var results: [BookData]! {

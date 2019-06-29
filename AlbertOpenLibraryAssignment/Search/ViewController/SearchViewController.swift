@@ -30,6 +30,8 @@ class SearchViewController: UIViewController {
                     self.searchView.resultsTV.setCellImage(coverID, coverImage!)
                 }
             }
+            // image will be set asynchronously
+            return nil
         }
         searchView.toggleFavorite = { data, isFavorite in
             if isFavorite {

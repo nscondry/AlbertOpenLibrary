@@ -10,7 +10,7 @@ import UIKit
 
 class ResultsTableView: UITableView {
     
-    var getCellImage: ((Int)->())?
+    var getCellImage: ((Int)->(UIImage?))?
     var toggleFavorite: ((BookData, Bool)->())?
     
     var results: [BookData]! = [] {
@@ -39,21 +39,11 @@ class ResultsTableView: UITableView {
     }
     
     func setCellImage(_ id: Int, _ coverImage: UIImage) {
-        print("called")
-        print("searching for: \(id)")
-        print("amongst \(visibleCells.count) visibleCells")
-        print("---")
-        
         visibleCells.forEach { cell in
-            
-            let test = cell as! ResultsTableViewCell
-            print("\(test.title!): \(test.id!)")
-            
             guard let cell = cell as? ResultsTableViewCell, cell.id == id else { return }
             print("set image...")
             cell.cover = coverImage
         }
-        print("---")
     }
 }
 
@@ -80,7 +70,9 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
             self.toggleFavorite?(self.results[indexPath.row], cell.isFavorite)
         }
         
-        if cell.id != nil { self.getCellImage?(cell.id!) }
+        if let coverImage = self.getCellImage?(cell.id!) {
+            cell.cover = coverImage
+        }
         
         cell.selectionStyle = .none
         
