@@ -81,6 +81,18 @@ struct BookData: Codable, CustomStringConvertible {
     }
 }
 
+extension BookData: Equatable {
+    public static func == (lhs: BookData, rhs: BookData) -> Bool {
+        return
+            lhs.coverI == rhs.coverI &&
+            lhs.hasFulltext == rhs.hasFulltext &&
+            lhs.editionCount == rhs.editionCount &&
+            lhs.title == rhs.title &&
+            lhs.authorName == rhs.authorName &&
+            lhs.firstPublishYear == rhs.firstPublishYear
+    }
+}
+
 class SearchModel {
     
     private var searchResults: [BookData]?

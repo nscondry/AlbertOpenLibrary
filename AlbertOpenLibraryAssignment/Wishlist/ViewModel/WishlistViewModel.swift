@@ -54,7 +54,6 @@ class WishlistViewModel {
         do {
             let books = try managedContext.fetch(fetchRequest)
             let book = books[0] as! NSManagedObject
-            print(book)
             if let imageData = book.value(forKey: "coverImage") as? NSData {
                 return UIImage(data: imageData as Data, scale: 1.0)
             } else {

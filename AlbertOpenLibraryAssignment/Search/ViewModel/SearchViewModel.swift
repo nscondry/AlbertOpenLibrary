@@ -104,9 +104,7 @@ class SearchViewModel {
     //
     
     func setFavoriteBook(_ data: BookData) {
-        
-        print("attempting to set favorite...")
-        
+                
         guard let managedContext = managedContext else { return }
         
         if let favoriteBook = NSEntityDescription.entity(forEntityName: "FavoriteBook", in: managedContext) {

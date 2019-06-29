@@ -30,17 +30,25 @@ class WishlistViewController: UIViewController {
         self.view = resultsTV
 
         viewModel = WishlistViewModel()
+        
+        
+        // navBar setup
+        self.navigationItem.title = "Wishlist"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // refresh retrieved books, update if changed
         viewModel.retrieveFavoriteBooks() { favoriteBooks in
-            guard favoriteBooks != nil else { return }
+            guard favoriteBooks != nil, favoriteBooks! != self.resultsTV.results else { return }
             favoriteBooks!.forEach { book in
                 self.resultsTV.favoriteIDs.append(book.coverI!)
             }
             self.resultsTV.results = favoriteBooks
         }
-        
-        // navBar setup
-        self.navigationItem.title = "Wishlist"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
 

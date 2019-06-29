@@ -41,7 +41,6 @@ class ResultsTableView: UITableView {
     func setCellImage(_ id: Int, _ coverImage: UIImage) {
         visibleCells.forEach { cell in
             guard let cell = cell as? ResultsTableViewCell, cell.id == id else { return }
-            print("set image...")
             cell.cover = coverImage
         }
     }
