@@ -56,8 +56,8 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") as! ResultsTableViewCell
         
         cell.title = results[indexPath.row].title!
-        cell.authors = results[indexPath.row].authorName ?? ["Unknown Author"]
-        cell.id = results[indexPath.row].coverI ?? nil
+        cell.authors = results[indexPath.row].authorName ?? ["Unknown Author"] // move to constant: defaultAuthorName
+        cell.id = results[indexPath.row].coverI
         cell.isFavorite = favoriteIDs.contains(cell.id ?? -1)
         
         cell.toggleFavorite = { isFavorite in
@@ -69,7 +69,7 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
             self.toggleFavorite?(self.results[indexPath.row], cell.isFavorite)
         }
         
-        if let coverImage = self.getCellImage?(cell.id!) {
+        if let id = cell.id, let coverImage = self.getCellImage?(id) {
             cell.cover = coverImage
         }
         

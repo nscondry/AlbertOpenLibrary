@@ -13,28 +13,13 @@ import CoreData
 var defString = String(stringLiteral: "ERROR")
 var defInt = -1
 
-struct SearchResults: Codable, CustomStringConvertible {
+struct SearchResults: Codable {
     var start: Int?
     var numFound: Int?
     var docs: [BookData]?
-    
-    var description: String {
-        var desc = """
-        start = \(start ?? defInt)
-        number of results = \(numFound ?? defInt)
-        docs: \(docs!)
-        
-        """
-        if let bookData = docs {
-            bookData.forEach { book in
-                desc += book.description
-            }
-        }
-        return desc
-    }
 }
 
-struct BookData: Codable, CustomStringConvertible {
+struct BookData: Codable {
     
     var coverI: Int?
     var hasFulltext: Bool?
@@ -42,16 +27,6 @@ struct BookData: Codable, CustomStringConvertible {
     var title: String?
     var authorName: [String]?
     var firstPublishYear: Int?
-    
-    var description: String {
-        let desc = """
-        -------------------
-        title = \(title ?? defString)
-        author = \(authorName ?? [defString])
-        -------------------
-        """
-        return desc
-    }
     
     init(fromManagedObject object: NSManagedObject) {
         
@@ -103,7 +78,7 @@ class SearchModel {
     }
     
     func getSearchResultData() -> [BookData]? {
-        return searchResults ?? nil
+        return searchResults
     }
     
     func cacheImage(_ image: UIImage, _ url: URL) {

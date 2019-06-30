@@ -18,6 +18,6 @@ class WishlistModel {
     }
     
     func getFavoriteBooks() -> [BookData]? {
-        return favoriteBooks ?? nil
+        return favoriteBooks
     }
 }
