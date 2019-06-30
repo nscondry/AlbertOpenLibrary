@@ -17,6 +17,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel = SearchViewModel()
+        // testing; deleteMe
         viewModel.searchBooks("o")
         viewModel.searchComplete = { results in
             guard results != nil else { return }
@@ -25,7 +26,7 @@ class SearchViewController: UIViewController {
 
         searchView = SearchView(frame: UIScreen.main.bounds)
         searchView.getCellImage = { coverID in
-            self.viewModel.getCoverImage(coverID, .M) { coverImage in
+            self.viewModel.getCoverImage(id: coverID, size: .M) { coverImage in
                 DispatchQueue.main.async {
                     self.searchView.resultsTV.setCellImage(coverID, coverImage!)
                 }
@@ -43,7 +44,7 @@ class SearchViewController: UIViewController {
         self.view = searchView
         
         // set saved favorites
-        searchView.resultsTV.favoriteIDs = self.viewModel.getFavoriteIDs() ?? []
+        searchView.resultsTV.favoriteIDs = self.viewModel.getFavoriteIDs()
         
         // navBar setup
         self.navigationItem.title = "Search"
@@ -61,7 +62,7 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // reset saved favorites in case they changed
-        searchView.resultsTV.favoriteIDs = self.viewModel.getFavoriteIDs() ?? []
+        searchView.resultsTV.favoriteIDs = self.viewModel.getFavoriteIDs()
     }
 
     /*

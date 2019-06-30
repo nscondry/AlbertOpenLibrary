@@ -17,6 +17,7 @@ enum SearchTypes: String {
 }
 
 enum CoverImageSizes: String {
+    // S = small, M = medium, L = large
     case S
     case M
     case L
@@ -24,6 +25,7 @@ enum CoverImageSizes: String {
 
 class SearchViewModel {
     
+    // return bookData from completed search
     var searchComplete: (([BookData]?)->())?
     
     private var model: SearchModel!
@@ -66,7 +68,7 @@ class SearchViewModel {
                 // begin caching images for initial results
                 Array(results.docs!.prefix(10)).forEach { book in
                     guard let id = book.coverI else { return }
-                    self.getCoverImage(id, .M) {_ in }
+                    self.getCoverImage(id: id, size: .M) {_ in }
                 }
                 
                 // update cells
@@ -77,7 +79,7 @@ class SearchViewModel {
         }
     }
     
-    func getCoverImage(_ id: Int, _ size: CoverImageSizes, completion: @escaping(_ coverImage: UIImage?)->()) {
+    func getCoverImage( id: Int, size: CoverImageSizes, completion: @escaping(_ coverImage: UIImage?)->()) {
         guard let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(id) + "-" + size.rawValue + ".jpg") else { return }
         
         if let coverImage = model.getImage(url) {
@@ -174,20 +176,18 @@ class SearchViewModel {
         
     }
     
-    func getFavoriteIDs() -> [Int]? {
+    func getFavoriteIDs() -> [Int] {
         
-        guard let managedContext = managedContext else { return nil }
+        guard let managedContext = managedContext else { return [] }
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteBook")
         
-        var favoriteIDs: [Int]?
+        var favoriteIDs: [Int] = []
         
         do {
             let result = try managedContext.fetch(fetchRequest)
             for data in result as! [NSManagedObject] {
-                if (favoriteIDs?.append(data.value(forKey: "coverID") as! Int)) == nil {
-                    favoriteIDs = [(data.value(forKey: "coverID") as! Int)]
-                }
+                favoriteIDs.append(data.value(forKey: "coverID") as! Int)
             }
         } catch {
             print("failed...")
