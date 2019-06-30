@@ -10,11 +10,11 @@ import Foundation
 
 class RestManager {
     
-    var requestHttpHeaders = RestEntity()
-    var urlQueryParameters = RestEntity()
-    var httpBodyParameters = RestEntity()
+    private var requestHttpHeaders = RestEntity()
+    private var urlQueryParameters = RestEntity()
+    private var httpBodyParameters = RestEntity()
     
-    var httpBody: Data?
+    private var httpBody: Data?
     
     private func addURLQueryParameters(toURL url: URL) -> URL {
         if urlQueryParameters.totalItems() > 0 {
@@ -40,7 +40,9 @@ class RestManager {
         if contentType.contains("application/json") {
             return try? JSONSerialization.data(withJSONObject: httpBodyParameters.allValues(), options: [.prettyPrinted, .sortedKeys])
         } else if contentType.contains("application/x-www-form-urlencoded") {
-            let bodyString = httpBodyParameters.allValues().map { "\($0)=\(String(describing: $1.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)))" }.joined(separator: "&")
+            let bodyString = httpBodyParameters.allValues().map {
+                "\($0)=\(String(describing: $1.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)))"
+                }.joined(separator: "&")
             return bodyString.data(using: .utf8)
         } else {
             return httpBody
@@ -60,6 +62,7 @@ class RestManager {
         return request
     }
     
+    // add these two to public API protocol
     func makeRequest(toURL url: URL, withHttpMethod httpMethod: HttpMethod, completion: @escaping(_ result: Results) -> Void) {
         
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
@@ -82,7 +85,7 @@ class RestManager {
         }
     }
     
-    public func getData(fromURL url: URL, completion: @escaping (_ data: Data?) -> Void) {
+    func getData(fromURL url: URL, completion: @escaping (_ data: Data?) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async {
             let sessionConfiguration = URLSessionConfiguration.default
             let session = URLSession(configuration: sessionConfiguration)

@@ -11,7 +11,7 @@ import CoreData
 
 class WishlistViewModel {
     
-    var favoriteBooksSet: (([BookData]?)->())?
+    var favoriteBooksSet: (([BookData])->())?
     
     private var model: WishlistModel!
     
@@ -19,7 +19,7 @@ class WishlistViewModel {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             return appDelegate.persistentContainer.viewContext
         } else {
-            NSLog("[SearchViewModel] Error retrieving managedContext")
+            NSLog("[WishlistViewModel] Error retrieving managedContext")
             return nil
         }
     }

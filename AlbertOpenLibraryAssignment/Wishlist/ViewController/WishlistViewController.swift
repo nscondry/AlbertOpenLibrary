@@ -43,8 +43,8 @@ class WishlistViewController: UIViewController {
         
         // refresh retrieved books, update if changed
         viewModel.retrieveFavoriteBooks() { favoriteBooks in
-            guard favoriteBooks != nil, favoriteBooks! != self.resultsTV.results else { return }
-            favoriteBooks!.forEach { book in
+            guard let favoriteBooks = favoriteBooks, favoriteBooks != self.resultsTV.results else { return }
+            favoriteBooks.forEach { book in
                 self.resultsTV.favoriteIDs.append(book.coverI!)
             }
             self.resultsTV.results = favoriteBooks
