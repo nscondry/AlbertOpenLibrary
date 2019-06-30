@@ -37,7 +37,7 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
         }
         resultsTV.pushDetailView = { data in
             // todo handle data
-            self.pushViewController?(self, .detail, nil)
+            self.pushViewController?(self, .detail, data)
         }
         
         self.view = resultsTV

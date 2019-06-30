@@ -12,6 +12,12 @@ class BookDetailViewController: UIViewController, RouterDelegateProtocol {
 
     var popViewController: ((UIViewController, Any?) -> ())?
     
+    var data: BookData! {
+        didSet {
+            print("set data...")
+        }
+    }
+    
     private var detailView: BookDetailView!
     
     override func viewDidLoad() {

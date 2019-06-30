@@ -52,8 +52,7 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
         }
         searchView.pushDetailView = { data in
             // todo: handle data
-            print("would push here...")
-            self.pushViewController?(self, .detail, nil)
+            self.pushViewController?(self, .detail, data)
         }
         self.view = searchView
         

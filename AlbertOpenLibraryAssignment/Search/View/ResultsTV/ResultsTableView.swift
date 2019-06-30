@@ -84,10 +84,7 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // to do
-        print("cell selected...")
-        if let cell = cellForRow(at: indexPath) as? ResultsTableViewCell {
-            self.pushDetailView?(results[indexPath.row])
-        }
+        // push bookDetailViewController for selected bookData
+        self.pushDetailView?(results[indexPath.row])
     }
 }

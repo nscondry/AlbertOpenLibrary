@@ -70,6 +70,10 @@ class Router: NSObject {
         // handle data when necessary
         let vc = loadViewController(toVC)
         
+        if let data = data as? BookData, let vc = vc as? BookDetailViewController {
+            vc.data = data
+        }
+        
         if let nav = sender.navigationController {
             nav.pushViewController(vc, animated: true)
         } else {
