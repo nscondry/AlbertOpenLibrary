@@ -8,8 +8,18 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, RouterDelegateProtocol {
 
+    //
+    // MARK: - Router Delegate Protocol Functions
+    //
+    
+    var pushViewController: ((UIViewController, LibraryViewControllers, Any?) -> ())?
+    
+    //
+    // MARK: - View Controller Functions
+    //
+    
     private var viewModel: SearchViewModel!
     private var searchView: SearchView!
     
@@ -20,8 +30,7 @@ class SearchViewController: UIViewController {
         // testing; deleteMe
         viewModel.searchBooks("o")
         viewModel.searchComplete = { results in
-            guard results != nil else { return }
-            self.searchView.results = results
+            if let results = results { self.searchView.results = results }
         }
 
         searchView = SearchView(frame: UIScreen.main.bounds)
@@ -40,6 +49,11 @@ class SearchViewController: UIViewController {
             } else {
                 self.viewModel.deleteFavoriteBook(data)
             }
+        }
+        searchView.pushDetailView = { data in
+            // todo: handle data
+            print("would push here...")
+            self.pushViewController?(self, .detail, nil)
         }
         self.view = searchView
         
@@ -63,17 +77,13 @@ class SearchViewController: UIViewController {
         super.viewWillAppear(animated)
         // reset saved favorites in case they changed
         searchView.resultsTV.favoriteIDs = self.viewModel.getFavoriteIDs()
+        
+        // reveal tabBar
+        self.tabBarController?.tabBar.isHidden = false
+        
+        // enforce largeTitleMode
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {

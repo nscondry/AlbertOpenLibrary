@@ -12,6 +12,7 @@ import UIKit
 enum LibraryViewControllers {
     case search
     case wishlist
+    case detail
 }
 
 protocol RouterDelegateProtocol: class {
@@ -86,12 +87,20 @@ class Router: NSObject {
     }
     
     private func loadViewController(_ viewController: LibraryViewControllers) -> UIViewController {
+        let vc: UIViewController!
         switch viewController {
         case .search:
-            return SearchViewController()
+            vc = SearchViewController()
         case .wishlist:
-            return WishlistViewController()
+            vc = WishlistViewController()
+        case .detail:
+            vc = BookDetailViewController()
         }
+        if let vc = vc as? RouterDelegateProtocol {
+            vc.pushViewController = self.pushViewController
+            vc.popViewController = self.popViewController
+        }
+        return vc
     }
 }
 

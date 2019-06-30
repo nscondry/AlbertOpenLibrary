@@ -8,8 +8,17 @@
 
 import UIKit
 
-class WishlistViewController: UIViewController {
+class WishlistViewController: UIViewController, RouterDelegateProtocol {
 
+    //
+    // MARK: - Router Delegate Protocol Functions
+    //
+    
+    var pushViewController: ((UIViewController, LibraryViewControllers, Any?) -> ())?
+    
+    //
+    // MARK: - View Controller Functions
+    //
     
     private var viewModel: WishlistViewModel!
     
@@ -26,6 +35,10 @@ class WishlistViewController: UIViewController {
         resultsTV.getCellImage = { id in
             return self.viewModel.getImage(forID: id)
         }
+        resultsTV.pushDetailView = { data in
+            // todo handle data
+            self.pushViewController?(self, .detail, nil)
+        }
         
         self.view = resultsTV
 
@@ -34,7 +47,6 @@ class WishlistViewController: UIViewController {
         
         // navBar setup
         self.navigationItem.title = "Wishlist"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     
@@ -49,17 +61,8 @@ class WishlistViewController: UIViewController {
             }
             self.resultsTV.results = favoriteBooks
         }
+        
+        // enforce largeTitleMode
+        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

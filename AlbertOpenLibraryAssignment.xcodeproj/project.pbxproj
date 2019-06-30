@@ -11,6 +11,8 @@
 		0100B14B22C5BA3A003BB001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0100B14922C5BA3A003BB001 /* LaunchScreen.storyboard */; };
 		0100B16E22C6F710003BB001 /* WishlistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B16D22C6F710003BB001 /* WishlistViewModel.swift */; };
 		0100B17022C6F7FD003BB001 /* WishlistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B16F22C6F7FD003BB001 /* WishlistModel.swift */; };
+		0100B17622C95C33003BB001 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B17522C95C33003BB001 /* BookDetailViewController.swift */; };
+		0100B17822C95C3E003BB001 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B17722C95C3E003BB001 /* BookDetailView.swift */; };
 		01382CB222C56F260091B51B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CB122C56F260091B51B /* AppDelegate.swift */; };
 		01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01382CB822C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld */; };
 		01382CBC22C56F270091B51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01382CBB22C56F270091B51B /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 		0100B14A22C5BA3A003BB001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AlbertOpenLibraryAssignment/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		0100B16D22C6F710003BB001 /* WishlistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistViewModel.swift; sourceTree = "<group>"; };
 		0100B16F22C6F7FD003BB001 /* WishlistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistModel.swift; sourceTree = "<group>"; };
+		0100B17522C95C33003BB001 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		0100B17722C95C3E003BB001 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
 		01382CAE22C56F250091B51B /* AlbertOpenLibraryAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbertOpenLibraryAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01382CB122C56F260091B51B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01382CB922C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlbertOpenLibraryAssignment.xcdatamodel; sourceTree = "<group>"; };
@@ -65,6 +69,39 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		0100B17122C959B8003BB001 /* BookDetail */ = {
+			isa = PBXGroup;
+			children = (
+				0100B17422C959D5003BB001 /* ViewModel */,
+				0100B17322C959D1003BB001 /* View */,
+				0100B17222C959C6003BB001 /* ViewController */,
+			);
+			path = BookDetail;
+			sourceTree = "<group>";
+		};
+		0100B17222C959C6003BB001 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0100B17522C95C33003BB001 /* BookDetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0100B17322C959D1003BB001 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0100B17722C95C3E003BB001 /* BookDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0100B17422C959D5003BB001 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		01382CA522C56F250091B51B = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +124,7 @@
 				01382CB122C56F260091B51B /* AppDelegate.swift */,
 				01382CE622C574920091B51B /* Wishlist */,
 				01382CE522C574870091B51B /* Search */,
+				0100B17122C959B8003BB001 /* BookDetail */,
 				01382CE222C573810091B51B /* Router */,
 				01382CF722C58D9F0091B51B /* Network */,
 				0100B14622C5B5B9003BB001 /* Common */,
@@ -295,12 +333,14 @@
 				01382CFF22C5A8FE0091B51B /* SearchViewModel.swift in Sources */,
 				01382CFD22C59AD80091B51B /* SearchModel.swift in Sources */,
 				0100B14822C5B5C3003BB001 /* Extensions.swift in Sources */,
+				0100B17822C95C3E003BB001 /* BookDetailView.swift in Sources */,
 				0100B16E22C6F710003BB001 /* WishlistViewModel.swift in Sources */,
 				01382CF622C57CDC0091B51B /* SearchView.swift in Sources */,
 				01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */,
 				01382D0122C5AEA50091B51B /* ResultsTableView.swift in Sources */,
 				0100B17022C6F7FD003BB001 /* WishlistModel.swift in Sources */,
 				01382CB222C56F260091B51B /* AppDelegate.swift in Sources */,
+				0100B17622C95C33003BB001 /* BookDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

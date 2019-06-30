@@ -12,6 +12,7 @@ class ResultsTableView: UITableView {
     
     var getCellImage: ((Int)->(UIImage?))?
     var toggleFavorite: ((BookData, Bool)->())?
+    var pushDetailView: ((BookData)->())?
     
     var results: [BookData]! = [] {
         didSet {
@@ -85,5 +86,8 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // to do
         print("cell selected...")
+        if let cell = cellForRow(at: indexPath) as? ResultsTableViewCell {
+            self.pushDetailView?(results[indexPath.row])
+        }
     }
 }
