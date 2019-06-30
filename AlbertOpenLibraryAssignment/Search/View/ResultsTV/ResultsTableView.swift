@@ -83,6 +83,7 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // to do
         print("cell selected...")
     }
 }
