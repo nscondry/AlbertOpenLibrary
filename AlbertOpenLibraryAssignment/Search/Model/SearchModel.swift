@@ -78,6 +78,14 @@ class SearchModel {
     
     private var searchResults: [BookData]?
     private var imageCache = NSCache<AnyObject, AnyObject>()
+    private var dataManager: CoreDataManager!
+    
+    init() {
+        self.dataManager = CoreDataManager()
+        dataManager.getImageFromURL = { url in
+            return self.getImage(url)
+        }
+    }
     
     func setSearchResultData(_ results: [BookData]) {
         searchResults = results
@@ -93,5 +101,21 @@ class SearchModel {
     
     func getImage(_ url: URL) -> UIImage? {
         return imageCache.object(forKey: url as AnyObject) as? UIImage
+    }
+    
+    //
+    // MARK: - Core Data Functions
+    //
+    
+    func setFavoriteBook(_ data: BookData) {
+        dataManager.setFavoriteBook(data)
+    }
+    
+    func deleteFavoriteBook(_ data: BookData) {
+        dataManager.deleteFavoriteBook(data)
+    }
+    
+    func getFavoriteKeys() -> [String] {
+        return dataManager.getFavoriteKeys()
     }
 }
