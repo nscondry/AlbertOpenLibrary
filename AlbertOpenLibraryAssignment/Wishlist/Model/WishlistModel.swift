@@ -26,10 +26,6 @@ class WishlistModel {
         favoriteBooks = bookData
     }
     
-    func getFavoriteBooks() -> [BookData] {
-        return favoriteBooks ?? []
-    }
-    
     func retrieveFavoriteBooks(completion: @escaping(([BookData]?)->()))  {
         dataManager.retrieveFavoriteBooks {
             completion(self.favoriteBooks)

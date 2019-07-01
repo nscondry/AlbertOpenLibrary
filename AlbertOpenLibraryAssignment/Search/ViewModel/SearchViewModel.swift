@@ -43,16 +43,7 @@ class SearchViewModel: SearchViewModelProtocol {
     private var model: SearchModel!
     private var rest: RestManager!
     private var searchType: SearchTypes! = .all
-    
-    private var managedContext: NSManagedObjectContext? {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            return appDelegate.persistentContainer.viewContext
-        } else {
-            NSLog("[SearchViewModel] Error retrieving managedContext")
-            return nil
-        }
-    }
-    
+
     init() {
         self.model = SearchModel()
         self.rest = RestManager()
