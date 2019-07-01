@@ -9,7 +9,12 @@
 import Foundation
 import UIKit
 
-class BookDetailViewModel {
+protocol BookDetailViewModelProtocol {
+    func getCoverImage( id: Int, size: CoverImageSizes, completion: @escaping(_ coverImage: UIImage?)->())
+    func retrieveCoverImage(fromURL url: URL, completion: @escaping(_ coverImage: UIImage)->())
+}
+
+class BookDetailViewModel: BookDetailViewModelProtocol {
     
     private var model: BookDetailModel!
     private var rest: RestManager!

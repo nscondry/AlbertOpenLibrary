@@ -23,7 +23,16 @@ enum CoverImageSizes: String {
     case L
 }
 
-class SearchViewModel {
+protocol SearchViewModelProtocol {
+    var searchComplete: (([BookData]?)->())? { get set }
+    
+    func setSearchType(_ type: SearchTypes)
+    func searchBooks(_ query: String)
+    func getCoverImage( id: Int, size: CoverImageSizes, completion: @escaping(_ coverImage: UIImage?)->())
+    func retrieveCoverImage(fromURL url: URL, completion: @escaping(_ coverImage: UIImage)->())
+}
+
+class SearchViewModel: SearchViewModelProtocol {
     
     // return bookData from completed search
     var searchComplete: (([BookData]?)->())?
@@ -143,7 +152,7 @@ class SearchViewModel {
                 try managedContext.save()
             }
             catch let error as NSError {
-                print("Could not save. \(error), \(error.userInfo)")
+                NSLog("Could not save. \(error), \(error.userInfo)")
             }
             
         } else {
@@ -167,11 +176,11 @@ class SearchViewModel {
                 try managedContext.save()
             }
             catch {
-                print(error)
+                NSLog("\(error)")
             }
         }
         catch {
-            print(error)
+            NSLog("\(error)")
         }
         
     }
@@ -190,12 +199,9 @@ class SearchViewModel {
                 favoriteIDs.append(data.value(forKey: "coverID") as! Int)
             }
         } catch {
-            print("failed...")
+            NSLog("\(error)")
         }
         
         return favoriteIDs
     }
-    
-    // for testing
-    
 }

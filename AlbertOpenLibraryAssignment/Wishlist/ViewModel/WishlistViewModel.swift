@@ -9,7 +9,12 @@
 import UIKit
 import CoreData
 
-class WishlistViewModel {
+protocol WishlistViewModelProtocol {
+    func retrieveFavoriteBooks(_ completion: @escaping(([BookData]?)->()))
+    func getImage(forID id: Int) -> UIImage?
+}
+
+class WishlistViewModel: WishlistViewModelProtocol {
     
     var favoriteBooksSet: (([BookData])->())?
     
@@ -40,7 +45,7 @@ class WishlistViewModel {
             self.model.setFavoriteBooks(bookData)
             completion(self.model.getFavoriteBooks())
         } catch {
-            print(error)
+            NSLog("\(error)")
         }
     }
     
@@ -61,7 +66,7 @@ class WishlistViewModel {
             }
         }
         catch {
-            print(error)
+            NSLog("\(error)")
             return nil
         }
     }
