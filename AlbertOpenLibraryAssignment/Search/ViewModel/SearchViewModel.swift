@@ -119,7 +119,7 @@ class SearchViewModel {
                 // store image data if available
                 if let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(coverID) + "-M.jpg"),
                     let coverImage = model.getImage(url),
-                    let data = coverImage.pngData() {
+                    let data = UIImagePNGRepresentation(coverImage) {
                     book.setValue(data, forKeyPath: "coverImage")
                     }
             }
