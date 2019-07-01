@@ -12,11 +12,10 @@ import CoreData
 
 protocol CoreDataManagerProtocol {
     var getImageFromURL: ((URL)->(UIImage?))? { get set }
-    var setFavoriteBooks: (([BookData])->())? { get set }
     
     func setFavoriteBook(_ data: BookData)
     func deleteFavoriteBook(_ data: BookData)
-    func retrieveFavoriteBooks(_ completion: @escaping(()->()))
+    func getFavoriteBooks() -> [BookData]
     func getFavoriteKeys() -> [String]
     func getImage(forCoverID id: Int) -> UIImage?
 }
@@ -24,7 +23,6 @@ protocol CoreDataManagerProtocol {
 class CoreDataManager: CoreDataManagerProtocol {
     
     var getImageFromURL: ((URL)->(UIImage?))?
-    var setFavoriteBooks: (([BookData])->())?
     
     private var managedContext: NSManagedObjectContext? {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -108,19 +106,19 @@ class CoreDataManager: CoreDataManagerProtocol {
         }
     }
     
-    func retrieveFavoriteBooks(_ completion: @escaping(()->())) {
+    func getFavoriteBooks() -> [BookData] {
         
-        guard let managedContext = managedContext else { return }
+        guard let managedContext = managedContext else { return [] }
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteBook")
         
         do {
             let result = try managedContext.fetch(fetchRequest)
             let bookData = (result as! [NSManagedObject]).map { BookData(fromManagedObject: $0) }
-            setFavoriteBooks?(bookData)
-            completion()
+            return bookData
         } catch {
             NSLog("\(error)")
+            return []
         }
     }
     

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 protocol WishlistViewModelProtocol {
-    func retrieveFavoriteBooks(_ completion: @escaping(([BookData]?)->()))
+    func getFavoriteBooks() -> [BookData]
     func getImage(forCoverID id: Int) -> UIImage?
 }
 
@@ -22,10 +22,8 @@ class WishlistViewModel: WishlistViewModelProtocol {
         self.model = WishlistModel()
     }
     
-    func retrieveFavoriteBooks(_ completion: @escaping(([BookData]?)->())) {
-        model.retrieveFavoriteBooks() { data in
-            completion(data)
-        }
+    func getFavoriteBooks() -> [BookData] {
+        return model.getFavoriteBooks()
     }
     
     func getImage(forCoverID id: Int) -> UIImage? {

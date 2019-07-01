@@ -9,27 +9,21 @@
 import Foundation
 import UIKit
 
+protocol WishlistModelProtocol {
+    func getFavoriteBooks() -> [BookData]
+    func getImage(forCoverID id: Int) -> UIImage?
+}
+
 class WishlistModel {
-    
-    private var favoriteBooks: [BookData]?
     
     private var dataManager: CoreDataManager!
     
     init() {
         self.dataManager = CoreDataManager()
-        dataManager.setFavoriteBooks = { books in
-            self.setFavoriteBooks(books)
-        }
     }
     
-    func setFavoriteBooks(_ bookData: [BookData]) {
-        favoriteBooks = bookData
-    }
-    
-    func retrieveFavoriteBooks(completion: @escaping(([BookData]?)->()))  {
-        dataManager.retrieveFavoriteBooks {
-            completion(self.favoriteBooks)
-        }
+    func getFavoriteBooks() -> [BookData]  {
+        return dataManager.getFavoriteBooks()
     }
     
     func getImage(forCoverID id: Int) -> UIImage? {

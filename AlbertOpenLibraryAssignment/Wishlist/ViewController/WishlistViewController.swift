@@ -39,11 +39,9 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
             // todo handle data
             self.pushViewController?(self, .detail, data)
         }
-        
         self.view = resultsTV
 
         viewModel = WishlistViewModel()
-        
         
         // navBar setup
         self.navigationItem.title = "Wishlist"
@@ -54,14 +52,14 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
         super.viewWillAppear(animated)
         
         // refresh retrieved books, update if changed
-        viewModel.retrieveFavoriteBooks() { favoriteBooks in
-            guard let favoriteBooks = favoriteBooks, favoriteBooks != self.resultsTV.results else { return }
-            favoriteBooks.forEach { book in
-                guard let key = book.key else { return }
-                self.resultsTV.favoriteKeys.append(key)
-            }
-            self.resultsTV.results = favoriteBooks
+        let favoriteBooks = viewModel.getFavoriteBooks()
+        guard favoriteBooks != self.resultsTV.results else { return }
+        
+        favoriteBooks.forEach { book in
+            guard let key = book.key else { return }
+            self.resultsTV.favoriteKeys.append(key)
         }
+        self.resultsTV.results = favoriteBooks
         
         // reveal tabBar
         self.tabBarController?.tabBar.isHidden = false
