@@ -72,7 +72,10 @@ class SearchViewModel: SearchViewModelProtocol {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 guard let results = try? decoder.decode(SearchResults.self, from: data) else { NSLog("[SearchViewModel] Error: couldn't decode JSON"); return }
-                self.model.setSearchResultData(results.docs!)
+                
+                if let bookData = results.docs {
+                    self.model.setSearchResultData(bookData)
+                }
                 
                 // begin caching images for initial results
                 Array(results.docs!.prefix(10)).forEach { book in

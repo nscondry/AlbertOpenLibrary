@@ -119,6 +119,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0100B18022CA8EB2003BB001 /* CoreDataManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreDataManager;
+			sourceTree = "<group>";
+		};
 		01382CA522C56F250091B51B = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +150,7 @@
 				01382CE522C574870091B51B /* Search */,
 				0100B17122C959B8003BB001 /* BookDetail */,
 				01382CE222C573810091B51B /* Router */,
+				0100B18022CA8EB2003BB001 /* CoreDataManager */,
 				01382CF722C58D9F0091B51B /* Network */,
 				0100B14622C5B5B9003BB001 /* Common */,
 				01382D0622C5B5720091B51B /* Supporting Files */,
