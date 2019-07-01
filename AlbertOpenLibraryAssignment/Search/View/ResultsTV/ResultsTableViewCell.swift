@@ -129,7 +129,7 @@ class ResultsTableViewCell: UITableViewCell {
         heartIcon.translatesAutoresizingMaskIntoConstraints = false
         heartIcon.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         heartIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        heartIcon.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: pow(0.618, 3)).isActive = true
+        heartIcon.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: pow(0.618, 2.5)).isActive = true
         heartIcon.widthAnchor.constraint(equalTo: heartIcon.heightAnchor).isActive = true
     }
     
