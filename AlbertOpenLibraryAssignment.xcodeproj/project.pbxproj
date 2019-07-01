@@ -29,6 +29,10 @@
 		01382CFF22C5A8FE0091B51B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CFE22C5A8FE0091B51B /* SearchViewModel.swift */; };
 		01382D0122C5AEA50091B51B /* BookTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382D0022C5AEA50091B51B /* BookTableView.swift */; };
 		01382D0422C5AEBF0091B51B /* BookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382D0322C5AEBF0091B51B /* BookTableViewCell.swift */; };
+		01A13D1D22CAB14C0066A994 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D1C22CAB14C0066A994 /* BrowseView.swift */; };
+		01A13D2022CAB1AA0066A994 /* SubjectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D1F22CAB1AA0066A994 /* SubjectCollectionView.swift */; };
+		01A13D2222CAB1B90066A994 /* SubjectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D2122CAB1B90066A994 /* SubjectCollectionViewCell.swift */; };
+		01A13D2422CAB1D00066A994 /* SubjectCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D2322CAB1D00066A994 /* SubjectCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +60,10 @@
 		01382CFE22C5A8FE0091B51B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		01382D0022C5AEA50091B51B /* BookTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableView.swift; sourceTree = "<group>"; };
 		01382D0322C5AEBF0091B51B /* BookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableViewCell.swift; sourceTree = "<group>"; };
+		01A13D1C22CAB14C0066A994 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
+		01A13D1F22CAB1AA0066A994 /* SubjectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCollectionView.swift; sourceTree = "<group>"; };
+		01A13D2122CAB1B90066A994 /* SubjectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCollectionViewCell.swift; sourceTree = "<group>"; };
+		01A13D2322CAB1D00066A994 /* SubjectCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,7 +219,9 @@
 		01382CE822C574B10091B51B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				01A13D1E22CAB19B0066A994 /* SubjectCV */,
 				01382CF522C57CDC0091B51B /* SearchView.swift */,
+				01A13D1C22CAB14C0066A994 /* BrowseView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +301,16 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		01A13D1E22CAB19B0066A994 /* SubjectCV */ = {
+			isa = PBXGroup;
+			children = (
+				01A13D1F22CAB1AA0066A994 /* SubjectCollectionView.swift */,
+				01A13D2122CAB1B90066A994 /* SubjectCollectionViewCell.swift */,
+				01A13D2322CAB1D00066A994 /* SubjectCollectionViewLayout.swift */,
+			);
+			path = SubjectCV;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -364,12 +384,15 @@
 				01382CF022C574E30091B51B /* SearchViewController.swift in Sources */,
 				0100B17B22CA8548003BB001 /* Constants.swift in Sources */,
 				01382CFB22C58EAA0091B51B /* RestManager.swift in Sources */,
+				01A13D2022CAB1AA0066A994 /* SubjectCollectionView.swift in Sources */,
 				01382D0422C5AEBF0091B51B /* BookTableViewCell.swift in Sources */,
 				01382CF222C574F00091B51B /* WishlistViewController.swift in Sources */,
 				01382CE422C5738F0091B51B /* Router.swift in Sources */,
+				01A13D2222CAB1B90066A994 /* SubjectCollectionViewCell.swift in Sources */,
 				01382CFF22C5A8FE0091B51B /* SearchViewModel.swift in Sources */,
 				01382CFD22C59AD80091B51B /* SearchModel.swift in Sources */,
 				0100B17D22CA8677003BB001 /* BookDetailViewModel.swift in Sources */,
+				01A13D2422CAB1D00066A994 /* SubjectCollectionViewLayout.swift in Sources */,
 				0100B14822C5B5C3003BB001 /* Extensions.swift in Sources */,
 				0100B17822C95C3E003BB001 /* BookDetailView.swift in Sources */,
 				0100B16E22C6F710003BB001 /* WishlistViewModel.swift in Sources */,
@@ -377,6 +400,7 @@
 				01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */,
 				01382D0122C5AEA50091B51B /* BookTableView.swift in Sources */,
 				0100B17022C6F7FD003BB001 /* WishlistModel.swift in Sources */,
+				01A13D1D22CAB14C0066A994 /* BrowseView.swift in Sources */,
 				0100B17F22CA869B003BB001 /* BookDetailModel.swift in Sources */,
 				01382CB222C56F260091B51B /* AppDelegate.swift in Sources */,
 				0100B18222CA940F003BB001 /* CoreDataManager.swift in Sources */,

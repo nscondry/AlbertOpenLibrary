@@ -22,6 +22,7 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
     
     private var viewModel: SearchViewModel!
     private var searchView: SearchView!
+    private var browseView: BrowseView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +58,12 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
             }
         }
         searchView.pushDetailView = { data in
-            // todo: handle data
             self.pushViewController?(self, .detail, data)
         }
-        self.view = searchView
+//        self.view = searchView
+        
+        browseView = BrowseView(frame: view.bounds)
+        self.view = browseView
         
         // set saved favorites
         searchView.resultsTV.favoriteKeys = self.viewModel.getFavoriteKeys()
@@ -91,6 +94,15 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
         
         // enforce largeTitleMode
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        // disable when view will appear so searchbar is revealed by default
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // enable once view appears so search bar will hide normally
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
 }
 

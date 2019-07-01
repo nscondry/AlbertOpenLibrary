@@ -60,5 +60,11 @@ struct Constants {
             }
         }
     }
+}
+
+struct Colors {
     
+    static var customGreen: UIColor {
+        return UIColor(red:0.33, green:0.90, blue:0.55, alpha:1.0)
+    }
 }

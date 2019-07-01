@@ -18,4 +18,14 @@ extension UIView {
         }, completion: nil)
     }
     
+    func constrainToParent(insets: UIEdgeInsets = UIEdgeInsets.zero) {
+        guard let parent = superview else { return }
+        
+        translatesAutoresizingMaskIntoConstraints = false
+        let metrics: [String : Any] = ["left" : insets.left, "right" : insets.right, "top" : insets.top, "bottom" : insets.bottom]
+        
+        parent.addConstraints(["H:|-(left)-[view]-(right)-|", "V:|-(top)-[view]-(bottom)-|"].flatMap {
+            NSLayoutConstraint.constraints(withVisualFormat: $0, metrics: metrics, views: ["view": self])
+        })
+    }
 }
