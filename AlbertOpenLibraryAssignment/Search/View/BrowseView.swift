@@ -16,8 +16,6 @@ class BrowseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
-        
         containerScrollView = UIScrollView()
         subjectCV = SubjectCollectionView(frame: CGRect.zero, collectionViewLayout: SubjectCollectionViewLayout())
         
@@ -38,6 +36,7 @@ class BrowseView: UIView {
     
     private func formatSubviews() {
         // containerScrollView
+        containerScrollView.layer.contents = UIImage(named: "background")?.cgImage
         containerScrollView.alwaysBounceVertical = true
         
         // subjectCV

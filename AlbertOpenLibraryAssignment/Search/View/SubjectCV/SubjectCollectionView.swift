@@ -16,12 +16,14 @@ class SubjectCollectionView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
         
         // formatting
+        self.clipsToBounds = false
         self.backgroundColor = .clear
         alwaysBounceHorizontal = true
         showsHorizontalScrollIndicator = false
         
         delegate = self
         dataSource = self
+        
         
         register(SubjectCollectionViewCell.self, forCellWithReuseIdentifier: "subjectCell")
     }
@@ -30,6 +32,20 @@ class SubjectCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func selectFirstCell() {
+        if let firstVisiblePath = indexPathsForVisibleItems.sorted(by: { $0.row < $1.row }).first, let firstCell = cellForItem(at: firstVisiblePath) {
+            print("found cell")
+            firstCell.bounce()
+        }
+    }
+    
+    private func scroll(toIndexPathPreservingLeftInset indexPath: IndexPath, animated: Bool) {
+        let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
+        let sectionLeftInset = layout.sectionInset.left
+        if let attri = layout.layoutAttributesForItem(at: indexPath) {
+            self.setContentOffset(CGPoint(x: (attri.frame.origin.x - sectionLeftInset), y: 0), animated: animated)
+        }
+    }
 }
 
 extension SubjectCollectionView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -42,7 +58,20 @@ extension SubjectCollectionView: UICollectionViewDataSource, UICollectionViewDel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "subjectCell", for: indexPath) as! SubjectCollectionViewCell
         
         cell.subject = subjects[indexPath.row]
+        cell.row = indexPath.row
         cell.isActive = true
+        
+        // format
+        cell.contentView.layer.backgroundColor = UIColor.white.cgColor
+        cell.contentView.layer.cornerRadius = 5
+        cell.contentView.layer.masksToBounds = true
+        
+        cell.layer.backgroundColor = UIColor.clear.cgColor
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 3)
+        cell.layer.shadowRadius = 3
+        cell.layer.shadowOpacity = 0.2
+        cell.layer.masksToBounds = false
         
         return cell
     }
@@ -51,5 +80,19 @@ extension SubjectCollectionView: UICollectionViewDataSource, UICollectionViewDel
         return CGSize(width: 120, height: 50)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.scroll(toIndexPathPreservingLeftInset: indexPath, animated: true)
+    }
     
+    //
+    // MARK: - ScrollView delegate functions
+    //
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        selectFirstCell()
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        selectFirstCell()
+    }
 }

@@ -18,22 +18,20 @@ class SubjectCollectionViewCell: UICollectionViewCell {
     
     var isActive: Bool! {
         didSet {
-            UIView.animate(withDuration: 0.2) {
-                self.underline.alpha = (self.isActive ? 1 : 0)
-            }
+            self.bounce()
         }
     }
+    
+    var row: Int!
     
     private var lineHeight: CGFloat = 2
     
     private var label: UILabel!
-    private var underline: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+                
         label = UILabel()
-        underline = UIView()
         
         addSubviews()
         formatSubviews()
@@ -45,22 +43,15 @@ class SubjectCollectionViewCell: UICollectionViewCell {
     }
     
     private func addSubviews() {
-        addSubview(label)
-        addSubview(underline)
+        contentView.addSubview(label)
     }
     
     private func formatSubviews() {
         // label
         label.backgroundColor = .clear
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .lightGray
-        
-        // underline
-        underline.alpha = 0
-        underline.backgroundColor = Colors.customGreen
-        underline.layer.cornerRadius = lineHeight/2
-        underline.layer.masksToBounds = true
+        label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        label.textColor = .black
     }
     
     private func addSubviewConstraints() {
@@ -68,12 +59,5 @@ class SubjectCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         label.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        
-        // underline
-        underline.translatesAutoresizingMaskIntoConstraints = false
-        underline.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        underline.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 5).isActive = true
-        underline.widthAnchor.constraint(equalTo: label.widthAnchor, multiplier: 0.618).isActive = true
-        underline.heightAnchor.constraint(equalToConstant: lineHeight).isActive = true
     }
 }

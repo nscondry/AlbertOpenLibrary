@@ -19,6 +19,7 @@ class SubjectCollectionViewLayout: UICollectionViewFlowLayout {
         self.scrollDirection = .horizontal
         self.sectionInset = UIEdgeInsetsMake(0, 20, 0, UIScreen.main.bounds.width - 20 - cellWidth)
         minimumInteritemSpacing = 20
+        minimumLineSpacing = 20
     }
     
     required init?(coder aDecoder: NSCoder) {
