@@ -62,6 +62,9 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
             self.resultsTV.results = favoriteBooks
         }
         
+        // reveal tabBar
+        self.tabBarController?.tabBar.isHidden = false
+        
         // enforce largeTitleMode
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }

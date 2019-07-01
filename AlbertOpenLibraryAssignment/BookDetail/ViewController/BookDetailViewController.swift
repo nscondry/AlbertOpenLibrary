@@ -12,18 +12,25 @@ class BookDetailViewController: UIViewController, RouterDelegateProtocol {
 
     var popViewController: ((UIViewController, Any?) -> ())?
     
-    var data: BookData! {
-        didSet {
-            print("set data...")
-        }
-    }
+    var data: BookData!
     
     private var detailView: BookDetailView!
+    private var viewModel: BookDetailViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        viewModel = BookDetailViewModel()
+        
         detailView = BookDetailView()
+        detailView.getCoverImage = { coverID in
+            self.viewModel.getCoverImage(id: coverID, size: .M) { coverImage in
+                DispatchQueue.main.async {
+                    self.detailView.cover = coverImage
+                }
+            }
+        }
+        detailView.bookData = self.data
         self.view = detailView
         
         // navBar setup

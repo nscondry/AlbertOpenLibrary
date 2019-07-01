@@ -13,6 +13,9 @@
 		0100B17022C6F7FD003BB001 /* WishlistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B16F22C6F7FD003BB001 /* WishlistModel.swift */; };
 		0100B17622C95C33003BB001 /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B17522C95C33003BB001 /* BookDetailViewController.swift */; };
 		0100B17822C95C3E003BB001 /* BookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B17722C95C3E003BB001 /* BookDetailView.swift */; };
+		0100B17B22CA8548003BB001 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B17A22CA8548003BB001 /* Constants.swift */; };
+		0100B17D22CA8677003BB001 /* BookDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B17C22CA8677003BB001 /* BookDetailViewModel.swift */; };
+		0100B17F22CA869B003BB001 /* BookDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0100B17E22CA869B003BB001 /* BookDetailModel.swift */; };
 		01382CB222C56F260091B51B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01382CB122C56F260091B51B /* AppDelegate.swift */; };
 		01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01382CB822C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld */; };
 		01382CBC22C56F270091B51B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01382CBB22C56F270091B51B /* Assets.xcassets */; };
@@ -34,6 +37,9 @@
 		0100B16F22C6F7FD003BB001 /* WishlistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistModel.swift; sourceTree = "<group>"; };
 		0100B17522C95C33003BB001 /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		0100B17722C95C3E003BB001 /* BookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailView.swift; sourceTree = "<group>"; };
+		0100B17A22CA8548003BB001 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0100B17C22CA8677003BB001 /* BookDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewModel.swift; sourceTree = "<group>"; };
+		0100B17E22CA869B003BB001 /* BookDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailModel.swift; sourceTree = "<group>"; };
 		01382CAE22C56F250091B51B /* AlbertOpenLibraryAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlbertOpenLibraryAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01382CB122C56F260091B51B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01382CB922C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlbertOpenLibraryAssignment.xcdatamodel; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				0100B14722C5B5C3003BB001 /* Extensions.swift */,
+				0100B17A22CA8548003BB001 /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -72,6 +79,7 @@
 		0100B17122C959B8003BB001 /* BookDetail */ = {
 			isa = PBXGroup;
 			children = (
+				0100B17922CA8189003BB001 /* Model */,
 				0100B17422C959D5003BB001 /* ViewModel */,
 				0100B17322C959D1003BB001 /* View */,
 				0100B17222C959C6003BB001 /* ViewController */,
@@ -98,8 +106,17 @@
 		0100B17422C959D5003BB001 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0100B17C22CA8677003BB001 /* BookDetailViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0100B17922CA8189003BB001 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0100B17E22CA869B003BB001 /* BookDetailModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		01382CA522C56F250091B51B = {
@@ -326,12 +343,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				01382CF022C574E30091B51B /* SearchViewController.swift in Sources */,
+				0100B17B22CA8548003BB001 /* Constants.swift in Sources */,
 				01382CFB22C58EAA0091B51B /* RestManager.swift in Sources */,
 				01382D0422C5AEBF0091B51B /* ResultsTableViewCell.swift in Sources */,
 				01382CF222C574F00091B51B /* WishlistViewController.swift in Sources */,
 				01382CE422C5738F0091B51B /* Router.swift in Sources */,
 				01382CFF22C5A8FE0091B51B /* SearchViewModel.swift in Sources */,
 				01382CFD22C59AD80091B51B /* SearchModel.swift in Sources */,
+				0100B17D22CA8677003BB001 /* BookDetailViewModel.swift in Sources */,
 				0100B14822C5B5C3003BB001 /* Extensions.swift in Sources */,
 				0100B17822C95C3E003BB001 /* BookDetailView.swift in Sources */,
 				0100B16E22C6F710003BB001 /* WishlistViewModel.swift in Sources */,
@@ -339,6 +358,7 @@
 				01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */,
 				01382D0122C5AEA50091B51B /* ResultsTableView.swift in Sources */,
 				0100B17022C6F7FD003BB001 /* WishlistModel.swift in Sources */,
+				0100B17F22CA869B003BB001 /* BookDetailModel.swift in Sources */,
 				01382CB222C56F260091B51B /* AppDelegate.swift in Sources */,
 				0100B17622C95C33003BB001 /* BookDetailViewController.swift in Sources */,
 			);
