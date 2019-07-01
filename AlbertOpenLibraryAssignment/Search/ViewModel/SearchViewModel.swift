@@ -150,6 +150,9 @@ class SearchViewModel: SearchViewModelProtocol {
             if let authorNames = data.authorName {
                 book.setValue(authorNames, forKeyPath: "authorNames")
             }
+            if let key = data.key {
+                book.setValue(key, forKey: "key")
+            }
             
             do {
                 try managedContext.save()
@@ -188,23 +191,23 @@ class SearchViewModel: SearchViewModelProtocol {
         
     }
     
-    func getFavoriteIDs() -> [Int] {
+    func getFavoriteKeys() -> [String] {
         
         guard let managedContext = managedContext else { return [] }
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteBook")
         
-        var favoriteIDs: [Int] = []
+        var favoriteKeys: [String] = []
         
         do {
             let result = try managedContext.fetch(fetchRequest)
             for data in result as! [NSManagedObject] {
-                favoriteIDs.append(data.value(forKey: "coverID") as! Int)
+                favoriteKeys.append(data.value(forKey: "key") as! String)
             }
         } catch {
             NSLog("\(error)")
         }
         
-        return favoriteIDs
+        return favoriteKeys
     }
 }

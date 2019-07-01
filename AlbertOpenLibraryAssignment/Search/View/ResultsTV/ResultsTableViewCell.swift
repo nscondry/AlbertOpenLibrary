@@ -36,7 +36,8 @@ class ResultsTableViewCell: UITableViewCell {
         }
     }
     
-    var id: Int?
+    var key: String?
+    var coverID: Int?
     
     var defaultImage: UIImage = UIImage(named: "defaultCoverImage")!
     
@@ -68,7 +69,7 @@ class ResultsTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         coverImage.image = defaultImage
-        self.id = nil
+        self.coverID = nil
     }
     
     private func addSubviews() {

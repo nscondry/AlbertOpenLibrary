@@ -57,7 +57,8 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
         viewModel.retrieveFavoriteBooks() { favoriteBooks in
             guard let favoriteBooks = favoriteBooks, favoriteBooks != self.resultsTV.results else { return }
             favoriteBooks.forEach { book in
-                self.resultsTV.favoriteIDs.append(book.coverI!)
+                guard let key = book.key else { return }
+                self.resultsTV.favoriteKeys.append(key)
             }
             self.resultsTV.results = favoriteBooks
         }

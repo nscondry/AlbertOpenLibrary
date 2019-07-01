@@ -20,7 +20,7 @@ class ResultsTableView: UITableView {
         }
     }
     
-    var favoriteIDs: [Int] = [] // tracks selection status
+    var favoriteKeys: [String] = [] // tracks selection status
     private var cellCount: Int = 10
 
     override init(frame: CGRect, style: UITableView.Style) {
@@ -41,7 +41,7 @@ class ResultsTableView: UITableView {
     
     func setCellImage(_ id: Int, _ coverImage: UIImage) {
         visibleCells.forEach { cell in
-            guard let cell = cell as? ResultsTableViewCell, cell.id == id else { return }
+            guard let cell = cell as? ResultsTableViewCell, cell.coverID == id else { return }
             cell.cover = coverImage
         }
     }
@@ -58,19 +58,22 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
         
         cell.title = results[indexPath.row].title!
         cell.authors = results[indexPath.row].authorName ?? ["Unknown Author"] // move to constant: defaultAuthorName
-        cell.id = results[indexPath.row].coverI
-        cell.isFavorite = favoriteIDs.contains(cell.id ?? -1)
+        cell.coverID = results[indexPath.row].coverI
+        cell.key = results[indexPath.row].key
+        cell.isFavorite = favoriteKeys.contains(cell.key ?? "")
         
         cell.toggleFavorite = { isFavorite in
+            guard let key = cell.key else { return }
+            
             if isFavorite {
-                self.favoriteIDs.append(cell.id!)
+                self.favoriteKeys.append(key)
             } else {
-                self.favoriteIDs = self.favoriteIDs.filter { $0 != cell.id! }
+                self.favoriteKeys = self.favoriteKeys.filter { $0 != key }
             }
             self.toggleFavorite?(self.results[indexPath.row], cell.isFavorite)
         }
         
-        if let id = cell.id, let coverImage = self.getCellImage?(id) {
+        if let id = cell.coverID, let coverImage = self.getCellImage?(id) {
             cell.cover = coverImage
         }
         

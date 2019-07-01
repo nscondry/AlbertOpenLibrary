@@ -57,7 +57,7 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
         self.view = searchView
         
         // set saved favorites
-        searchView.resultsTV.favoriteIDs = self.viewModel.getFavoriteIDs()
+        searchView.resultsTV.favoriteKeys = self.viewModel.getFavoriteKeys()
         
         // navBar setup
         self.navigationItem.title = "Search"
@@ -75,7 +75,7 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // reset saved favorites in case they changed
-        searchView.resultsTV.favoriteIDs = self.viewModel.getFavoriteIDs()
+        searchView.resultsTV.favoriteKeys = self.viewModel.getFavoriteKeys()
         
         // reveal tabBar
         self.tabBarController?.tabBar.isHidden = false

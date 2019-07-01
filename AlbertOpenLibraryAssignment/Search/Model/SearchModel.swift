@@ -27,6 +27,7 @@ struct BookData: Codable {
     var title: String?
     var authorName: [String]?
     var firstPublishYear: Int?
+    var key: String?
     
     init(fromManagedObject object: NSManagedObject) {
         
@@ -53,6 +54,10 @@ struct BookData: Codable {
         if let authorNames = object.value(forKey: "authorNames") as? [String] {
             self.authorName = authorNames
         }
+        
+        if let key = object.value(forKey: "key") as? String {
+            self.key = key
+        }
     }
 }
 
@@ -64,7 +69,8 @@ extension BookData: Equatable {
             lhs.editionCount == rhs.editionCount &&
             lhs.title == rhs.title &&
             lhs.authorName == rhs.authorName &&
-            lhs.firstPublishYear == rhs.firstPublishYear
+            lhs.firstPublishYear == rhs.firstPublishYear &&
+            lhs.key == rhs.key
     }
 }
 
