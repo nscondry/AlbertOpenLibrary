@@ -1,5 +1,5 @@
 //
-//  ResultsTableViewCell.swift
+//  BookTableViewCell.swift
 //  AlbertOpenLibraryAssignment
 //
 //  Created by Nick on 6/27/19.
@@ -8,14 +8,13 @@
 
 import UIKit
 
-class ResultsTableViewCell: UITableViewCell {
+class BookTableViewCell: UITableViewCell {
     
     var toggleFavorite: ((Bool)->())?
     
     var data: BookData! {
         didSet {
             if let title = data.title { titleLabel.text = title }
-            
             authorLabel.text = data.authorName?.joined(separator: ", ") ?? defaultAuthorName
         }
     }

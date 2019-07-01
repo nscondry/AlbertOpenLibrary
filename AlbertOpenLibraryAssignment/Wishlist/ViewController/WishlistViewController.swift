@@ -22,8 +22,8 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
     
     private var viewModel: WishlistViewModel!
     
-    lazy var resultsTV: ResultsTableView = {
-        let resultsTV = ResultsTableView(frame: self.view.bounds, style: .plain)
+    lazy var resultsTV: BookTableView = {
+        let resultsTV = BookTableView(frame: self.view.bounds, style: .plain)
         resultsTV.backgroundColor = .white
         resultsTV.translatesAutoresizingMaskIntoConstraints = false
         return resultsTV

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultsTableView: UITableView {
+class BookTableView: UITableView {
     
     var getCellImage: ((Int)->(UIImage?))?
     var toggleFavorite: ((BookData, Bool)->())?
@@ -32,7 +32,7 @@ class ResultsTableView: UITableView {
         delegate = self
         dataSource = self
         
-        register(ResultsTableViewCell.self, forCellReuseIdentifier: "resultCell")
+        register(BookTableViewCell.self, forCellReuseIdentifier: "resultCell")
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,27 +41,27 @@ class ResultsTableView: UITableView {
     
     func setCellImage(_ id: Int, _ coverImage: UIImage) {
         visibleCells.forEach { cell in
-            guard let cell = cell as? ResultsTableViewCell, cell.coverID == id else { return }
+            guard let cell = cell as? BookTableViewCell, cell.coverID == id else { return }
             cell.cover = coverImage
         }
     }
     
     func setFavorite(forBooData data: BookData) {
         visibleCells.forEach { cell in
-            guard let cell = cell as? ResultsTableViewCell, cell.data == data else { return }
+            guard let cell = cell as? BookTableViewCell, cell.data == data else { return }
             cell.isFavorite = true
         }
     }
 }
 
-extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
+extension BookTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return min(cellCount, results.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") as! ResultsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") as! BookTableViewCell
         
         cell.data = results[indexPath.row]
         cell.isFavorite = favoriteKeys.contains(cell.key ?? "")

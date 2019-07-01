@@ -20,8 +20,8 @@ class SearchView: UIView {
         }
     }
     
-    lazy var resultsTV: ResultsTableView = {
-        let resultsTV = ResultsTableView(frame: self.bounds, style: .plain)
+    lazy var resultsTV: BookTableView = {
+        let resultsTV = BookTableView(frame: self.bounds, style: .plain)
         resultsTV.backgroundColor = .clear
         resultsTV.translatesAutoresizingMaskIntoConstraints = false
         return resultsTV
