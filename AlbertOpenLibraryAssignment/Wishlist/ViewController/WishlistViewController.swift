@@ -33,7 +33,7 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
         super.viewDidLoad()
         
         resultsTV.getCellImage = { id in
-            return self.viewModel.getImage(forID: id)
+            return self.viewModel.getImage(forCoverID: id)
         }
         resultsTV.pushDetailView = { data in
             // todo handle data

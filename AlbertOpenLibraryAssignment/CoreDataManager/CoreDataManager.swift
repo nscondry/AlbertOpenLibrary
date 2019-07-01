@@ -11,16 +11,20 @@ import UIKit
 import CoreData
 
 protocol CoreDataManagerProtocol {
-    
+    var getImageFromURL: ((URL)->(UIImage?))? { get set }
+    var setFavoriteBooks: (([BookData])->())? { get set }
     
     func setFavoriteBook(_ data: BookData)
     func deleteFavoriteBook(_ data: BookData)
+    func retrieveFavoriteBooks(_ completion: @escaping(()->()))
     func getFavoriteKeys() -> [String]
+    func getImage(forCoverID id: Int) -> UIImage?
 }
 
-class CoreDataManager {
+class CoreDataManager: CoreDataManagerProtocol {
     
     var getImageFromURL: ((URL)->(UIImage?))?
+    var setFavoriteBooks: (([BookData])->())?
     
     private var managedContext: NSManagedObjectContext? {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -102,7 +106,22 @@ class CoreDataManager {
         catch {
             NSLog("\(error)")
         }
+    }
+    
+    func retrieveFavoriteBooks(_ completion: @escaping(()->())) {
         
+        guard let managedContext = managedContext else { return }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteBook")
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            let bookData = (result as! [NSManagedObject]).map { BookData(fromManagedObject: $0) }
+            setFavoriteBooks?(bookData)
+            completion()
+        } catch {
+            NSLog("\(error)")
+        }
     }
     
     func getFavoriteKeys() -> [String] {
@@ -123,6 +142,28 @@ class CoreDataManager {
         }
         
         return favoriteKeys
+    }
+    
+    func getImage(forCoverID id: Int) -> UIImage? {
+        
+        guard let managedContext = managedContext else { return nil }
+        
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "FavoriteBook")
+        fetchRequest.predicate = NSPredicate(format: "coverID == \(id)")
+        
+        do {
+            let books = try managedContext.fetch(fetchRequest)
+            let book = books[0] as! NSManagedObject
+            if let imageData = book.value(forKey: "coverImage") as? NSData {
+                return UIImage(data: imageData as Data, scale: 1.0)
+            } else {
+                return nil
+            }
+        }
+        catch {
+            NSLog("\(error)")
+            return nil
+        }
     }
     
 }

@@ -11,63 +11,24 @@ import CoreData
 
 protocol WishlistViewModelProtocol {
     func retrieveFavoriteBooks(_ completion: @escaping(([BookData]?)->()))
-    func getImage(forID id: Int) -> UIImage?
+    func getImage(forCoverID id: Int) -> UIImage?
 }
 
 class WishlistViewModel: WishlistViewModelProtocol {
     
-    var favoriteBooksSet: (([BookData])->())?
-    
     private var model: WishlistModel!
-    
-    private var managedContext: NSManagedObjectContext? {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            return appDelegate.persistentContainer.viewContext
-        } else {
-            NSLog("[WishlistViewModel] Error retrieving managedContext")
-            return nil
-        }
-    }
     
     init() {
         self.model = WishlistModel()
     }
     
     func retrieveFavoriteBooks(_ completion: @escaping(([BookData]?)->())) {
-        
-        guard let managedContext = managedContext else { return }
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoriteBook")
-        
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            let bookData = (result as! [NSManagedObject]).map { BookData(fromManagedObject: $0) }
-            self.model.setFavoriteBooks(bookData)
-            completion(self.model.getFavoriteBooks())
-        } catch {
-            NSLog("\(error)")
+        model.retrieveFavoriteBooks() { data in
+            completion(data)
         }
     }
     
-    func getImage(forID id: Int) -> UIImage? {
-        
-        guard let managedContext = managedContext else { return nil }
-        
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "FavoriteBook")
-        fetchRequest.predicate = NSPredicate(format: "coverID == \(id)")
-        
-        do {
-            let books = try managedContext.fetch(fetchRequest)
-            let book = books[0] as! NSManagedObject
-            if let imageData = book.value(forKey: "coverImage") as? NSData {
-                return UIImage(data: imageData as Data, scale: 1.0)
-            } else {
-                return nil
-            }
-        }
-        catch {
-            NSLog("\(error)")
-            return nil
-        }
+    func getImage(forCoverID id: Int) -> UIImage? {
+        return model.getImage(forCoverID: id)
     }
 }

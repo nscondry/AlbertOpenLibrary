@@ -13,11 +13,30 @@ class WishlistModel {
     
     private var favoriteBooks: [BookData]?
     
+    private var dataManager: CoreDataManager!
+    
+    init() {
+        self.dataManager = CoreDataManager()
+        dataManager.setFavoriteBooks = { books in
+            self.setFavoriteBooks(books)
+        }
+    }
+    
     func setFavoriteBooks(_ bookData: [BookData]) {
         favoriteBooks = bookData
     }
     
     func getFavoriteBooks() -> [BookData] {
         return favoriteBooks ?? []
+    }
+    
+    func retrieveFavoriteBooks(completion: @escaping(([BookData]?)->()))  {
+        dataManager.retrieveFavoriteBooks {
+            completion(self.favoriteBooks)
+        }
+    }
+    
+    func getImage(forCoverID id: Int) -> UIImage? {
+        return dataManager.getImage(forCoverID: id)
     }
 }

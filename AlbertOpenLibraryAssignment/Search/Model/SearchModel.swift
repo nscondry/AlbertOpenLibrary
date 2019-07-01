@@ -78,6 +78,7 @@ class SearchModel {
     
     private var searchResults: [BookData]?
     private var imageCache = NSCache<AnyObject, AnyObject>()
+    
     private var dataManager: CoreDataManager!
     
     init() {
