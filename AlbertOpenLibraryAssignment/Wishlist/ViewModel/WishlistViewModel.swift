@@ -12,6 +12,7 @@ import CoreData
 protocol WishlistViewModelProtocol {
     func getFavoriteBooks() -> [BookData]
     func getImage(forCoverID id: Int) -> UIImage?
+    func deleteFavoriteBook(_ data: BookData)
 }
 
 class WishlistViewModel: WishlistViewModelProtocol {
@@ -28,5 +29,9 @@ class WishlistViewModel: WishlistViewModelProtocol {
     
     func getImage(forCoverID id: Int) -> UIImage? {
         return model.getImage(forCoverID: id)
+    }
+    
+    func deleteFavoriteBook(_ data: BookData) {
+        model.deleteFavoriteBook(data)
     }
 }

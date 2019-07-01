@@ -151,8 +151,7 @@ class CoreDataManager: CoreDataManagerProtocol {
         
         do {
             let books = try managedContext.fetch(fetchRequest)
-            let book = books[0] as! NSManagedObject
-            if let imageData = book.value(forKey: "coverImage") as? NSData {
+            if let book = books[0] as? NSManagedObject, let imageData = book.value(forKey: "coverImage") as? NSData {
                 return UIImage(data: imageData as Data, scale: 1.0)
             } else {
                 return nil

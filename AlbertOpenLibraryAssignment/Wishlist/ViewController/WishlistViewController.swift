@@ -39,6 +39,12 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
             // todo handle data
             self.pushViewController?(self, .detail, data)
         }
+        resultsTV.toggleFavorite = { data, isFavorite in
+            guard !isFavorite else { return }
+            self.viewModel.deleteFavoriteBook(data)
+            self.refreshFavoriteBooks()
+        }
+        
         self.view = resultsTV
 
         viewModel = WishlistViewModel()
@@ -52,6 +58,17 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
         super.viewWillAppear(animated)
         
         // refresh retrieved books, update if changed
+        refreshFavoriteBooks()
+        
+        // reveal tabBar
+        self.tabBarController?.tabBar.isHidden = false
+        
+        // enforce largeTitleMode
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func refreshFavoriteBooks() {
+        // refresh retrieved books, update if changed
         let favoriteBooks = viewModel.getFavoriteBooks()
         guard favoriteBooks != self.resultsTV.results else { return }
         
@@ -60,11 +77,5 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
             self.resultsTV.favoriteKeys.append(key)
         }
         self.resultsTV.results = favoriteBooks
-        
-        // reveal tabBar
-        self.tabBarController?.tabBar.isHidden = false
-        
-        // enforce largeTitleMode
-        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
 }

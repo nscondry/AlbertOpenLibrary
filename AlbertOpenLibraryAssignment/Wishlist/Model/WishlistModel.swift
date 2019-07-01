@@ -12,6 +12,7 @@ import UIKit
 protocol WishlistModelProtocol {
     func getFavoriteBooks() -> [BookData]
     func getImage(forCoverID id: Int) -> UIImage?
+    func deleteFavoriteBook(_ data: BookData)
 }
 
 class WishlistModel {
@@ -28,5 +29,9 @@ class WishlistModel {
     
     func getImage(forCoverID id: Int) -> UIImage? {
         return dataManager.getImage(forCoverID: id)
+    }
+    
+    func deleteFavoriteBook(_ data: BookData) {
+        dataManager.deleteFavoriteBook(data)
     }
 }

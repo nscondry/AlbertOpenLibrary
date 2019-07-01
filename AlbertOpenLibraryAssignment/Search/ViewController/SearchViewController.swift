@@ -27,11 +27,17 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
         super.viewDidLoad()
         
         viewModel = SearchViewModel()
-        // testing; deleteMe
+        
+        //
+        // MARK: - DELETE ME WHEN DONE TESTING
+        //
         viewModel.searchBooks("o")
         viewModel.searchComplete = { results in
             if let results = results { self.searchView.results = results }
         }
+        //
+        // ^^^^^^^DONT FORGET
+        //
 
         searchView = SearchView(frame: UIScreen.main.bounds)
         searchView.getCellImage = { coverID in
@@ -75,7 +81,10 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // reset saved favorites in case they changed
-        searchView.resultsTV.favoriteKeys = self.viewModel.getFavoriteKeys()
+        if searchView.resultsTV.favoriteKeys != self.viewModel.getFavoriteKeys() {
+            searchView.resultsTV.favoriteKeys = self.viewModel.getFavoriteKeys()
+            searchView.resultsTV.reloadData()
+        }
         
         // reveal tabBar
         self.tabBarController?.tabBar.isHidden = false
