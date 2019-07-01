@@ -41,8 +41,7 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
         }
         resultsTV.toggleFavorite = { data, isFavorite in
             guard !isFavorite else { return }
-            self.viewModel.deleteFavoriteBook(data)
-            self.refreshFavoriteBooks()
+            self.showDeleteAlert(forBookData: data)
         }
         
         self.view = resultsTV
@@ -77,5 +76,29 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
             self.resultsTV.favoriteKeys.append(key)
         }
         self.resultsTV.results = favoriteBooks
+    }
+    
+    private func showDeleteAlert(forBookData data: BookData) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let delete = UIAlertAction(title: "Remove from wishlist", style: .destructive) { (action) in
+            self.viewModel.deleteFavoriteBook(data)
+            self.refreshFavoriteBooks()
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            // reset heartIcon & dismiss alert
+            self.resultsTV.setFavorite(forBooData: data)
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true, completion: nil)
+        
+        // this produces a constraint conflict
+        // the conflict is a known bug http://openradar.appspot.com/49289931
+        // code below should silence the constraint conflict alert
+        alert.view.subviews.flatMap({$0.constraints}).filter{ (one: NSLayoutConstraint)-> (Bool)  in
+            return (one.constant < 0) && (one.secondItem == nil) &&  (one.firstAttribute == .width)
+            }.first?.isActive = false
     }
 }

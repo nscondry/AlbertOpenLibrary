@@ -12,21 +12,17 @@ class ResultsTableViewCell: UITableViewCell {
     
     var toggleFavorite: ((Bool)->())?
     
+    var data: BookData! {
+        didSet {
+            if let title = data.title { titleLabel.text = title }
+            
+            authorLabel.text = data.authorName?.joined(separator: ", ") ?? defaultAuthorName
+        }
+    }
+    
     var cover: UIImage? {
         didSet {
             coverImage?.image = cover
-        }
-    }
-    
-    var title: String! {
-        didSet {
-            titleLabel.text = title
-        }
-    }
-    
-    var authors: [String]! {
-        didSet {
-            authorLabel.text = authors.joined(separator: ", ")
         }
     }
     
@@ -36,10 +32,11 @@ class ResultsTableViewCell: UITableViewCell {
         }
     }
     
-    var key: String?
-    var coverID: Int?
+    var key: String? { return data.key }
+    var coverID: Int? { return data.coverI }
     
-    var defaultImage: UIImage = UIImage(named: "defaultCoverImage")!
+    private var defaultImage: UIImage = UIImage(named: "defaultCoverImage")!
+    private var defaultAuthorName: String =  "Unknown Author"
     
     private var coverImage: UIImageView!
     private var titleLabel: UILabel!
@@ -69,7 +66,6 @@ class ResultsTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         coverImage.image = defaultImage
-        self.coverID = nil
     }
     
     private func addSubviews() {

@@ -45,6 +45,13 @@ class ResultsTableView: UITableView {
             cell.cover = coverImage
         }
     }
+    
+    func setFavorite(forBooData data: BookData) {
+        visibleCells.forEach { cell in
+            guard let cell = cell as? ResultsTableViewCell, cell.data == data else { return }
+            cell.isFavorite = true
+        }
+    }
 }
 
 extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
@@ -56,10 +63,7 @@ extension ResultsTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell") as! ResultsTableViewCell
         
-        cell.title = results[indexPath.row].title!
-        cell.authors = results[indexPath.row].authorName ?? ["Unknown Author"] // move to constant: defaultAuthorName
-        cell.coverID = results[indexPath.row].coverI
-        cell.key = results[indexPath.row].key
+        cell.data = results[indexPath.row]
         cell.isFavorite = favoriteKeys.contains(cell.key ?? "")
         
         cell.toggleFavorite = { isFavorite in
