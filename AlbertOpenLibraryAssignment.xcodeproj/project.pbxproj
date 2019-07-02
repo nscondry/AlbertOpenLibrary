@@ -40,6 +40,7 @@
 		01A13D3622CAD6700066A994 /* BrowseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D3522CAD6700066A994 /* BrowseModel.swift */; };
 		01A13D3822CAD7AE0066A994 /* BrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D3722CAD7AE0066A994 /* BrowseViewModel.swift */; };
 		01A13D3C22CC06440066A994 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D3B22CC06440066A994 /* ShadowView.swift */; };
+		01A13D3E22CC1F680066A994 /* BookTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D3D22CC1F680066A994 /* BookTableFooterView.swift */; };
 		B229341912BDE94136DE8606 /* Pods_AlbertOpenLibraryAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8097E95395299BF92E33C6 /* Pods_AlbertOpenLibraryAssignment.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		01A13D3522CAD6700066A994 /* BrowseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseModel.swift; sourceTree = "<group>"; };
 		01A13D3722CAD7AE0066A994 /* BrowseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewModel.swift; sourceTree = "<group>"; };
 		01A13D3B22CC06440066A994 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		01A13D3D22CC1F680066A994 /* BookTableFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookTableFooterView.swift; sourceTree = "<group>"; };
 		0C8097E95395299BF92E33C6 /* Pods_AlbertOpenLibraryAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlbertOpenLibraryAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D46B8D43D8CB64F30374621 /* Pods-AlbertOpenLibraryAssignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlbertOpenLibraryAssignment.debug.xcconfig"; path = "Target Support Files/Pods-AlbertOpenLibraryAssignment/Pods-AlbertOpenLibraryAssignment.debug.xcconfig"; sourceTree = "<group>"; };
 		D32387082F3B24926D525F7F /* Pods-AlbertOpenLibraryAssignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlbertOpenLibraryAssignment.release.xcconfig"; path = "Target Support Files/Pods-AlbertOpenLibraryAssignment/Pods-AlbertOpenLibraryAssignment.release.xcconfig"; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			children = (
 				01382D0022C5AEA50091B51B /* BookTableView.swift */,
 				01382D0322C5AEBF0091B51B /* BookTableViewCell.swift */,
+				01A13D3D22CC1F680066A994 /* BookTableFooterView.swift */,
 			);
 			path = BookTV;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				0100B14822C5B5C3003BB001 /* Extensions.swift in Sources */,
 				0100B17822C95C3E003BB001 /* BookDetailView.swift in Sources */,
 				01A13D2B22CAD02D0066A994 /* BrowseViewController.swift in Sources */,
+				01A13D3E22CC1F680066A994 /* BookTableFooterView.swift in Sources */,
 				0100B16E22C6F710003BB001 /* WishlistViewModel.swift in Sources */,
 				01382CF622C57CDC0091B51B /* SearchView.swift in Sources */,
 				01382CBA22C56F260091B51B /* AlbertOpenLibraryAssignment.xcdatamodeld in Sources */,

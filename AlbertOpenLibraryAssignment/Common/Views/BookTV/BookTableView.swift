@@ -21,13 +21,17 @@ class BookTableView: UITableView {
     }
     
     var favoriteKeys: [String] = [] // tracks selection status
-    private var cellCount: Int = 10
+    private var cellCount: Int = 10 {
+        didSet {
+            reloadData()
+        }
+    }
 
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         
-        self.separatorColor = .clear
-        self.showsVerticalScrollIndicator = false
+        separatorColor = .clear
+        showsVerticalScrollIndicator = false
         
         delegate = self
         dataSource = self
@@ -50,6 +54,12 @@ class BookTableView: UITableView {
         visibleCells.forEach { cell in
             guard let cell = cell as? BookTableViewCell, cell.data == data else { return }
             cell.isFavorite = true
+        }
+    }
+    
+    private func loadMoreResults() {
+        if results.count > cellCount {
+            cellCount = cellCount + 10
         }
     }
 }
@@ -93,5 +103,29 @@ extension BookTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // push bookDetailViewController for selected bookData
         self.presentDetailView?(results[indexPath.row])
+    }
+    
+    //
+    // MARK: - Footer functions
+    //
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = BookTableFooterView()
+        if results.count > cellCount {
+            footer.label.text = "Load more rows..."
+            footer.loadMoreResults = self.loadMoreResults
+            return footer
+        } else if results.count == 0 {
+            footer.label.text = "No results..."
+            footer.label.textColor = .lightGray
+            return footer
+        } else {
+            footer.label.text = nil
+            return footer
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return Constants.buttonHeight
     }
 }

@@ -55,7 +55,7 @@ class SearchView: UIView {
     }()
     
     lazy var resultsTV: BookTableView = {
-        let resultsTV = BookTableView(frame: self.bounds, style: .plain)
+        let resultsTV = BookTableView(frame: self.bounds, style: .grouped)
         resultsTV.backgroundColor = .white
         resultsTV.translatesAutoresizingMaskIntoConstraints = false
         
