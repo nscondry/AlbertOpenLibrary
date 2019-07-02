@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol BrowseViewModelProtocol {
+    func browseBooks(_ subject: String)
+}
+
 class BrowseViewModel: SearchViewModel {
     
     var browseComplete: (([BrowsedBookData])->())?

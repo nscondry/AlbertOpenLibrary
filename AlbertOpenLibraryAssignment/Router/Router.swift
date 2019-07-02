@@ -17,15 +17,11 @@ enum LibraryViewControllers {
 }
 
 protocol RouterDelegateProtocol: class {
-    var pushViewController: ((UIViewController, LibraryViewControllers, Any?)->())? { get set }
-    var popViewController: ((UIViewController, Any?)->())? { get set }
     var presentViewController: ((UIViewController, LibraryViewControllers, Any?)->())? { get set }
 }
 
 extension RouterDelegateProtocol {
     // makes variables optional in the protocol
-    var pushViewController: ((UIViewController, LibraryViewControllers, Any?)->())? { get { return pushViewController } set {} }
-    var popViewController: ((UIViewController, Any?)->())? { get { return popViewController } set {} }
     var presentViewController: ((UIViewController, LibraryViewControllers, Any?)->())? { get { return presentViewController } set {} }
 }
 
@@ -35,7 +31,7 @@ class Router: NSObject {
     
     private var window: UIWindow?
     private var tabBarController: UITabBarController!
-    private var searchNav: UINavigationController!
+    private var browseNav: UINavigationController!
     private var wishNav: UINavigationController!
     
     required init(_ window: UIWindow) {
@@ -44,10 +40,10 @@ class Router: NSObject {
         self.window = window
         
         // set up: navControllers
-        let searchVC = loadViewController(.browse) as! BrowseViewController
-        searchVC.tabBarItem = UITabBarItem(title: "Browse", image: UIImage(named: "searchIcon"), selectedImage: UIImage(named: "searchIcon_selected"))
-        searchVC.tabBarItem.tag = 0
-        searchNav = UINavigationController(rootViewController: searchVC)
+        let browseVC = loadViewController(.browse) as! BrowseViewController
+        browseVC.tabBarItem = UITabBarItem(title: "Browse", image: UIImage(named: "searchIcon"), selectedImage: UIImage(named: "searchIcon_selected"))
+        browseVC.tabBarItem.tag = 0
+        browseNav = UINavigationController(rootViewController: browseVC)
         
         let wishVC = loadViewController(.wishlist) as! WishlistViewController
         wishVC.tabBarItem = UITabBarItem(title: "Wishlist", image: UIImage(named: "wishlistIcon"), selectedImage: UIImage(named: "wishlistIcon_selected"))
@@ -56,7 +52,7 @@ class Router: NSObject {
         
         // set up: tabController
         tabBarController = UITabBarController()
-        tabBarController.viewControllers = [searchNav, wishNav]
+        tabBarController.viewControllers = [browseNav, wishNav]
         tabBarController.selectedIndex = 0
         tabBarController.tabBar.isTranslucent = false
         
@@ -84,30 +80,6 @@ class Router: NSObject {
         sender.present(vc, animated: true, completion: nil)
     }
     
-    private func pushViewController(_ sender: UIViewController, _ toVC: LibraryViewControllers, data: Any?) {
-        // handle data when necessary
-        let vc = loadViewController(toVC)
-        
-        if let data = data as? BookData, let vc = vc as? BookDetailViewController {
-            vc.data = data
-        }
-        
-        if let nav = sender.navigationController {
-            nav.pushViewController(vc, animated: true)
-        } else {
-            NSLog("[Router] Error: failed to push view controller")
-        }
-    }
-    
-    private func popViewController(_ sender: UIViewController,_ data: Any?) {
-        // handle data passback when necessary
-        if let nav = sender.navigationController {
-            nav.popViewController(animated: true)
-        } else {
-            NSLog("[Router] Error: failed to pop view controller")
-        }
-    }
-    
     private func loadViewController(_ viewController: LibraryViewControllers) -> UIViewController {
         let vc: UIViewController!
         switch viewController {
@@ -121,8 +93,6 @@ class Router: NSObject {
             vc = BrowseViewController()
         }
         if let vc = vc as? RouterDelegateProtocol {
-            vc.pushViewController = self.pushViewController
-            vc.popViewController = self.popViewController
             vc.presentViewController = self.presentViewController
         }
         return vc

@@ -99,6 +99,16 @@ extension BookData: Equatable {
     }
 }
 
+protocol SearchModelProtocol {
+    func setSearchResultData(_ results: [BookData])
+    func getSearchResultData() -> [BookData]?
+    func cacheImage(_ image: UIImage, _ url: URL)
+    func getImage(_ url: URL) -> UIImage?
+    func setFavoriteBook(_ data: BookData)
+    func deleteFavoriteBook(_ data: BookData)
+    func getFavoriteKeys() -> [String]
+}
+
 class SearchModel {
     
     private var searchResults: [BookData]?

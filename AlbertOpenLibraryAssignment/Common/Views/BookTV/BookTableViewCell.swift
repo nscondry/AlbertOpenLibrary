@@ -42,6 +42,7 @@ class BookTableViewCell: UITableViewCell {
     private var authorLabel: UILabel!
     private var labelStack: UIStackView!
     private var heartIcon: UIImageView!
+    private var moreIcon: UIImageView!
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -51,6 +52,7 @@ class BookTableViewCell: UITableViewCell {
         authorLabel = UILabel()
         labelStack = UIStackView(arrangedSubviews: [titleLabel, authorLabel])
         heartIcon = UIImageView()
+        moreIcon = UIImageView()
         
         addSubviews()
         formatSubviews()
@@ -71,6 +73,7 @@ class BookTableViewCell: UITableViewCell {
         addSubview(coverImage)
         addSubview(labelStack)
         addSubview(heartIcon)
+        addSubview(moreIcon)
     }
     
     private func formatSubviews() {
@@ -103,6 +106,10 @@ class BookTableViewCell: UITableViewCell {
         heartIcon.isUserInteractionEnabled = true
         heartIcon.image = UIImage(named: "favoriteIcon")
         heartIcon.contentMode = .scaleAspectFit
+        
+        // moreIcon
+        moreIcon.image = UIImage(named: "moreIcon")
+        moreIcon.contentMode = .scaleAspectFit
     }
     
     private func addSubviewConstraints() {
@@ -122,10 +129,17 @@ class BookTableViewCell: UITableViewCell {
         
         // heartIcon
         heartIcon.translatesAutoresizingMaskIntoConstraints = false
-        heartIcon.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        heartIcon.trailingAnchor.constraint(equalTo: moreIcon.leadingAnchor, constant: -20).isActive = true
         heartIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         heartIcon.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: pow(0.618, 2.5)).isActive = true
         heartIcon.widthAnchor.constraint(equalTo: heartIcon.heightAnchor).isActive = true
+        
+        // moreIcon
+        moreIcon.translatesAutoresizingMaskIntoConstraints = false
+        moreIcon.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+        moreIcon.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        moreIcon.heightAnchor.constraint(equalTo: heartIcon.heightAnchor, multiplier: pow(0.618, 2)).isActive = true
+        moreIcon.widthAnchor.constraint(equalTo: moreIcon.heightAnchor).isActive = true
     }
     
     private func addSubviewFunctions() {

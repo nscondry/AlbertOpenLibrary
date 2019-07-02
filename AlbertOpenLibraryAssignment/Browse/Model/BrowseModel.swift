@@ -15,6 +15,7 @@ struct BrowseResults: Codable {
 
 struct BrowsedBookData: Codable {
     // different struct than browse data due to different API variable names
+    // BookData can be initialized with BrowsedBookData
     
     var coverId: Int?
     var hasFulltext: Bool?
@@ -29,7 +30,12 @@ struct Author: Codable {
     var name: String?
 }
 
-class BrowseModel: SearchModel {
+protocol BrowseModelProtocol {
+    func setBrowseResultData(_ results: [BrowsedBookData])
+    func getBrowseResultData() -> [BrowsedBookData]
+}
+
+class BrowseModel: SearchModel, BrowseModelProtocol {
     
     private var browseResults: [BrowsedBookData]?
     
