@@ -35,18 +35,19 @@ class SearchView: UIView {
         search.placeholder = "Search open library"
         search.translatesAutoresizingMaskIntoConstraints = false
         search.backgroundColor = .white
-        search.barTintColor = .white
-        search.tintColor = Colors.customRed
+        search.barTintColor = Colors.backgroundRed
+        search.tintColor = .white
         
         // format textField
         search.subviews.first?.subviews.forEach { view in
             if let textField = view as? UITextField {
                 textField.backgroundColor = Colors.veryLightGray
-                textField.textColor = .black
+                textField.textColor = .darkGray
+                textField.tintColor = .darkGray
             }
         }
-
-        let cancelButtonAttributes = [NSAttributedStringKey.foregroundColor: Colors.customRed]
+        
+        let cancelButtonAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         UIBarButtonItem.appearance().setTitleTextAttributes(cancelButtonAttributes , for: .normal)
         
         return search
@@ -65,7 +66,7 @@ class SearchView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.backgroundColor = Colors.backgroundRed
         
         resultsTV.getCellImage = { coverID in
             self.getCellImage?(coverID)
