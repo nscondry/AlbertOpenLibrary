@@ -17,6 +17,7 @@ class BrowseView: UIView {
     
     var bookCV: BookCollectionView!
     private var subjectCV: SubjectCollectionView!
+    private var subjectCVTopAnchor: NSLayoutConstraint!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +35,9 @@ class BrowseView: UIView {
         }
         bookCV.presentDetailView = { data in
             self.presentDetailView?(data)
+        }
+        bookCV.scrollViewScrolled = { diff in
+            self.scrollViewScrolled(diff)
         }
         
         addSubviews()
@@ -67,8 +71,14 @@ class BrowseView: UIView {
         // subjectCV
         subjectCV.translatesAutoresizingMaskIntoConstraints = false
         subjectCV.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        subjectCV.topAnchor.constraint(equalTo: guide.topAnchor, constant: 20).isActive = true
+        subjectCVTopAnchor = subjectCV.topAnchor.constraint(equalTo: guide.topAnchor, constant: 20)
+        subjectCVTopAnchor.isActive = true
         subjectCV.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
         subjectCV.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    private func scrollViewScrolled(_ diff: CGFloat) {
+        guard diff <= 0 else { subjectCVTopAnchor.constant = 20; return }
+        subjectCVTopAnchor.constant = 20 - diff
     }
 }

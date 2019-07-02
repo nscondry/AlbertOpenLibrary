@@ -12,6 +12,7 @@ class BookCollectionView: UICollectionView {
 
     var getCellImage: ((Int)->(UIImage?))?
     var presentDetailView: ((BrowsedBookData)->())?
+    var scrollViewScrolled: ((CGFloat)->())?
     
     var books: [BrowsedBookData]! = [] {
         didSet {
@@ -77,7 +78,7 @@ extension BookCollectionView: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.presentDetailView?(books[indexPath.row])
+        presentDetailView?(books[indexPath.row])
     }
     
     // get cover image once cell is displayed
@@ -85,5 +86,15 @@ extension BookCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         if let cell = cell as? BookCollectionViewCell {
             self.getCellImage?(cell.coverID)
         }
+    }
+    
+    //
+    // MARK: - ScrollViewDelegate functions
+    //
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // contentOffset.y = -230 at initial resting state
+        let diff: CGFloat = scrollView.contentOffset.y + 230
+        scrollViewScrolled?(diff)
     }
 }
