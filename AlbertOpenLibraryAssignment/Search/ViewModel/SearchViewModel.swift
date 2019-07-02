@@ -12,7 +12,6 @@ enum SearchTypes: String {
     case all
     case title
     case author
-    case subject
 }
 
 enum CoverImageSizes: String {

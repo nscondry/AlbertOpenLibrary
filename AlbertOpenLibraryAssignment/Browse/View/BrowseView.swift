@@ -13,6 +13,7 @@ class BrowseView: UIView {
     var getCellImage: ((Int)->(UIImage?))?
     var browseSubject: ((String)->())?
     var presentDetailView: ((BrowsedBookData)->())?
+    var presentSearchView: (()->())?
     
     var bookCV: BookCollectionView!
     private var containerScrollView: UIScrollView! // deleteMe
@@ -99,7 +100,7 @@ class BrowseView: UIView {
     }
     
     @objc private func searchTapped() {
-        print("searchTapped")
+        presentSearchView?()
     }
     
 }

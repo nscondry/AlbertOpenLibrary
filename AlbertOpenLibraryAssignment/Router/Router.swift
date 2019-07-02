@@ -80,11 +80,7 @@ class Router: NSObject {
             vc.data = BookData(fromBrowsedData: data)
         }
         
-        if let nav = sender.navigationController {
-            nav.present(vc, animated: true, completion: nil)
-        } else {
-            NSLog("[Router] Error: failed to present view controller")
-        }
+        sender.present(vc, animated: true, completion: nil)
     }
     
     private func pushViewController(_ sender: UIViewController, _ toVC: LibraryViewControllers, data: Any?) {

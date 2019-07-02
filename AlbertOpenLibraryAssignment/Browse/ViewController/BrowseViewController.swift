@@ -48,6 +48,9 @@ class BrowseViewController: UIViewController, RouterDelegateProtocol {
         browseView.presentDetailView = { data in
             self.presentViewController?(self, .detail, data)
         }
+        browseView.presentSearchView = {
+            self.presentViewController?(self, .search, nil)
+        }
         
         self.view = browseView
         

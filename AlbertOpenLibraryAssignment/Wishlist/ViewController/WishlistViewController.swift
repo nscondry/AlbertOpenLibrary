@@ -14,7 +14,7 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
     // MARK: - Router Delegate Protocol Functions
     //
     
-    var pushViewController: ((UIViewController, LibraryViewControllers, Any?) -> ())?
+    var presentViewController: ((UIViewController, LibraryViewControllers, Any?) -> ())?
     
     //
     // MARK: - View Controller Functions
@@ -35,9 +35,9 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
         resultsTV.getCellImage = { id in
             return self.viewModel.getImage(forCoverID: id)
         }
-        resultsTV.pushDetailView = { data in
+        resultsTV.presentDetailView = { data in
             // todo handle data
-            self.pushViewController?(self, .detail, data)
+            self.presentViewController?(self, .detail, data)
         }
         resultsTV.toggleFavorite = { data, isFavorite in
             guard !isFavorite else { return }

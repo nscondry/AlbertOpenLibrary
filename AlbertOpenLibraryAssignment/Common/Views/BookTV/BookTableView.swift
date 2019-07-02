@@ -12,7 +12,7 @@ class BookTableView: UITableView {
     
     var getCellImage: ((Int)->(UIImage?))?
     var toggleFavorite: ((BookData, Bool)->())?
-    var pushDetailView: ((BookData)->())?
+    var presentDetailView: ((BookData)->())?
     
     var results: [BookData]! = [] {
         didSet {
@@ -92,6 +92,6 @@ extension BookTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // push bookDetailViewController for selected bookData
-        self.pushDetailView?(results[indexPath.row])
+        self.presentDetailView?(results[indexPath.row])
     }
 }
