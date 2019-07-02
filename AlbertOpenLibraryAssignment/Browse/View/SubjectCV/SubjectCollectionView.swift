@@ -13,7 +13,7 @@ class SubjectCollectionView: UICollectionView {
 
     var browseSubject: ((String)->())?
     
-    var subjects: [String] = ["Art", "Fantasy", "Biographies", "Science", "Recipes", "Romance"]
+    var subjects: [String] = ["Art", "Fantasy", "Biographies", "Science", "Recipes", "Romance", "Religion", "Music", "Medicine", "Plays",  "History"]
     
     private var selectedRow: Int = 0
     
@@ -34,14 +34,6 @@ class SubjectCollectionView: UICollectionView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func scroll(toIndexPathPreservingLeftInset indexPath: IndexPath, animated: Bool) {
-        let layout = self.collectionViewLayout as! UICollectionViewFlowLayout
-        let sectionLeftInset = layout.sectionInset.left
-        if let attri = layout.layoutAttributesForItem(at: indexPath) {
-            self.setContentOffset(CGPoint(x: (attri.frame.origin.x - sectionLeftInset), y: 0), animated: animated)
-        }
     }
     
     func animateIn() {
@@ -88,7 +80,6 @@ extension SubjectCollectionView: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.scroll(toIndexPathPreservingLeftInset: indexPath, animated: true)
         selectedRow = indexPath.row
         indexPathsForVisibleItems.forEach { indexPath in
             if let cell = cellForItem(at: indexPath) as? SubjectCollectionViewCell {

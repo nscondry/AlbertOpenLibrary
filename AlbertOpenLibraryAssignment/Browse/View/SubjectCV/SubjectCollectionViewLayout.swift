@@ -9,15 +9,13 @@
 import UIKit
 
 class SubjectCollectionViewLayout: UICollectionViewFlowLayout {
-
-    private var cellWidth: CGFloat = 120
     
     override init() {
         super.init()
         
         // formatting
         self.scrollDirection = .horizontal
-        self.sectionInset = UIEdgeInsetsMake(0, 20, 0, UIScreen.main.bounds.width - 20 - cellWidth)
+        self.sectionInset = UIEdgeInsetsMake(0, 20, 0, 60)
         minimumLineSpacing = 15
     }
     
