@@ -22,7 +22,6 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
     
     private var viewModel: SearchViewModel!
     private var searchView: SearchView!
-    private var browseView: BrowseView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +59,7 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
         searchView.pushDetailView = { data in
             self.pushViewController?(self, .detail, data)
         }
-//        self.view = searchView
-        
-        browseView = BrowseView(frame: view.bounds)
-        self.view = browseView
+        self.view = searchView
         
         // set saved favorites
         searchView.resultsTV.favoriteKeys = self.viewModel.getFavoriteKeys()

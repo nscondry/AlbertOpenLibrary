@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 
 enum SearchTypes: String {
     case all
@@ -40,8 +39,9 @@ class SearchViewModel: SearchViewModelProtocol {
     // return bookData from completed search
     var searchComplete: (([BookData]?)->())?
     
+    // rest exposed so BrowseViewModel can access
+    var rest: RestManager!
     private var model: SearchModel!
-    private var rest: RestManager!
     private var searchType: SearchTypes! = .all
 
     init() {

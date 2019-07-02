@@ -13,6 +13,7 @@ enum LibraryViewControllers {
     case search
     case wishlist
     case detail
+    case browse
 }
 
 protocol RouterDelegateProtocol: class {
@@ -41,8 +42,8 @@ class Router: NSObject {
         self.window = window
         
         // set up: navControllers
-        let searchVC = loadViewController(.search) as! SearchViewController
-        searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "searchIcon"), selectedImage: UIImage(named: "searchIcon_selected"))
+        let searchVC = loadViewController(.browse) as! BrowseViewController
+        searchVC.tabBarItem = UITabBarItem(title: "Browse", image: UIImage(named: "searchIcon"), selectedImage: UIImage(named: "searchIcon_selected"))
         searchVC.tabBarItem.tag = 0
         searchNav = UINavigationController(rootViewController: searchVC)
         
@@ -99,6 +100,8 @@ class Router: NSObject {
             vc = WishlistViewController()
         case .detail:
             vc = BookDetailViewController()
+        case .browse:
+            vc = BrowseViewController()
         }
         if let vc = vc as? RouterDelegateProtocol {
             vc.pushViewController = self.pushViewController
