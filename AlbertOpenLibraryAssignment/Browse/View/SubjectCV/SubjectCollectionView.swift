@@ -56,10 +56,6 @@ extension SubjectCollectionView: UICollectionViewDataSource, UICollectionViewDel
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "subjectCell", for: indexPath) as! SubjectCollectionViewCell
         
-        cell.subject = subjects[indexPath.row]
-        cell.row = indexPath.row
-        cell.isActive = (selectedRow == indexPath.row)
-        
         // format
         cell.contentView.layer.backgroundColor = UIColor.white.cgColor
         cell.contentView.layer.cornerRadius = 15
@@ -71,6 +67,10 @@ extension SubjectCollectionView: UICollectionViewDataSource, UICollectionViewDel
         cell.layer.shadowRadius = 3
         cell.layer.shadowOpacity = 0.2
         cell.layer.masksToBounds = false
+        
+        cell.subject = subjects[indexPath.row]
+        cell.row = indexPath.row
+        cell.isActive = (selectedRow == indexPath.row)
         
         return cell
     }
