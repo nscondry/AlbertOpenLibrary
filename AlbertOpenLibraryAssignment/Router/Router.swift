@@ -58,6 +58,7 @@ class Router: NSObject {
         tabBarController = UITabBarController()
         tabBarController.viewControllers = [searchNav, wishNav]
         tabBarController.selectedIndex = 0
+        tabBarController.tabBar.isTranslucent = false
         
         // set rootVC
         self.window?.rootViewController = tabBarController

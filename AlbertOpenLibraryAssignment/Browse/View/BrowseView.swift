@@ -55,7 +55,7 @@ class BrowseView: UIView {
         
         // bookCV
         bookCV.backgroundColor = .clear
-        bookCV.contentInset = UIEdgeInsetsMake(90, 0, 20, 0) // 90 = subjectCVheight + 20px + 20px (padding)
+        bookCV.contentInset = UIEdgeInsetsMake(90, 0, 60, 0) // 90 = 50 (subjectCVheight) + 20px + 20px (padding)
     }
     
     private func addSubviewConstraints() {

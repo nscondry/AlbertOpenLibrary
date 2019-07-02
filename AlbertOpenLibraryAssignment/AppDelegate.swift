@@ -29,6 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // set tabBar attributes
         UITabBar.appearance().tintColor = UIColor.black.withAlphaComponent(0.8)
         UITabBar.appearance().backgroundColor = .white
+        UITabBar.appearance().tintColor = .darkGray
+        UITabBar.appearance().layer.borderWidth = 0.0
+        UITabBar.appearance().clipsToBounds = true
 
         return true
     }
