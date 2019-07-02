@@ -12,6 +12,7 @@ class BrowseView: UIView {
 
     var getCellImage: ((Int)->(UIImage?))?
     var browseSubject: ((String)->())?
+    var presentDetailView: ((BrowsedBookData)->())?
     
     var bookCV: BookCollectionView!
     private var containerScrollView: UIScrollView! // deleteMe
@@ -32,6 +33,9 @@ class BrowseView: UIView {
         bookCV = BookCollectionView(frame: CGRect.zero, collectionViewLayout: BookCollectionViewLayout())
         bookCV.getCellImage = { coverID in
             self.getCellImage?(coverID)
+        }
+        bookCV.presentDetailView = { data in
+            self.presentDetailView?(data)
         }
         
         addSubviews()

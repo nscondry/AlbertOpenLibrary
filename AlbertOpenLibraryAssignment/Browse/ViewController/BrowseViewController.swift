@@ -8,8 +8,18 @@
 
 import UIKit
 
-class BrowseViewController: UIViewController {
+class BrowseViewController: UIViewController, RouterDelegateProtocol {
+    
+    //
+    // MARK: - Router Delegate Protocol Functions
+    //
+    
+    var presentViewController: ((UIViewController, LibraryViewControllers, Any?) -> ())?
 
+    //
+    // MARK: - View Controller Functions
+    //
+    
     private var viewModel: BrowseViewModel!
     private var browseView: BrowseView!
     
@@ -35,12 +45,23 @@ class BrowseViewController: UIViewController {
         browseView.browseSubject = { subject in
             self.viewModel.browseBooks(subject.lowercased())
         }
+        browseView.presentDetailView = { data in
+            self.presentViewController?(self, .detail, data)
+        }
         
         self.view = browseView
         
         // navBar setup
         self.navigationItem.title = "Browse"
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // hide nav & reveal tabBar
+        self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
     
 

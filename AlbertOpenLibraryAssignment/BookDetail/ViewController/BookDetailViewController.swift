@@ -30,6 +30,7 @@ class BookDetailViewController: UIViewController, RouterDelegateProtocol {
                 }
             }
         }
+        detailView.dismissSelf = self.dismissSelf
         detailView.bookData = self.data
         self.view = detailView
         
@@ -46,17 +47,10 @@ class BookDetailViewController: UIViewController, RouterDelegateProtocol {
         
         // enforce smallTitleMode
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationBar.isHidden = false
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func dismissSelf() {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
 }

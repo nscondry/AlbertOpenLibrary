@@ -19,12 +19,14 @@ enum LibraryViewControllers {
 protocol RouterDelegateProtocol: class {
     var pushViewController: ((UIViewController, LibraryViewControllers, Any?)->())? { get set }
     var popViewController: ((UIViewController, Any?)->())? { get set }
+    var presentViewController: ((UIViewController, LibraryViewControllers, Any?)->())? { get set }
 }
 
 extension RouterDelegateProtocol {
     // makes variables optional in the protocol
     var pushViewController: ((UIViewController, LibraryViewControllers, Any?)->())? { get { return pushViewController } set {} }
     var popViewController: ((UIViewController, Any?)->())? { get { return popViewController } set {} }
+    var presentViewController: ((UIViewController, LibraryViewControllers, Any?)->())? { get { return presentViewController } set {} }
 }
 
 class Router: NSObject {
@@ -54,7 +56,6 @@ class Router: NSObject {
         
         // set up: tabController
         tabBarController = UITabBarController()
-        tabBarController.delegate = self
         tabBarController.viewControllers = [searchNav, wishNav]
         tabBarController.selectedIndex = 0
         
@@ -66,6 +67,25 @@ class Router: NSObject {
     //
     // MARK: - View Controller Functions
     //
+    
+    private func presentViewController(_ sender: UIViewController, toPresent: LibraryViewControllers, data: Any?) {
+        // handle data when necessary
+        let vc = loadViewController(toPresent)
+        
+        if let data = data as? BookData, let vc = vc as? BookDetailViewController {
+            vc.data = data
+        }
+        
+        if let data = data as? BrowsedBookData, let vc = vc as? BookDetailViewController {
+            vc.data = BookData(fromBrowsedData: data)
+        }
+        
+        if let nav = sender.navigationController {
+            nav.present(vc, animated: true, completion: nil)
+        } else {
+            NSLog("[Router] Error: failed to present view controller")
+        }
+    }
     
     private func pushViewController(_ sender: UIViewController, _ toVC: LibraryViewControllers, data: Any?) {
         // handle data when necessary
@@ -106,11 +126,8 @@ class Router: NSObject {
         if let vc = vc as? RouterDelegateProtocol {
             vc.pushViewController = self.pushViewController
             vc.popViewController = self.popViewController
+            vc.presentViewController = self.presentViewController
         }
         return vc
     }
-}
-
-extension Router: UITabBarControllerDelegate {
-    // to do
 }

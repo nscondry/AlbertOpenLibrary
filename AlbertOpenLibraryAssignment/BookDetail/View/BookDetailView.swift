@@ -11,6 +11,7 @@ import UIKit
 class BookDetailView: UIView {
 
     var getCoverImage: ((Int)->())?
+    var dismissSelf: (()->())?
     
     var bookData: BookData! {
         didSet {
@@ -47,6 +48,7 @@ class BookDetailView: UIView {
     
     var defaultImage: UIImage = UIImage(named: "defaultCoverImage")!
     
+    private var xButton: UIButton!
     private var coverImage: UIImageView!
     private var titleLabel: UILabel!
     private var authorLabel: UILabel!
@@ -60,6 +62,7 @@ class BookDetailView: UIView {
         
         self.backgroundColor = .white
         
+        xButton = UIButton()
         coverImage = UIImageView()
         titleLabel = UILabel()
         authorLabel = UILabel()
@@ -79,6 +82,7 @@ class BookDetailView: UIView {
     }
     
     private func addSubviews() {
+        addSubview(xButton)
         addSubview(coverImage)
         addSubview(titleLabel)
         addSubview(authorLabel)
@@ -89,6 +93,10 @@ class BookDetailView: UIView {
     }
     
     private func formatSubviews() {
+        // xButton
+        xButton.setImage(UIImage(named: "xIcon"), for: .normal)
+        xButton.contentMode = .scaleAspectFit
+        
         // coverImage
         coverImage.image = defaultImage
         coverImage.contentMode = .scaleAspectFill
@@ -135,6 +143,13 @@ class BookDetailView: UIView {
     }
     
     private func addSubviewConstraints() {
+        // xButton
+        xButton.translatesAutoresizingMaskIntoConstraints = false
+        xButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
+        xButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
+        xButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        xButton.widthAnchor.constraint(equalTo: xButton.heightAnchor).isActive = true
+        
         // coverImage
         coverImage.translatesAutoresizingMaskIntoConstraints = false
         coverImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -171,7 +186,13 @@ class BookDetailView: UIView {
     }
     
     private func addSubviewFunctions() {
+        xButton.addTarget(self, action: #selector(xTapped), for: .touchUpInside)
+        
         wishlistButton.addTarget(self, action: #selector(wishBtnTapped), for: .touchUpInside)
+    }
+    
+    @objc private func xTapped() {
+        self.dismissSelf?()
     }
     
     @objc private func wishBtnTapped() {

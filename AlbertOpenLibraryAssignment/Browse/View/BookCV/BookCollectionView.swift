@@ -11,7 +11,7 @@ import UIKit
 class BookCollectionView: UICollectionView {
 
     var getCellImage: ((Int)->(UIImage?))?
-    var pushDetailView: ((BrowsedBookData)->())?
+    var presentDetailView: ((BrowsedBookData)->())?
     
     var books: [BrowsedBookData]! = [] {
         didSet {
@@ -82,7 +82,7 @@ extension BookCollectionView: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected cell")
+        self.presentDetailView?(books[indexPath.row])
     }
     
     // get cover image once cell is displayed
