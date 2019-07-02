@@ -37,6 +37,7 @@ class SearchView: UIView {
         search.backgroundColor = .white
         search.barTintColor = Colors.backgroundRed
         search.tintColor = .white
+        search.isTranslucent = false
         
         // format textField
         search.subviews.first?.subviews.forEach { view in
