@@ -13,6 +13,7 @@ class BookDetailView: UIView {
 
     var getCoverImage: ((Int)->())?
     var dismissSelf: (()->())?
+    var toggleFavorite: ((BookData, Bool)->())?
     
     // bookData is set immediately
     var bookData: BookData! {
@@ -47,7 +48,17 @@ class BookDetailView: UIView {
         }
     }
     
-    var isFavorite: Bool!
+    var isFavorite: Bool! {
+        didSet {
+            if isFavorite {
+                wishlistButton.setTitle("Remove from wishlist", for: .normal)
+                wishlistButton.backgroundColor = Colors.customRed
+            } else {
+                wishlistButton.setTitle("Add to wishlist", for: .normal)
+                wishlistButton.backgroundColor = Colors.customGreen
+            }
+        }
+    }
     var defaultImage: UIImage = UIImage(named: "defaultCoverImage")!
     
     private var blurBackground: UIVisualEffectView!
@@ -242,7 +253,11 @@ class BookDetailView: UIView {
     }
     
     private func addSubviewFunctions() {
-        xButton.addTarget(self, action: #selector(xTapped), for: .touchUpInside)
+        xButton.addTarget(self, action: #selector(dismissTap), for: .touchUpInside)
+        
+        // also dismiss if user taps blurBackground -- makes it easy to select
+        let backgroundTap = UITapGestureRecognizer(target: self, action: #selector(dismissTap))
+        self.blurBackground.addGestureRecognizer(backgroundTap)
         
         wishlistButton.addTarget(self, action: #selector(wishBtnTapped), for: .touchUpInside)
     }
@@ -251,12 +266,14 @@ class BookDetailView: UIView {
     // MARK: - Button Actions
     //
     
-    @objc private func xTapped() {
+    @objc private func dismissTap() {
         self.dismissSelf?()
     }
     
     @objc private func wishBtnTapped() {
         wishlistButton.bounce()
+        isFavorite.toggle()
+        toggleFavorite?(bookData, isFavorite)
     }
     
     //
@@ -269,7 +286,7 @@ class BookDetailView: UIView {
         
         // animate card in, then views
         self.cardTopConstraint.constant = -cardShadow.bounds.height
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
             // animate card
             self.layoutIfNeeded()
         }) { (complete) in
@@ -281,7 +298,7 @@ class BookDetailView: UIView {
             self.coverImage.alpha = 1 // will inherit animation, but not alpha from coverShadow
             
             // animate views
-            UIView.animate(views: views, animations: [fromAnimation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, animationInterval: 0.1, duration: 0.5, options: .curveEaseInOut, completion: nil)
+            UIView.animate(views: views, animations: [fromAnimation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, animationInterval: 0.1, duration: 0.3, options: .curveEaseInOut, completion: nil)
         }
     }
 }

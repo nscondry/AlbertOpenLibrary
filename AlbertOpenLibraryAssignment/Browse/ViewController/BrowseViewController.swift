@@ -57,7 +57,7 @@ class BrowseViewController: UIViewController, RouterDelegateProtocol {
         self.navigationItem.title = "Browse: Art"
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.barTintColor = Colors.backgroundRed
+        self.navigationController?.navigationBar.barTintColor = Colors.customRed
         self.navigationController?.navigationBar.shadowImage = UIImage()
         extendedLayoutIncludesOpaqueBars = true
         

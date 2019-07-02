@@ -35,7 +35,7 @@ class SearchView: UIView {
         search.placeholder = "Search open library"
         search.translatesAutoresizingMaskIntoConstraints = false
         search.backgroundColor = .white
-        search.barTintColor = Colors.backgroundRed
+        search.barTintColor = Colors.customRed
         search.tintColor = .white
         search.isTranslucent = false
         
@@ -67,7 +67,7 @@ class SearchView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = Colors.backgroundRed
+        self.backgroundColor = Colors.customRed
         
         resultsTV.getCellImage = { coverID in
             self.getCellImage?(coverID)

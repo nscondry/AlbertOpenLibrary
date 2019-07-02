@@ -30,8 +30,16 @@ class BookDetailViewController: UIViewController, RouterDelegateProtocol {
                 }
             }
         }
+        detailView.toggleFavorite = { data, isFavorite in
+            if isFavorite {
+                self.viewModel.addFavoriteBook(data)
+            } else {
+                self.viewModel.deleteFavoriteBook(data)
+            }
+        }
         detailView.dismissSelf = self.dismissSelf
         detailView.bookData = self.data
+        detailView.isFavorite = viewModel.getFavoriteBooks().contains(self.data)
         self.view = detailView
         
         // navBar setup

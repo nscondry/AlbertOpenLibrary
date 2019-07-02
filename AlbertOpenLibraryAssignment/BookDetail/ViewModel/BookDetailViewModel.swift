@@ -12,6 +12,9 @@ import UIKit
 protocol BookDetailViewModelProtocol {
     func getCoverImage( id: Int, size: CoverImageSizes, completion: @escaping(_ coverImage: UIImage?)->())
     func retrieveCoverImage(fromURL url: URL, completion: @escaping(_ coverImage: UIImage)->())
+    func getFavoriteBooks() -> [BookData]
+    func addFavoriteBook(_ data: BookData)
+    func deleteFavoriteBook(_ data: BookData)
 }
 
 class BookDetailViewModel: BookDetailViewModelProtocol {
@@ -44,5 +47,17 @@ class BookDetailViewModel: BookDetailViewModelProtocol {
                 completion(coverImage)
             }
         }
+    }
+    
+    func getFavoriteBooks() -> [BookData]  {
+        return model.getFavoriteBooks()
+    }
+    
+    func addFavoriteBook(_ data: BookData) {
+        model.addFavoriteBook(data)
+    }
+    
+    func deleteFavoriteBook(_ data: BookData) {
+        model.deleteFavoriteBook(data)
     }
 }
