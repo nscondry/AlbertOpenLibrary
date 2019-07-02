@@ -26,7 +26,7 @@ class BrowseViewModel: SearchViewModel {
             if let data = response.data {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                guard let results = try? decoder.decode(BrowseResults.self, from: data) else { NSLog("[BrowseViewModel] Error: couldn't decode JSON"); return }
+                guard let results = try? decoder.decode(BrowseResults.self, from: data) else { return }
                 
                 // only display books that have covers
                 if let bookData = results.works?.filter({ $0.coverId != nil }) {

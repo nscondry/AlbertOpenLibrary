@@ -64,7 +64,7 @@ class SearchViewModel: SearchViewModelProtocol {
             if let data = response.data {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                guard let results = try? decoder.decode(SearchResults.self, from: data) else { NSLog("[SearchViewModel] Error: couldn't decode JSON"); return }
+                guard let results = try? decoder.decode(SearchResults.self, from: data) else { return }
                 
                 if let bookData = results.docs {
                     self.model.setSearchResultData(bookData)
