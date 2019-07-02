@@ -45,6 +45,7 @@ class BrowseViewController: UIViewController, RouterDelegateProtocol {
         }
         browseView.browseSubject = { subject in
             self.viewModel.browseBooks(subject.lowercased())
+            self.navigationItem.title = "Browse: \(subject)"
         }
         browseView.presentDetailView = { data in
             self.presentViewController?(self, .detail, data)
@@ -69,7 +70,8 @@ class BrowseViewController: UIViewController, RouterDelegateProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // reveal nav & reveal tabBar
+        // format nav & reveal tabBar
+        self.navigationItem.title = "Browse"
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.tabBarController?.tabBar.isHidden = false

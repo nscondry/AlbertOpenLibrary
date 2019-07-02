@@ -1,0 +1,6 @@
+framework module Pods_AlbertOpenLibraryAssignment {
+  umbrella header "Pods-AlbertOpenLibraryAssignment-umbrella.h"
+
+  export *
+  module * { export * }
+}

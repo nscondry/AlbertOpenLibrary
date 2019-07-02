@@ -14,6 +14,8 @@ class SubjectCollectionView: UICollectionView {
     
     var subjects: [String] = ["Art", "Fantasy", "Biographies", "Science", "Recipes", "Romance"]
     
+    private var selectedRow: Int = 0
+    
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         
@@ -39,7 +41,6 @@ class SubjectCollectionView: UICollectionView {
         let sectionLeftInset = layout.sectionInset.left
         if let attri = layout.layoutAttributesForItem(at: indexPath) {
             self.setContentOffset(CGPoint(x: (attri.frame.origin.x - sectionLeftInset), y: 0), animated: animated)
-            if let cell = cellForItem(at: indexPath) { cell.bounce() }
         }
     }
 }
@@ -55,7 +56,7 @@ extension SubjectCollectionView: UICollectionViewDataSource, UICollectionViewDel
         
         cell.subject = subjects[indexPath.row]
         cell.row = indexPath.row
-        cell.isActive = true
+        cell.isActive = (selectedRow == indexPath.row)
         
         // format
         cell.contentView.layer.backgroundColor = UIColor.white.cgColor
@@ -78,6 +79,12 @@ extension SubjectCollectionView: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.scroll(toIndexPathPreservingLeftInset: indexPath, animated: true)
+        selectedRow = indexPath.row
+        indexPathsForVisibleItems.forEach { indexPath in
+            if let cell = cellForItem(at: indexPath) as? SubjectCollectionViewCell {
+                cell.isActive = (selectedRow == indexPath.row)
+            }
+        }
         self.browseSubject?(subjects[indexPath.row])
     }
 }

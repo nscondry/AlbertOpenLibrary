@@ -18,7 +18,10 @@ class SubjectCollectionViewCell: UICollectionViewCell {
     
     var isActive: Bool! {
         didSet {
-            self.bounce()
+            contentView.backgroundColor = (isActive ? Colors.veryLightGray : UIColor.white)
+            UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 2, options: .allowUserInteraction, animations: {
+                self.transform = (self.isActive ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity)
+            }, completion: nil)
         }
     }
     
