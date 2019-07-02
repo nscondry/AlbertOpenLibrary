@@ -14,9 +14,19 @@ struct BrowseResults: Codable {
 }
 
 struct BrowsedBookData: Codable {
-    var title: String?
+    // different struct than browse data due to different API variable names
+    
     var coverId: Int?
+    var hasFulltext: Bool?
+    var editionCount: Int?
+    var title: String?
+    var authors: [Author]?
+    var firstPublishYear: Int?
     var key: String?
+}
+
+struct Author: Codable {
+    var name: String?
 }
 
 class BrowseModel: SearchModel {

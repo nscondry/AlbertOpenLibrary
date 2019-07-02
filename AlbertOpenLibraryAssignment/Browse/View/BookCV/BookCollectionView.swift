@@ -11,6 +11,7 @@ import UIKit
 class BookCollectionView: UICollectionView {
 
     var getCellImage: ((Int)->(UIImage?))?
+    var pushDetailView: ((BrowsedBookData)->())?
     
     var books: [BrowsedBookData]! = [] {
         didSet {
@@ -60,9 +61,10 @@ extension BookCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "bookCell", for: indexPath) as! BookCollectionViewCell
         
         cell.coverID = books[indexPath.row].coverId
+        cell.title = books[indexPath.row].title
         
         cell.contentView.layer.backgroundColor = UIColor.white.cgColor
-        cell.contentView.layer.cornerRadius = 5
+        cell.contentView.layer.cornerRadius = 15
         cell.contentView.layer.masksToBounds = true
         
         cell.layer.backgroundColor = UIColor.clear.cgColor
@@ -83,6 +85,7 @@ extension BookCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         print("selected cell")
     }
     
+    // get cover image once cell is displayed
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let cell = cell as? BookCollectionViewCell {
             self.getCellImage?(cell.coverID)

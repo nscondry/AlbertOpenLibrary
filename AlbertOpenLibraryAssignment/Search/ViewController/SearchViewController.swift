@@ -28,16 +28,16 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
         
         viewModel = SearchViewModel()
         
-        //
-        // MARK: - DELETE ME WHEN DONE TESTING
-        //
-        viewModel.searchBooks("o")
-        viewModel.searchComplete = { results in
-            if let results = results { self.searchView.results = results }
-        }
-        //
-        // ^^^^^^^DONT FORGET
-        //
+//        //
+//        // MARK: - DELETE ME WHEN DONE TESTING
+//        //
+//        viewModel.searchBooks("o")
+//        viewModel.searchComplete = { results in
+//            if let results = results { self.searchView.results = results }
+//        }
+//        //
+//        // ^^^^^^^DONT FORGET
+//        //
 
         searchView = SearchView(frame: UIScreen.main.bounds)
         searchView.getCellImage = { coverID in
@@ -75,6 +75,7 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
         search.searchBar.delegate = self
         search.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = search
+        search.isActive = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,6 +116,6 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.viewModel.searchBooks("o")
+        self.dismiss(animated: true, completion: nil)
     }
 }

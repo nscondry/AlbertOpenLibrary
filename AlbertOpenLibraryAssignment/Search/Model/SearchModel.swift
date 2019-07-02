@@ -59,6 +59,37 @@ struct BookData: Codable {
             self.key = key
         }
     }
+    
+    init(fromBrowsedData data: BrowsedBookData) {
+        
+        if let coverID = data.coverId {
+            self.coverI = coverID
+        }
+        
+        if let hasFullText = data.hasFulltext {
+            self.hasFulltext = hasFullText
+        }
+        
+        if let editionCount = data.editionCount {
+            self.editionCount = editionCount
+        }
+        
+        if let firstPublishYear = data.firstPublishYear {
+            self.firstPublishYear = firstPublishYear
+        }
+        
+        if let title = data.title {
+            self.title = title
+        }
+        
+        if let authors = data.authors {
+            self.authorName = authors.map({ $0.name ?? "Unknown Author" })
+        }
+        
+        if let key = data.key {
+            self.key = key
+        }
+    }
 }
 
 extension BookData: Equatable {

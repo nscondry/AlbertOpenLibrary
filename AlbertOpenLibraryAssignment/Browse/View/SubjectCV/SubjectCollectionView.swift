@@ -59,7 +59,7 @@ extension SubjectCollectionView: UICollectionViewDataSource, UICollectionViewDel
         
         // format
         cell.contentView.layer.backgroundColor = UIColor.white.cgColor
-        cell.contentView.layer.cornerRadius = 5
+        cell.contentView.layer.cornerRadius = 15
         cell.contentView.layer.masksToBounds = true
         
         cell.layer.backgroundColor = UIColor.clear.cgColor
