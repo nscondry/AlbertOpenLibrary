@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class BookCollectionView: UICollectionView {
 
@@ -16,7 +17,16 @@ class BookCollectionView: UICollectionView {
     
     var books: [BrowsedBookData]! = [] {
         didSet {
-            self.reloadData()
+            // set initialContentOffset once for use in resetting scrollView upon reload
+            if initialContentOffsetY == nil { initialContentOffsetY = contentOffset.y }
+            
+            // reload data and animate cells in
+            self.alpha = 0
+            UIView.animate(withDuration: 0, animations: {
+                self.reloadData()
+            }) { (complete) in
+                self.animateCells(true)
+            }
         }
     }
     
@@ -24,6 +34,8 @@ class BookCollectionView: UICollectionView {
         // 2 columns, 20 px padding in left, right, center (60 total)
         return (UIScreen.main.bounds.width - 60) / 2
     }
+    
+    private var initialContentOffsetY: CGFloat?
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -48,6 +60,22 @@ class BookCollectionView: UICollectionView {
         visibleCells.forEach { cell in
             guard let cell = cell as? BookCollectionViewCell, cell.coverID == id else { return }
             cell.cover = coverImage
+        }
+    }
+    
+    func animateCells(_ animateIn: Bool!) {
+        self.alpha = 1
+        let cells = indexPathsForVisibleItems
+            .sorted { $0.row < $1.row }
+            .map { cellForItem(at: $0) }
+            .compactMap { $0 }
+        let fromAnimation = AnimationType.from(direction: .bottom, offset: 30.0)
+        let initialAlpha: CGFloat = (animateIn ? 0 : 1)
+        let finalAlpha: CGFloat = (animateIn ? 1 : 0)
+        
+        UIView.animate(views: cells, animations: [fromAnimation], reversed: !animateIn, initialAlpha: initialAlpha, finalAlpha: finalAlpha, delay: 0, animationInterval: 0.1, duration: 0.5, options: .curveEaseInOut) {
+            guard let yOffset = self.initialContentOffsetY else { return }
+            if !animateIn { self.setContentOffset(CGPoint(x: 0, y: yOffset), animated: true) }
         }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class SubjectCollectionView: UICollectionView {
 
@@ -28,7 +29,6 @@ class SubjectCollectionView: UICollectionView {
         delegate = self
         dataSource = self
         
-        
         register(SubjectCollectionViewCell.self, forCellWithReuseIdentifier: "subjectCell")
     }
     
@@ -42,6 +42,16 @@ class SubjectCollectionView: UICollectionView {
         if let attri = layout.layoutAttributesForItem(at: indexPath) {
             self.setContentOffset(CGPoint(x: (attri.frame.origin.x - sectionLeftInset), y: 0), animated: animated)
         }
+    }
+    
+    func animateIn() {
+        self.alpha = 1
+        let cells = indexPathsForVisibleItems
+            .sorted { $0.row < $1.row }
+            .map { cellForItem(at: $0) }
+            .compactMap { $0 }
+        let fromAnimation = AnimationType.from(direction: .left, offset: 20.0)
+        UIView.animate(views: cells, animations: [fromAnimation])
     }
 }
 

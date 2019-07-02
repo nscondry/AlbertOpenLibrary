@@ -16,7 +16,7 @@ class BrowseView: UIView {
     var presentSearchView: (()->())?
     
     var bookCV: BookCollectionView!
-    private var subjectCV: SubjectCollectionView!
+    var subjectCV: SubjectCollectionView!
     private var subjectCVTopAnchor: NSLayoutConstraint!
     
     override init(frame: CGRect) {
@@ -27,6 +27,9 @@ class BrowseView: UIView {
         subjectCV = SubjectCollectionView(frame: CGRect.zero, collectionViewLayout: SubjectCollectionViewLayout())
         subjectCV.browseSubject = { subject in
             self.browseSubject?(subject)
+            
+            // animate old books out
+            self.bookCV.animateCells(false)
         }
         
         bookCV = BookCollectionView(frame: CGRect.zero, collectionViewLayout: BookCollectionViewLayout())

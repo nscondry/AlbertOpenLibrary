@@ -75,6 +75,17 @@ class BrowseViewController: UIViewController, RouterDelegateProtocol {
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.tabBarController?.tabBar.isHidden = false
+        
+        // animate collectionViews
+        browseView.subjectCV.animateIn()
+        browseView.bookCV.animateCells(true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // prepare collectionViews for animation
+        browseView.subjectCV.alpha = 0
     }
 
     @objc private func presentSearchVC() {
