@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,6 +39,7 @@
 		01A13D3422CAD5930066A994 /* BookCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D3322CAD5930066A994 /* BookCollectionViewLayout.swift */; };
 		01A13D3622CAD6700066A994 /* BrowseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D3522CAD6700066A994 /* BrowseModel.swift */; };
 		01A13D3822CAD7AE0066A994 /* BrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D3722CAD7AE0066A994 /* BrowseViewModel.swift */; };
+		01A13D3C22CC06440066A994 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A13D3B22CC06440066A994 /* ShadowView.swift */; };
 		B229341912BDE94136DE8606 /* Pods_AlbertOpenLibraryAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8097E95395299BF92E33C6 /* Pods_AlbertOpenLibraryAssignment.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		01A13D3322CAD5930066A994 /* BookCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCollectionViewLayout.swift; sourceTree = "<group>"; };
 		01A13D3522CAD6700066A994 /* BrowseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseModel.swift; sourceTree = "<group>"; };
 		01A13D3722CAD7AE0066A994 /* BrowseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewModel.swift; sourceTree = "<group>"; };
+		01A13D3B22CC06440066A994 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		0C8097E95395299BF92E33C6 /* Pods_AlbertOpenLibraryAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlbertOpenLibraryAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D46B8D43D8CB64F30374621 /* Pods-AlbertOpenLibraryAssignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlbertOpenLibraryAssignment.debug.xcconfig"; path = "Target Support Files/Pods-AlbertOpenLibraryAssignment/Pods-AlbertOpenLibraryAssignment.debug.xcconfig"; sourceTree = "<group>"; };
 		D32387082F3B24926D525F7F /* Pods-AlbertOpenLibraryAssignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlbertOpenLibraryAssignment.release.xcconfig"; path = "Target Support Files/Pods-AlbertOpenLibraryAssignment/Pods-AlbertOpenLibraryAssignment.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				01382D0222C5AEA90091B51B /* BookTV */,
+				01A13D3B22CC06440066A994 /* ShadowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -390,7 +393,6 @@
 				4D46B8D43D8CB64F30374621 /* Pods-AlbertOpenLibraryAssignment.debug.xcconfig */,
 				D32387082F3B24926D525F7F /* Pods-AlbertOpenLibraryAssignment.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -520,6 +522,7 @@
 				0100B17B22CA8548003BB001 /* Constants.swift in Sources */,
 				01382CFB22C58EAA0091B51B /* RestManager.swift in Sources */,
 				01A13D2022CAB1AA0066A994 /* SubjectCollectionView.swift in Sources */,
+				01A13D3C22CC06440066A994 /* ShadowView.swift in Sources */,
 				01382D0422C5AEBF0091B51B /* BookTableViewCell.swift in Sources */,
 				01382CF222C574F00091B51B /* WishlistViewController.swift in Sources */,
 				01A13D3022CAD5770066A994 /* BookCollectionView.swift in Sources */,

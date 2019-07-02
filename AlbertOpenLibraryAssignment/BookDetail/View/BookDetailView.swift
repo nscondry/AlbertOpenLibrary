@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import ViewAnimator
 
 class BookDetailView: UIView {
 
     var getCoverImage: ((Int)->())?
     var dismissSelf: (()->())?
     
+    // bookData is set immediately
     var bookData: BookData! {
         didSet {
             
@@ -38,6 +40,7 @@ class BookDetailView: UIView {
         }
     }
     
+    // cover is set asynchronously
     var cover: UIImage! {
         didSet {
             self.coverImage.image = cover
@@ -45,11 +48,15 @@ class BookDetailView: UIView {
     }
     
     var isFavorite: Bool!
-    
     var defaultImage: UIImage = UIImage(named: "defaultCoverImage")!
     
+    private var blurBackground: UIVisualEffectView!
+    private var cardBackground: UIView!
+    private var cardShadow: ShadowView!
+    private var cardTopConstraint: NSLayoutConstraint!
     private var xButton: UIButton!
     private var coverImage: UIImageView!
+    private var coverShadow: ShadowView!
     private var titleLabel: UILabel!
     private var authorLabel: UILabel!
     private var publishLabel: UILabel!
@@ -60,10 +67,14 @@ class BookDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .white
+        self.layer.contents = UIImage(named: "background")?.cgImage
         
+        blurBackground = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.extraLight))
+        cardBackground = UIView()
+        cardShadow = ShadowView(cardBackground)
         xButton = UIButton()
         coverImage = UIImageView()
+        coverShadow = ShadowView(coverImage)
         titleLabel = UILabel()
         authorLabel = UILabel()
         publishLabel = UILabel()
@@ -82,8 +93,10 @@ class BookDetailView: UIView {
     }
     
     private func addSubviews() {
+        addSubview(blurBackground)
+        addSubview(cardShadow)
         addSubview(xButton)
-        addSubview(coverImage)
+        addSubview(coverShadow)
         addSubview(titleLabel)
         addSubview(authorLabel)
         addSubview(publishLabel)
@@ -93,56 +106,92 @@ class BookDetailView: UIView {
     }
     
     private func formatSubviews() {
+        // blurBackground
+        
+        // cardBackground
+        cardBackground.backgroundColor = .white
+        cardBackground.layer.cornerRadius = 15
+        cardBackground.layer.masksToBounds = true
+        
+        // cardShadow
+        coverShadow.shadowOffset = CGSize(width: 0, height: 3)
+        
         // xButton
         xButton.setImage(UIImage(named: "xIcon"), for: .normal)
         xButton.contentMode = .scaleAspectFit
         
         // coverImage
+        coverImage.alpha = 0
         coverImage.image = defaultImage
         coverImage.contentMode = .scaleAspectFill
-        coverImage.layer.cornerRadius = 5
+        coverImage.layer.cornerRadius = 15
         coverImage.layer.masksToBounds = true
         
+        // coverShadow
+        coverShadow.alpha = 0
+        coverShadow.shadowOffset = CGSize(width: 0, height: 3)
+        
         // titleLabel
-        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.alpha = 0
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         titleLabel.textColor = .black
         titleLabel.numberOfLines = 2
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.5
+        titleLabel.textAlignment = .center
         
         // authorLabel
-        authorLabel.font = UIFont.systemFont(ofSize: 12)
+        authorLabel.alpha = 0
+        authorLabel.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         authorLabel.textColor = .lightGray
+        authorLabel.numberOfLines = 2
+        authorLabel.lineBreakMode = .byWordWrapping
         authorLabel.adjustsFontSizeToFitWidth = true
         authorLabel.minimumScaleFactor = 0.5
+        authorLabel.textAlignment = .center
         
         // publishLabel
+        publishLabel.alpha = 0
         publishLabel.font = UIFont.systemFont(ofSize: 12)
         publishLabel.textColor = .lightGray
         publishLabel.adjustsFontSizeToFitWidth = true
         publishLabel.minimumScaleFactor = 0.5
         
         // editionLabel
+        editionLabel.alpha = 0
         editionLabel.font = UIFont.systemFont(ofSize: 12)
         editionLabel.textColor = .lightGray
         editionLabel.adjustsFontSizeToFitWidth = true
         editionLabel.minimumScaleFactor = 0.5
         
         // fullTextLabel
+        fullTextLabel.alpha = 0
         fullTextLabel.font = UIFont.systemFont(ofSize: 12)
         fullTextLabel.textColor = .lightGray
         fullTextLabel.adjustsFontSizeToFitWidth = true
         fullTextLabel.minimumScaleFactor = 0.5
         
         // wishlistButton
+        wishlistButton.alpha = 0
         wishlistButton.setTitle("Add to wishlist", for: .normal)
-        wishlistButton.backgroundColor = .green
-        wishlistButton.layer.cornerRadius = Constants.buttonHeight/2
+        wishlistButton.backgroundColor = Colors.customGreen
+        wishlistButton.layer.cornerRadius = 15
         wishlistButton.layer.masksToBounds = true
     }
     
     private func addSubviewConstraints() {
+        // blurBackground
+        blurBackground.constrainToParent()
+        
+        // cardShadow
+        cardShadow.translatesAutoresizingMaskIntoConstraints = false
+        cardShadow.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        cardTopConstraint = cardShadow.topAnchor.constraint(equalTo: self.bottomAnchor)
+        cardTopConstraint.isActive = true
+        cardShadow.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.75).isActive = true
+        cardShadow.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        
         // xButton
         xButton.translatesAutoresizingMaskIntoConstraints = false
         xButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
@@ -150,17 +199,24 @@ class BookDetailView: UIView {
         xButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
         xButton.widthAnchor.constraint(equalTo: xButton.heightAnchor).isActive = true
         
-        // coverImage
-        coverImage.translatesAutoresizingMaskIntoConstraints = false
-        coverImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        coverImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 100).isActive = true
-        coverImage.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: pow(0.618, 3)).isActive = true
-        coverImage.widthAnchor.constraint(equalTo: coverImage.heightAnchor, multiplier: 0.618).isActive = true
+        // coverShadow
+        coverShadow.translatesAutoresizingMaskIntoConstraints = false
+        coverShadow.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        coverShadow.centerYAnchor.constraint(equalTo: cardShadow.topAnchor).isActive = true
+        coverShadow.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: pow(0.618, 2.5)).isActive = true
+        coverShadow.widthAnchor.constraint(equalTo: coverImage.heightAnchor, multiplier: 0.618).isActive = true
+        
+        // authorLabel
+        authorLabel.translatesAutoresizingMaskIntoConstraints = false
+        authorLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        authorLabel.topAnchor.constraint(equalTo: coverImage.bottomAnchor, constant: 40).isActive = true
+        authorLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-40).isActive = true
         
         // titleLabel
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: coverImage.bottomAnchor, constant: 20).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 20).isActive = true
+        titleLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-40).isActive = true
         
         // publishLabel
         publishLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -180,9 +236,9 @@ class BookDetailView: UIView {
         // wishlistButton
         wishlistButton.translatesAutoresizingMaskIntoConstraints = false
         wishlistButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        wishlistButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: Constants.bottomPadding).isActive = true
+        wishlistButton.bottomAnchor.constraint(equalTo: cardShadow.bottomAnchor, constant: Constants.bottomPadding).isActive = true
         wishlistButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight).isActive = true
-        wishlistButton.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -40).isActive = true
+        wishlistButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-40).isActive = true
     }
     
     private func addSubviewFunctions() {
@@ -190,6 +246,10 @@ class BookDetailView: UIView {
         
         wishlistButton.addTarget(self, action: #selector(wishBtnTapped), for: .touchUpInside)
     }
+    
+    //
+    // MARK: - Button Actions
+    //
     
     @objc private func xTapped() {
         self.dismissSelf?()
@@ -199,4 +259,29 @@ class BookDetailView: UIView {
         wishlistButton.bounce()
     }
     
+    //
+    // MARK: - Animations
+    //
+    
+    func animateIn() {
+        let views: [UIView] = [coverShadow, authorLabel, titleLabel, publishLabel, editionLabel, fullTextLabel, wishlistButton]
+        let fromAnimation = AnimationType.from(direction: .bottom, offset: 30.0)
+        
+        // animate card in, then views
+        self.cardTopConstraint.constant = -cardShadow.bounds.height
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            // animate card
+            self.layoutIfNeeded()
+        }) { (complete) in
+            
+            // reveal views
+            views.forEach { view in
+                view.alpha = 1
+            }
+            self.coverImage.alpha = 1 // will inherit animation, but not alpha from coverShadow
+            
+            // animate views
+            UIView.animate(views: views, animations: [fromAnimation], reversed: false, initialAlpha: 0, finalAlpha: 1, delay: 0, animationInterval: 0.1, duration: 0.5, options: .curveEaseInOut, completion: nil)
+        }
+    }
 }

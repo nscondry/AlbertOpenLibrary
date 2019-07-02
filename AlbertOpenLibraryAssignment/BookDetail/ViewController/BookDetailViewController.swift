@@ -37,17 +37,24 @@ class BookDetailViewController: UIViewController, RouterDelegateProtocol {
         // navBar setup
         self.navigationItem.title = "BookDetail"
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        
+        // transitionStyle
+        modalTransitionStyle = .crossDissolve
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // hide tabBar
         self.tabBarController?.tabBar.isHidden = true
         
         // enforce smallTitleMode
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.navigationBar.isHidden = false
+        
+        // animate views in
+        DispatchQueue.main.async {
+            self.detailView.animateIn()
+        }
     }
     
     private func dismissSelf() {
