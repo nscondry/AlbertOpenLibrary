@@ -22,6 +22,7 @@ class BrowseViewController: UIViewController, RouterDelegateProtocol {
     
     private var viewModel: BrowseViewModel!
     private var browseView: BrowseView!
+    private var searchButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,34 +49,33 @@ class BrowseViewController: UIViewController, RouterDelegateProtocol {
         browseView.presentDetailView = { data in
             self.presentViewController?(self, .detail, data)
         }
-        browseView.presentSearchView = {
-            self.presentViewController?(self, .search, nil)
-        }
         
         self.view = browseView
         
         // navBar setup
         self.navigationItem.title = "Browse"
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = Colors.backgroundRed
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        extendedLayoutIncludesOpaqueBars = true
+        
+        // searchButton
+        searchButton = UIBarButtonItem(image: UIImage(named: "searchIcon"), landscapeImagePhone: nil, style: .plain, target: self, action: #selector(presentSearchVC))
+        searchButton.tintColor = .white
+        self.navigationItem.rightBarButtonItem = searchButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // hide nav & reveal tabBar
-        self.navigationController?.navigationBar.isHidden = true
+        // reveal nav & reveal tabBar
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.tabBarController?.tabBar.isHidden = false
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc private func presentSearchVC() {
+        self.presentViewController?(self, .search, nil)
     }
-    */
-
 }

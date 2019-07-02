@@ -72,6 +72,10 @@ struct Colors {
         return UIColor(red:0.93, green:0.45, blue:0.44, alpha:1.0)
     }
     
+    static var backgroundRed: UIColor {
+        return UIColor(red: 1.0 , green: 0.4196078431372549, blue: 0.4196078431372549, alpha:1.0)
+    }
+    
     static var veryLightGray: UIColor {
         return UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.0)
     }

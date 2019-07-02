@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         router = Router(window!)
         
         // set navBar attributes
-        UINavigationBar.appearance().backgroundColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         
         // set tabBar attributes
         UITabBar.appearance().tintColor = UIColor.black.withAlphaComponent(0.8)
