@@ -42,6 +42,8 @@ class SearchViewModel: SearchViewModelProtocol {
     var rest: RestManager!
     private var model: SearchModel!
     private var searchType: SearchTypes! = .all
+    
+    private var mostRecentQuery: String!
 
     init() {
         self.model = SearchModel()
@@ -57,6 +59,9 @@ class SearchViewModel: SearchViewModelProtocol {
     }
     
     func searchBooks(_ query: String) {
+        // used to enforce that results returned are not for a previous query if typing quickly
+        mostRecentQuery = query
+        
         let typeString: String! = (self.searchType! == .all ? "q=" : "\(searchType.rawValue)=")
         guard let url = URL(string: "https://openlibrary.org/search.json?" + typeString + query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!) else { return }
         
@@ -64,7 +69,7 @@ class SearchViewModel: SearchViewModelProtocol {
             if let data = response.data {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                guard let results = try? decoder.decode(SearchResults.self, from: data) else { return }
+                guard let results = try? decoder.decode(SearchResults.self, from: data), query == self.mostRecentQuery else { return }
                 
                 if let bookData = results.docs {
                     self.model.setSearchResultData(bookData)
