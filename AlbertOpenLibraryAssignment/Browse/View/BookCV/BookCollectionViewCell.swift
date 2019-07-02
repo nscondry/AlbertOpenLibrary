@@ -36,7 +36,7 @@ class BookCollectionViewCell: UICollectionViewCell {
         
         imageView = UIImageView()
         titleLabel = UILabel()
-        gradientView = UIView(frame: self.bounds)
+        gradientView = UIView()
         gradient = CAGradientLayer()
         
         addSubviews()
@@ -62,7 +62,7 @@ class BookCollectionViewCell: UICollectionViewCell {
     private func addSubviews() {
         contentView.addSubview(imageView)
         contentView.addSubview(gradientView)
-        gradientView.layer.insertSublayer(gradient, at: 0)
+        gradientView.layer.addSublayer(gradient)
         contentView.addSubview(titleLabel)
     }
     
@@ -77,11 +77,10 @@ class BookCollectionViewCell: UICollectionViewCell {
         titleLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         
         // gradientView
-//        gradientView.alpha = 0
         
         // gradient
-        gradient.opacity = 0
-        gradient.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.5).cgColor]
+        gradient.opacity = 1
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.75).cgColor]
         gradient.locations = [0.0, 1.0]
     }
     

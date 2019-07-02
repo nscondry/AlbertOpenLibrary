@@ -54,7 +54,7 @@ class BrowseViewController: UIViewController, RouterDelegateProtocol {
         self.view = browseView
         
         // navBar setup
-        self.navigationItem.title = "Browse"
+        self.navigationItem.title = "Browse: Art"
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = Colors.backgroundRed
@@ -71,7 +71,6 @@ class BrowseViewController: UIViewController, RouterDelegateProtocol {
         super.viewWillAppear(animated)
         
         // format nav & reveal tabBar
-        self.navigationItem.title = "Browse"
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.tabBarController?.tabBar.isHidden = false
