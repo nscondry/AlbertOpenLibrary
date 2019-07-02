@@ -32,8 +32,16 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resultsTV.getCellImage = { id in
-            return self.viewModel.getImage(forCoverID: id)
+        resultsTV.getCellImage = { coverID in
+            self.viewModel.getCoverImage(id: coverID) { coverImage in
+                DispatchQueue.main.async {
+                    if let coverImage = coverImage {
+                        self.resultsTV.setCellImage(coverID, coverImage)
+                    }
+                }
+            }
+            // image will be set asynchronously
+            return nil
         }
         resultsTV.presentDetailView = { data in
             // todo handle data
@@ -50,8 +58,12 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
         
         // navBar setup
         self.navigationItem.title = "Wishlist"
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = Colors.customRed
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        extendedLayoutIncludesOpaqueBars = true
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,12 +71,15 @@ class WishlistViewController: UIViewController, RouterDelegateProtocol {
         // refresh retrieved books, update if changed
         refreshFavoriteBooks()
         
-        // reveal tabBar
-        self.tabBarController?.tabBar.isHidden = false
-        
-        // enforce largeTitleMode
+        // format nav & reveal tabBar
+        self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.tabBarController?.tabBar.isHidden = false
     }
+    
+    //
+    // MARK: - Helper functions
+    //
     
     private func refreshFavoriteBooks() {
         // refresh retrieved books, update if changed

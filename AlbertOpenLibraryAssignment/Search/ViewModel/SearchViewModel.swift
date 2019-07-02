@@ -84,7 +84,7 @@ class SearchViewModel: SearchViewModelProtocol {
         }
     }
     
-    func getCoverImage( id: Int, size: CoverImageSizes, completion: @escaping(_ coverImage: UIImage?)->()) {
+    func getCoverImage(id: Int, size: CoverImageSizes, completion: @escaping(_ coverImage: UIImage?)->()) {
         guard let url = URL(string: "https://covers.openlibrary.org/b/id/" + String(id) + "-" + size.rawValue + ".jpg") else { return }
         
         if let coverImage = model.getImage(url) {

@@ -35,7 +35,9 @@ class SearchViewController: UIViewController, RouterDelegateProtocol {
         searchView.getCellImage = { coverID in
             self.viewModel.getCoverImage(id: coverID, size: .M) { coverImage in
                 DispatchQueue.main.async {
-                    self.searchView.resultsTV.setCellImage(coverID, coverImage!)
+                    if let coverImage = coverImage {
+                        self.searchView.resultsTV.setCellImage(coverID, coverImage)
+                    }
                 }
             }
             // image will be set asynchronously
