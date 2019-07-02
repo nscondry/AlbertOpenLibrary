@@ -39,7 +39,7 @@ class SearchBarView: UIView {
     private func formatSubviews() {
         // contentView
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 5
+        contentView.layer.cornerRadius = 15
         contentView.layer.masksToBounds = true
         
         // searchIcon

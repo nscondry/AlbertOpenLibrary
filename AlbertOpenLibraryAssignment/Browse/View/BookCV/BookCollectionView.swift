@@ -66,13 +66,8 @@ extension BookCollectionView: UICollectionViewDataSource, UICollectionViewDelega
         cell.contentView.layer.backgroundColor = UIColor.white.cgColor
         cell.contentView.layer.cornerRadius = 15
         cell.contentView.layer.masksToBounds = true
-        
-        cell.layer.backgroundColor = UIColor.clear.cgColor
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 3)
-        cell.layer.shadowRadius = 3
-        cell.layer.shadowOpacity = 0.2
-        cell.layer.masksToBounds = false
+        cell.contentView.layer.borderColor = Colors.veryLightGray.cgColor
+        cell.contentView.layer.borderWidth = 0.5
         
         return cell
     }

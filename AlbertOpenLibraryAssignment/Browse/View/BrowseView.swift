@@ -24,6 +24,8 @@ class BrowseView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.layer.contents = UIImage(named: "background")?.cgImage
+        
         containerScrollView = UIScrollView()
         searchBar = SearchBarView()
         subjectCV = SubjectCollectionView(frame: CGRect.zero, collectionViewLayout: SubjectCollectionViewLayout())
@@ -71,7 +73,7 @@ class BrowseView: UIView {
         // subjectCV
         
         // bookCV
-        bookCV.backgroundColor = .white
+        bookCV.backgroundColor = .clear
         bookCV.contentInset = UIEdgeInsetsMake(200, 0, 20, 0)
     }
     
