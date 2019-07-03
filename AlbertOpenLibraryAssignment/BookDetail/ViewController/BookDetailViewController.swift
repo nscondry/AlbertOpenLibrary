@@ -8,9 +8,7 @@
 
 import UIKit
 
-class BookDetailViewController: UIViewController, RouterDelegateProtocol {
-
-    var popViewController: ((UIViewController, Any?) -> ())?
+class BookDetailViewController: UIViewController {
     
     var data: BookData!
     
