@@ -52,6 +52,7 @@ class Router: NSObject {
         
         // set up: tabController
         tabBarController = UITabBarController()
+        tabBarController.delegate = self
         tabBarController.viewControllers = [browseNav, wishNav]
         tabBarController.selectedIndex = 0
         tabBarController.tabBar.isTranslucent = false
@@ -96,5 +97,24 @@ class Router: NSObject {
             vc.presentViewController = self.presentViewController
         }
         return vc
+    }
+}
+
+extension Router: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        var index: Int
+        switch viewController {
+        // index 0 = tabBarBackground
+        case browseNav:
+            index = 1
+        case wishNav:
+            index = 2
+        default:
+            return
+        }
+        if let tabItemView = tabBarController.tabBar.subviews[index] as? UIView {
+            tabItemView.bounce()
+        }
     }
 }
