@@ -133,7 +133,9 @@ class CoreDataManager: CoreDataManagerProtocol {
         do {
             let result = try managedContext.fetch(fetchRequest)
             for data in result as! [NSManagedObject] {
-                favoriteKeys.append(data.value(forKey: "key") as! String)
+                if let key = data.value(forKey: "key") as? String {
+                    favoriteKeys.append(key)
+                }
             }
         } catch {
             NSLog("\(error)")
