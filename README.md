@@ -16,6 +16,8 @@ INSTALLATION
         First, copy or download the repo from github at https://github.com/nscondry/AlbertOpenLibrary.
         
         Then, launch AlbertOpenLibraryAssignment.xcworkspace using Xcode, and run the project on either a simulator or an iPhone.
+        
+        NOTE: Remember to launch the workspace, rather than the xcode project, so the ViewAnimator pod is included. It may be necessary to update your version of cocoa pods if it is out of date.
 
 
 USAGE
