@@ -21,10 +21,11 @@ class SubjectCollectionView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
         
         // formatting
-        self.clipsToBounds = false
-        self.backgroundColor = .clear
+        clipsToBounds = false
+        backgroundColor = .clear
         alwaysBounceHorizontal = true
         showsHorizontalScrollIndicator = false
+        isPrefetchingEnabled = false // resolves minor bug where a prefetched cell that is neither visible nor dequeued does not have its selection status reset properly upon selecting another cell
         
         delegate = self
         dataSource = self
