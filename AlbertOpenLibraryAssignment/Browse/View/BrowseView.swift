@@ -10,7 +10,7 @@ import UIKit
 
 class BrowseView: UIView {
 
-    var getCellImage: ((Int)->(UIImage?))?
+    var getCellImage: ((Int)->())?
     var browseSubject: ((String)->())?
     var presentDetailView: ((BrowsedBookData)->())?
     var presentSearchView: (()->())?

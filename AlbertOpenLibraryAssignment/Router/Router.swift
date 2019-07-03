@@ -113,8 +113,7 @@ extension Router: UITabBarControllerDelegate {
         default:
             return
         }
-        if let tabItemView = tabBarController.tabBar.subviews[index] as? UIView {
-            tabItemView.bounce()
-        }
+        // bounce upon selection
+        tabBarController.tabBar.subviews[index].bounce()
     }
 }

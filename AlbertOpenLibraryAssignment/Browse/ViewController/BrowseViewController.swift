@@ -40,8 +40,6 @@ class BrowseViewController: UIViewController, RouterDelegateProtocol {
                     self.browseView.bookCV.setCellImage(coverID, coverImage!)
                 }
             }
-            // image will be set asynchronously
-            return nil
         }
         browseView.browseSubject = { subject in
             self.viewModel.browseBooks(subject.lowercased())

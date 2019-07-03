@@ -11,7 +11,7 @@ import ViewAnimator
 
 class BookCollectionView: UICollectionView {
 
-    var getCellImage: ((Int)->(UIImage?))?
+    var getCellImage: ((Int)->())?
     var presentDetailView: ((BrowsedBookData)->())?
     var scrollViewScrolled: ((CGFloat)->())?
     
